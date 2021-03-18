@@ -1,0 +1,27 @@
+export const urls = {
+    "DASHBOARD_VIEW": "/app",
+    
+    "LOGIN_VIEW": "/login",
+    "RESERVATION_LIST_VIEW": "/app/rezervasyonlar",
+    "NEW_RESERVATION_VIEW": "/app/rezervasyonlar/yeni",
+    "UPDATE_RESERVATION_VIEW": "/app/rezervasyonlar/duzenle",
+    "ORDER_LIST_VIEW": "/app/siparisler",
+    "NEW_ORDER_VIEW": "/app/siparisler/yeni",
+    "UPDATE_ORDER_VIEW": "/app/siparisler/duzenle",
+    "PRODUCT_LIST_VIEW": "/app/urunler",
+    "NEW_PRODUCT_VIEW": "/app/urunler/yeni",
+    "UPDATE_PRODUCT_VIEW": "/app/urunler/duzenle",
+    "EMPLOYEE_LIST_VIEW": "/app/calisanlar",
+    "NEW_EMPLOYEE_VIEW": "/app/calisanlar/yeni",
+    "UPDATE_EMPLOYEE_VIEW": "/app/calisanlar/duzenle",
+    "OFFICE_LIST_VIEW": "/app/subeler",
+    "NEW_OFFICE_VIEW": "/app/subeler/yeni",
+    "UPDATE_OFFICE_VIEW": "/app/subeler/duzenle",
+    "CUSTOMER_LIST_VIEW": "/app/musteriler",
+    "NEW_CUSTOMER_VIEW": "/app/musteriler/yeni",
+    "UPDATE_CUSTOMER_VIEW": "/app/musteriler/duzenle",
+    "LIST_CUSTOMER_VIEW": "/app/musteriler",
+    "NEW_CUSTOMER_VIEW": "/app/musteri/yeni",
+    "NEW_PRODUCT_VIEW": "/app/urun/yeni",
+    "PREVIOUS_ORDERS_VIEW": "/app/siparis/gecmis"
+}
