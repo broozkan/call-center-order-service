@@ -20,7 +20,13 @@ const orderSchema = mongoose.Schema({
     },
     order_status: {
         type: String,
-        default: "Bekliyor"
+        default: "pending",
+        enum: [
+            "pending",
+            "preparing",
+            "on_delivery",
+            "delivered"
+        ]
     },
     order_created_at: {
         type: Date,

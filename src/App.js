@@ -31,6 +31,8 @@ import ReservationListView from "./views/App/Reservation/ReservationListView";
 import NewReservationView from "./views/App/Reservation/NewReservationView";
 import UpdateReservationView from "./views/App/Reservation/UpdateReservationView";
 import { ContextAuthWrapper } from "./contexts/ContextAuth";
+import LiveOrderView from "./views/App/Order/LiveOrderView";
+import ChatView from "./views/App/Chat/ChatView";
 
 class App extends Component {
 
@@ -40,6 +42,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path={urls.LOGIN_VIEW} exact component={LoginView}></Route>
+            <Route path={urls.LIVE_ORDER_VIEW} exact component={LiveOrderView}></Route>
+            <Route path={urls.CHAT_VIEW} exact component={ChatView}></Route>
             <div className="main-wrapper">
               <ContextAuthWrapper>
                 <Header />

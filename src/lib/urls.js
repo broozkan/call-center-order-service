@@ -1,7 +1,9 @@
 export const urls = {
     "DASHBOARD_VIEW": "/app",
-    
+
     "LOGIN_VIEW": "/login",
+    "LIVE_ORDER_VIEW": "/canli-siparis-ekrani",
+    "CHAT_VIEW": "/chat",
     "RESERVATION_LIST_VIEW": "/app/rezervasyonlar",
     "NEW_RESERVATION_VIEW": "/app/rezervasyonlar/yeni",
     "UPDATE_RESERVATION_VIEW": "/app/rezervasyonlar/duzenle",

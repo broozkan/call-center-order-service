@@ -1,0 +1,20 @@
+/* TABLE LIVE ORDER */
+
+.table-live-order tr td {
+    text-align: left;
+}
+
+.table-live-order tbody td p {
+    margin: 0.5rem;
+}
+
+.table-live-order tbody td.order-note-field {
+    width: 10%;
+}
+.table-live-order tbody td.order-note-field span {
+    white-space: break-spaces;
+}
+
+.table-live-order tbody td.product p {
+    margin: 10px 0px 0px 0px;
+}
