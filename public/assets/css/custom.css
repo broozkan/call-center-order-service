@@ -43,7 +43,7 @@
 .order-select-card .card-header {
     display: block;
     text-align: center;
-    padding: 1.5rem 0.875rem 1.25rem!important;
+    padding: 1rem 0.875rem 1rem!important
 }
 
 .order-product-piece-field {
@@ -63,6 +63,11 @@
     padding: 0;
 }
 
+.order-select-card .card-footer button {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 .order-select-card.active {
     background: #7638ff;
     color: white;
@@ -78,7 +83,7 @@
 }
 
 .order-select-card p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 

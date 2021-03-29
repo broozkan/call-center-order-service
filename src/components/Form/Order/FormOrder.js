@@ -14,8 +14,7 @@ class FormOrder extends Component {
             order_customer: {},
             order_products: [],
             order_office: {},
-            customers: [],
-            is_customers_loaded: false,
+            order_address: {},
             offices: [],
             is_offices_loaded: false,
             products: [],
@@ -23,7 +22,7 @@ class FormOrder extends Component {
             order_amount: 0
         }
 
-        this.handleOnChange = this.handleOnChange.bind(this)
+        this.handleOnClick = this.handleOnClick.bind(this)
         this.handleOnSubmit = this.handleOnSubmit.bind(this)
         this.getOrder = this.getOrder.bind(this)
 
@@ -44,12 +43,6 @@ class FormOrder extends Component {
             this.setState(this.props.state)
         }
 
-        getCustomers(1, {}, (results) => {
-            this.setState({
-                customers: results.data.docs,
-                is_customers_loaded: true
-            })
-        })
 
         getOffices(1, {}, (results) => {
             this.setState({
@@ -72,52 +65,23 @@ class FormOrder extends Component {
     }
 
 
-    handleOnChange = (e) => {
-        console.log(e.currentTarget.dataset);
-        if (e.target.type === "select-one") {
-            if (e.target.name === "order_customer") {
-                this.state.customers.map((item) => {
-                    if (item._id == e.target.value) {
-                        this.setState({
-                            order_customer: item
-                        })
-                    }
-                })
-            }
-        } else if (e.target.type === "select-multiple") {
-            let orderProducts = this.state.order_products
-            for (let index = 0; index < e.target.options.length; index++) {
-                this.state.products.map((item) => {
-                    if (e.target.options[index].selected) {
-                        if (item._id == e.target.options[index].value) {
-                            orderProducts.push(item)
-                        }
-                    } else {
-                        if (item._id == e.target.options[index].value) {
-                            orderProducts.splice(index, 1)
-                        }
-                    }
-                })
-            }
-            this.setState({
-                order_products: orderProducts
+    handleOnClick = (e) => {
+
+        if (e.currentTarget.dataset.name === "order_address") {
+            this.state.order_customer.customer_address.map((item) => {
+                if (item._id == e.currentTarget.dataset.address_id) {
+                    this.setState({
+                        order_address: item
+                    })
+                }
             })
         } else {
-            if (e.currentTarget.dataset.name === "order_office") {
-                this.state.offices.map((item) => {
-                    if (item._id == e.currentTarget.dataset.office_id) {
-                        this.setState({
-                            order_office: item
-                        })
-                    }
-                })
-            } else {
-                this.setState({
-                    [e.target.name]: e.target.value
-                })
-            }
-
+            this.setState({
+                [e.target.name]: e.target.value
+            })
         }
+
+
 
     }
 
@@ -154,56 +118,35 @@ class FormOrder extends Component {
     render() {
         console.log(this.state);
         // render customers
-        let customerValue = ''
-        if (this.state.order_customer._id) {
-            customerValue = this.state.order_customer._id
-        }
         let customersJsx = <LoaderSpin />
-        if (this.state.is_customers_loaded) {
-            if (this.state.order_customer) {
-                customersJsx = (
-                    <div className="col-lg-12">
-                        <div className="card order-select-card active">
-                            <div className="card-body">
-                                <p> <i className="fas fa-user"></i> {this.props.state.order_customer.customer_name} <IconActiveCard /> </p>
-                            </div>
+        if (this.state.order_customer) {
+            customersJsx = (
+                <div className="col-lg-12">
+                    <div className="card order-select-card active">
+                        <div className="card-body">
+                            <p> <i className="fas fa-user"></i> {this.props.state.order_customer.customer_name} <IconActiveCard /> </p>
                         </div>
                     </div>
-                )
-            } else {
-                customersJsx = this.state.customers.map((item, index) => {
-                    return (
-                        <div className="col-lg-4">
-                            <div className="card order-select-card">
-                                <div className="card-body">
-                                    <p> <i className="fas fa-user"></i> {item.customer_name}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-
+                </div>
+            )
         }
 
 
-        // render offices
-        let officeValue = ''
-        if (this.state.order_office._id) {
-            officeValue = this.state.order_office._id
-        }
-        let officesJsx = <LoaderSpin />
-        if (this.state.is_offices_loaded) {
-            officesJsx = this.state.offices.map((item) => {
+
+        // render addresses
+        let addressesJsx = <LoaderSpin />
+        console.log(this.state);
+        if (this.state.order_customer.customer_address) {
+            addressesJsx = this.state.order_customer.customer_address.map((item) => {
                 let activityClass = ''
-                if (this.state.order_office._id == item._id) {
+                if (this.state.order_address._id == item._id) {
                     activityClass = 'active'
                 }
                 return (
                     <div className="col-lg-4">
-                        <div onClick={this.handleOnChange} data-name="order_office" data-office_id={item._id} className={`card order-select-card ${activityClass}`}>
+                        <div onClick={this.handleOnClick} data-name="order_address" data-address_id={item._id} className={`card order-select-card ${activityClass}`}>
                             <div className="card-body">
-                                <p> <i className="fas fa-map-marker-alt"></i> {item.office_name} <IconActiveCard /></p>
+                                <p> <i className="fas fa-map-marker-alt"></i> {item.address} <hr></hr> {item.address_province} <IconActiveCard /></p>
                             </div>
                         </div>
                     </div>
@@ -212,22 +155,46 @@ class FormOrder extends Component {
             })
         }
 
+        // render offices
+        // let officeValue = ''
+        // if (this.state.order_office._id) {
+        //     officeValue = this.state.order_office._id
+        // }
+        // let officesJsx = <LoaderSpin />
+        // if (this.state.is_offices_loaded) {
+        //     officesJsx = this.state.offices.map((item) => {
+        //         let activityClass = ''
+        //         if (this.state.order_office._id == item._id) {
+        //             activityClass = 'active'
+        //         }
+        //         return (
+        //             <div className="col-lg-4">
+        //                 <div onClick={this.handleOnClick} data-name="order_office" data-office_id={item._id} className={`card order-select-card ${activityClass}`}>
+        //                     <div className="card-body">
+        //                         <p> <i className="fas fa-map-marker-alt"></i> {item.office_name} <IconActiveCard /></p>
+        //                     </div>
+        //                 </div>
+        //             </div>
+
+        //         )
+        //     })
+        // }
+
         // render products
         let productsJsx = <LoaderSpin />
         if (this.state.is_products_loaded) {
             productsJsx = this.state.products.map((item) => {
                 return (
-                    <div className="col-lg-4">
-                        <div className="card order-select-card">
+                    <div className="col-lg-5">
+                        <div className="card order-select-card" style={{ border: '1px solid lightgray' }}>
                             <div className="card-header">
-                                <h5 class="card-title">{item.product_name}</h5>
-                                <div class="btn-group btn-group-sm order-product-piece-field pt-3">
-                                    <button type="button" class="btn btn-primary btn-xs">-</button>
+                                <h5 className="card-title">{item.product_name}</h5>
+                                <div className="btn-group btn-group-sm order-product-piece-field pt-3">
+                                    <button type="button" className="btn btn-primary btn-xs">-</button>
                                     <input type="text" className="form-control form-control-xs" value="0" />
-                                    <button type="button" class="btn btn-primary btn-xs">+</button>
+                                    <button type="button" className="btn btn-primary btn-xs">+</button>
                                 </div>
                             </div>
-
                             <div className="card-body">
                                 <button type="button" className="btn btn-outline-primary btn-xs m-1">Soğansız</button>
                                 <button type="button" className="btn btn-outline-primary btn-xs m-1">Soğansız</button>
@@ -252,31 +219,81 @@ class FormOrder extends Component {
                 <div className="col-lg-6">
                     <form method="POST" onSubmit={this.handleOnSubmit}>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Müşteri</label>
                             <div className="row">
                                 {customersJsx}
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Şube</label>
+                        <div className="form-group">
+                            <label>Adresleri</label>
                             <div className="row">
-                                {officesJsx}
+                                {addressesJsx}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
+                            <label>Ürünler</label>
+                            <div className="accordion" id="accordionExample">
+                                <div className="card order-select-card">
+                                    <div className="card-header text-left" id="headingOne">
+                                        <h2 className="mb-0">
+                                            <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                <h5 className="card-title ">Çorbalar</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div className="card-body">
+                                            Çorba ürünleri
+                                    </div>
+                                    </div>
+                                </div>
+                                <div className="card order-select-card">
+                                    <div className="card-header text-left" id="headingTwo">
+                                        <h2 className="mb-0">
+                                            <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <h5 className="card-title ">Ana Yemekler</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div className="card-body">
+                                            {productsJsx}
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="card order-select-card">
+                                    <div className="card-header text-left" id="headingThree">
+                                        <h2 className="mb-0">
+                                            <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                <h5 className="card-title ">İçecekler</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                        <div className="card-body">
+                                            d of them accusamus labore sustainable VHS.
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="form-group">
                             <label>Ana Yemekler</label>
                             <div className="row">
                                 {productsJsx}
                             </div>
-                        </div>
-                        <div class="form-group">
+                        </div> */}
+                        <div className="form-group">
                             <label>Toplam Tutar</label>
-                            <input type="number" step=".01" class="form-control" name="order_amount" value={this.state.order_amount} onChange={this.handleOnChange} />
+                            <input type="number" step=".01" className="form-control" name="order_amount" value={this.state.order_amount} onChange={this.handleOnClick} />
                         </div>
 
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Kaydet <i className="fas fa-save"></i></button>
+                        <div className="text-right">
+                            <button type="submit" className="btn btn-primary">Kaydet <i className="fas fa-save"></i></button>
                         </div>
                     </form>
                 </div>

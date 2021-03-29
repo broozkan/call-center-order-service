@@ -66,12 +66,7 @@ class CustomerResultView extends Component {
 
                                 <h2>{this.state.customer.customer_name}</h2>
                                 <ul class="list-block">
-                                    <li class="list-block-item">
-                                        <i class="fas fa-map-marker-alt mr-2"></i>
-                                        {this.state.customer.customer_address}
-                                        <br></br>
-                                        {this.state.customer.customer_address_description}
-                                    </li>
+
                                     <li class="list-block-item">
                                         <i class="fas fa-phone mr-2"></i>
                                         {this.state.customer.customer_phone_number}

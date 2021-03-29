@@ -72,8 +72,6 @@ class TableCustomer extends Component {
                     <tr>
                         <td>{item.customer_name}</td>
                         <td>{item.customer_province}</td>
-                        <td>{item.customer_address}</td>
-                        <td>{item.customer_address_description}</td>
                         <td>{item.customer_note}</td>
                         <td>{item.customer_phone_number}</td>
                         <td>
@@ -92,8 +90,6 @@ class TableCustomer extends Component {
                         <tr>
                             <th>Ad</th>
                             <th>Şehir</th>
-                            <th>Adres</th>
-                            <th>Adres Tanımı</th>
                             <th>Not</th>
                             <th>Telefon</th>
                             <th>İşlem</th>
