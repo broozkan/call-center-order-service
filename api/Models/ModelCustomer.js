@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 var aggregatePaginate = require("mongoose-aggregate-paginate-v2")
+const Address = require('./ModelAddress')
 
 const customerSchema = mongoose.Schema({
     customer_name: {
@@ -18,10 +19,7 @@ const customerSchema = mongoose.Schema({
         type: String,
         required: [true, "Müşteri telefon numarası zorunludur"]
     },
-    customer_address: {
-        type: Array,
-        required: [true, "Müşteri adresi zorunludur"]
-    },
+    customer_address: [Address.addressSchema],
     customer_note: {
         type: String,
         required: false
