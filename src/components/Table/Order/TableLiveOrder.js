@@ -21,8 +21,26 @@ class TableLiveOrder extends Component {
         this.loadOrders = this.loadOrders.bind(this)
     }
 
+
+    async componentWillReceiveProps(nextProps) {
+        if (this.props.params != nextProps.params) {
+            getOrders(this.state.current_page, nextProps.params, (response) => {
+                this.setState({
+                    orders: response.data.docs,
+                    pagination_info: response.data,
+                    is_orders_loaded: true
+                })
+            })
+        }
+    }
+
     componentDidMount() {
-        getOrders(this.state.current_page, {}, (response) => {
+        let params = {}
+        if (this.props.params) {
+            params = this.props.params
+        }
+
+        getOrders(this.state.current_page, params, (response) => {
             this.setState({
                 orders: response.data.docs,
                 pagination_info: response.data,
@@ -32,7 +50,11 @@ class TableLiveOrder extends Component {
     }
 
     loadOrders = (page = this.state.current_page) => {
-        getOrders(page, {}, (response) => {
+        let params = {}
+        if (this.props.params) {
+            params = this.props.params
+        }
+        getOrders(page, params, (response) => {
             this.setState({
                 orders: response.data.docs,
                 pagination_info: response.data,
@@ -63,6 +85,7 @@ class TableLiveOrder extends Component {
 
     render() {
 
+        const user = JSON.parse(localStorage.getItem('user'))
 
         // render orders
         let ordersJsx = ''
@@ -102,21 +125,10 @@ class TableLiveOrder extends Component {
                     )
                 })
 
-                return (
-                    <tr>
-                        <td>{item.order_code}</td>
-                        <td>
-                            <p><strong>Ad Soyad: </strong>{item.order_customer.customer_name}</p>
-                            <p><strong>Telefon: </strong>{item.order_customer.customer_phone_number}</p>
-                            <p><strong>Adres: </strong>{item.order_customer.customer_address}</p>
-                            <p>{item.order_customer.customer_address_description}</p>
-
-
-                        </td>
-                        <td className="product">{orderProductsJsx}</td>
-                        <td>{item.order_amount} TL</td>
-                        <td>{orderStatusJsx}</td>
-                        <td className="order-note-field"><h2><span>{item.order_note}</span></h2></td>
+                // check user type ? if call_center user remove operation column
+                let operationColumnJsx = <td>-</td>
+                if (user.user_type == "office_user") {
+                    operationColumnJsx = (
                         <td>
                             <h2 className="float-right">
                                 {item.order_created_at}
@@ -132,6 +144,26 @@ class TableLiveOrder extends Component {
                                 </div>
                             </p>
                         </td>
+                    )
+                }
+
+                return (
+                    <tr>
+                        <td>{item.order_code}</td>
+                        <td>
+                            <p><strong>Ad Soyad: </strong>{item.order_customer.customer_name}</p>
+                            <p><strong>Telefon: </strong>{item.order_customer.customer_phone_number}</p>
+                            <p><strong>Adres: </strong>{item.order_customer.customer_address}</p>
+                            <p>{item.order_customer.customer_address_description}</p>
+
+
+                        </td>
+                        <td className="product">{orderProductsJsx}</td>
+                        <td>{item.order_amount} TL</td>
+                        <td>{orderStatusJsx}</td>
+                        <td className="order-note-field"><h2><span>{item.order_note}</span></h2></td>
+                        {operationColumnJsx}
+
                     </tr>
                 )
             })

@@ -1,3 +1,17 @@
+/* BUTTON  */
+
+.btn-xs {
+    font-size: 0.9rem;
+    padding: 4px;
+    line-height: 0.7rem;
+}
+
+/* INPUT */
+
+.form-control-xs {
+    height: calc(0.5em + 1.21875rem);
+}
+
 /* TABLE LIVE ORDER */
 
 .table-live-order tr td {
@@ -11,10 +25,63 @@
 .table-live-order tbody td.order-note-field {
     width: 10%;
 }
+
 .table-live-order tbody td.order-note-field span {
     white-space: break-spaces;
 }
 
 .table-live-order tbody td.product p {
     margin: 10px 0px 0px 0px;
+}
+
+/* ORDER */
+
+.order-select-card {
+    cursor: pointer;
+}
+
+.order-select-card .card-header {
+    display: block;
+    text-align: center;
+    padding: 1.5rem 0.875rem 1.25rem!important;
+}
+
+.order-product-piece-field {
+    width: 50%;
+}
+
+.order-product-piece-field button {
+    line-height: 1!important;
+}
+
+.order-product-piece-field input {
+    padding: 0;
+    text-align: center;
+}
+
+.order-select-card .card-footer {
+    padding: 0;
+}
+
+.order-select-card.active {
+    background: #7638ff;
+    color: white;
+    box-shadow: 2px 6px 6px #888888;
+}
+
+.order-select-card .fas.fa-check-circle {
+    display: none;
+}
+
+.order-select-card.active .fas.fa-check-circle {
+    display: block;
+}
+
+.order-select-card p {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.order-select-card .card-body {
+    padding: 1rem;
 }

@@ -22,7 +22,13 @@ class TableOrder extends Component {
     }
 
     componentDidMount() {
-        getOrders(this.state.current_page, {}, (response) => {
+
+        let params = {}
+        if (this.props.params) {
+            params = this.props.params
+        }
+
+        getOrders(this.state.current_page, params, (response) => {
             this.setState({
                 orders: response.data.docs,
                 pagination_info: response.data,
@@ -32,7 +38,12 @@ class TableOrder extends Component {
     }
 
     loadOrders = (page = this.state.current_page) => {
-        getOrders(page, {}, (response) => {
+        let params = {}
+        if (this.props.params) {
+            params = this.props.params
+        }
+
+        getOrders(page, params, (response) => {
             this.setState({
                 orders: response.data.docs,
                 pagination_info: response.data,

@@ -33,6 +33,11 @@ import UpdateReservationView from "./views/App/Reservation/UpdateReservationView
 import { ContextAuthWrapper } from "./contexts/ContextAuth";
 import LiveOrderView from "./views/App/Order/LiveOrderView";
 import ChatView from "./views/App/Chat/ChatView";
+import CustomerResultView from "./views/App/Customer/CustomerResultView";
+import CategoryListView from "./views/App/Category/CategoryListView";
+import NewCategoryView from "./views/App/Category/NewCategoryView";
+import UpdateCategoryView from "./views/App/Category/UpdateCategoryView";
+
 
 class App extends Component {
 
@@ -43,7 +48,7 @@ class App extends Component {
           <Switch>
             <Route path={urls.LOGIN_VIEW} exact component={LoginView}></Route>
             <Route path={urls.LIVE_ORDER_VIEW} exact component={LiveOrderView}></Route>
-            <Route path={urls.CHAT_VIEW} exact component={ChatView}></Route>
+            <Route path={`${urls.CHAT_VIEW}/:aside/:chatId?`} exact component={ChatView}></Route>
             <div className="main-wrapper">
               <ContextAuthWrapper>
                 <Header />
@@ -56,12 +61,17 @@ class App extends Component {
                     <Route path={urls.NEW_OFFICE_VIEW} exact component={NewOfficeView}></Route>
                     <Route path={`${urls.UPDATE_OFFICE_VIEW}/:officeId`} exact component={UpdateOfficeView}></Route>
 
+                    <Route path={urls.CATEGORY_LIST_VIEW} exact component={CategoryListView}></Route>
+                    <Route path={urls.NEW_CATEGORY_VIEW} exact component={NewCategoryView}></Route>
+                    <Route path={`${urls.UPDATE_CATEGORY_VIEW}/:categoryId`} exact component={UpdateCategoryView}></Route>
+
                     <Route path={urls.EMPLOYEE_LIST_VIEW} exact component={EmployeeListView}></Route>
                     <Route path={urls.NEW_EMPLOYEE_VIEW} exact component={NewEmployeeView}></Route>
                     <Route path={`${urls.UPDATE_EMPLOYEE_VIEW}/:employeeId`} exact component={UpdateEmployeeView}></Route>
 
+                    <Route path={`${urls.CUSTOMER_RESULT_VIEW}/:customerId`} exact component={CustomerResultView}></Route>
                     <Route path={urls.CUSTOMER_LIST_VIEW} exact component={CustomerListView}></Route>
-                    <Route path={urls.NEW_CUSTOMER_VIEW} exact component={NewCustomerView}></Route>
+                    <Route path={`${urls.NEW_CUSTOMER_VIEW}/:customerPhoneNumber?`} exact component={NewCustomerView}></Route>
                     <Route path={`${urls.UPDATE_CUSTOMER_VIEW}/:customerId`} exact component={UpdateCustomerView}></Route>
 
 

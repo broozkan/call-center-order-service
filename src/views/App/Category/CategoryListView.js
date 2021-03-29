@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
-import TableProduct from '../../../components/Table/Product/TableProduct'
+import TableCategory from '../../../components/Table/Category/TableCategory'
 import { urls } from '../../../lib/urls'
 
-class ProductListView extends Component {
+class CategoryListView extends Component {
     render() {
         return (
             <>
@@ -15,18 +15,18 @@ class ProductListView extends Component {
                         <div class="card-header">
                             <div className="row">
                                 <div class="col">
-                                    <h5 class="card-title">Ürünler</h5>
+                                    <h5 class="card-title">Kategoriler</h5>
                                 </div>
                                 <div class="col-auto">
-                                    <Link to={urls.NEW_PRODUCT_VIEW} class="btn-right btn btn-sm btn-outline-primary">
-                                        <i className="fas fa-plus"></i> Yeni Ürün Ekle
+                                    <Link to={urls.NEW_CATEGORY_VIEW} class="btn-right btn btn-sm btn-outline-primary">
+                                        <i className="fas fa-plus"></i> Yeni Kategori Ekle
 								    </Link>
                                 </div>
                             </div>
 
                         </div>
                         <div class="card-body">
-                            <TableProduct />
+                            <TableCategory />
                         </div>
                     </div>
                 </div>
@@ -35,4 +35,4 @@ class ProductListView extends Component {
     }
 }
 
-export default ProductListView
+export default CategoryListView

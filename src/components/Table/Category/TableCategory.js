@@ -1,42 +1,42 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { deleteObject, getProducts } from '../../../controllers/MainController'
+import { deleteObject, getCategories } from '../../../controllers/MainController'
 import { urls } from '../../../lib/urls'
 import api from '../../../services/api'
 import Pagination from '../../Pagination/Pagination'
 
 
-class TableProduct extends Component {
+class TableCategory extends Component {
     constructor() {
         super()
 
         this.state = {
-            products: [],
+            categories: [],
             pagination_info: '',
             current_page: 1,
-            is_products_loaded: false
+            is_categories_loaded: false
         }
 
-        this.loadProducts = this.loadProducts.bind(this)
+        this.loadCategories = this.loadCategories.bind(this)
     }
 
     componentDidMount() {
-        getProducts(this.state.current_page, {}, (response) => {
+        getCategories(this.state.current_page, {}, (response) => {
             this.setState({
-                products: response.data.docs,
+                categories: response.data.docs,
                 pagination_info: response.data,
-                is_products_loaded: true
+                is_categories_loaded: true
             })
         })
     }
 
-    loadProducts = (page = this.state.current_page) => {
-        getProducts(page, {}, (response) => {
+    loadCategories = (page = this.state.current_page) => {
+        getCategories(page, {}, (response) => {
             this.setState({
-                products: response.data.docs,
+                categories: response.data.docs,
                 pagination_info: response.data,
-                is_products_loaded: true,
+                is_categories_loaded: true,
                 current_page: page
             })
         })
@@ -44,13 +44,13 @@ class TableProduct extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/products/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/categories/${e.target.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",
                     icon: "success"
                 })
-                this.loadProducts(this.state.current_page)
+                this.loadCategories(this.state.current_page)
             } else {
                 Swal.fire({
                     title: "Bir sorun oluştu",
@@ -64,18 +64,16 @@ class TableProduct extends Component {
     render() {
 
 
-        // render products
-        let productsJsx = ''
-        if (this.state.is_products_loaded) {
-            productsJsx = this.state.products.map((item) => {
+        // render categories
+        let categoriesJsx = ''
+        if (this.state.is_categories_loaded) {
+            categoriesJsx = this.state.categories.map((item) => {
                 return (
                     <tr>
-                        <td>{item.product_name}</td>
-                        <td>{item.product_category.category_name}</td>
-                        <td>{item.product_unit}</td>
-                        <td>{item.product_unit_price}</td>
+                        <td>{item.category_name}</td>
+                        <td>{item.category_order_priority_number}</td>
                         <td>
-                            <Link to={`${urls.UPDATE_PRODUCT_VIEW}/${item._id}`} className="btn btn-outline-primary btn-sm"><i className="fas fa-edit"></i> Düzenle</Link>
+                            <Link to={`${urls.UPDATE_CATEGORY_VIEW}/${item._id}`} className="btn btn-outline-primary btn-sm"><i className="fas fa-edit"></i> Düzenle</Link>
                             <button data-id={item._id} onClick={this.handleOnClickDelete} className="btn btn-outline-primary btn-sm ml-2"><i className="fas fa-trash"></i> Sil</button>
                         </td>
                     </tr>
@@ -88,20 +86,18 @@ class TableProduct extends Component {
                 <table class="table table-hover mb-0">
                     <thead>
                         <tr>
-                            <th>Ad</th>
-                            <th>Kategori</th>
-                            <th>Birim</th>
-                            <th>Birim Fiyat</th>
+                            <th>Adı</th>
+                            <th>Sıralama Önceliği</th>
                             <th>İşlem</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {productsJsx}
+                        {categoriesJsx}
                     </tbody>
                 </table>
-                <Pagination object={this.state.pagination_info} onClick={this.loadProducts} />
+                <Pagination object={this.state.pagination_info} onClick={this.loadCategories} />
             </div>
         )
     }
 }
-export default TableProduct
+export default TableCategory

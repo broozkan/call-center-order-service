@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Swal from 'sweetalert2'
 import { getCustomers, getOffices, getProducts } from '../../../controllers/MainController'
 import api from '../../../services/api'
+import IconActiveCard from '../../Icon/IconActiveCard'
+import LoaderSpin from '../../Loader/LoaderSpin'
 
 class FormOrder extends Component {
 
@@ -27,9 +29,19 @@ class FormOrder extends Component {
 
     }
 
+    async componentWillReceiveProps(nextProps) {
+        if (this.props.state != nextProps.state) {
+            await this.setState(nextProps.state)
+        }
+    }
+
     componentDidMount() {
         if (this.props.order_id) {
             this.getOrder()
+        }
+
+        if (this.props.state) {
+            this.setState(this.props.state)
         }
 
         getCustomers(1, {}, (results) => {
@@ -61,8 +73,7 @@ class FormOrder extends Component {
 
 
     handleOnChange = (e) => {
-
-        console.log(e.target.type);
+        console.log(e.currentTarget.dataset);
         if (e.target.type === "select-one") {
             if (e.target.name === "order_customer") {
                 this.state.customers.map((item) => {
@@ -72,16 +83,7 @@ class FormOrder extends Component {
                         })
                     }
                 })
-            } else if (e.target.name === "order_office") {
-                this.state.offices.map((item) => {
-                    if (item._id == e.target.value) {
-                        this.setState({
-                            order_office: item
-                        })
-                    }
-                })
             }
-
         } else if (e.target.type === "select-multiple") {
             let orderProducts = this.state.order_products
             for (let index = 0; index < e.target.options.length; index++) {
@@ -100,11 +102,21 @@ class FormOrder extends Component {
             this.setState({
                 order_products: orderProducts
             })
-            console.log(e.target.options[1].selected);
         } else {
-            this.setState({
-                [e.target.name]: e.target.value
-            })
+            if (e.currentTarget.dataset.name === "order_office") {
+                this.state.offices.map((item) => {
+                    if (item._id == e.currentTarget.dataset.office_id) {
+                        this.setState({
+                            order_office: item
+                        })
+                    }
+                })
+            } else {
+                this.setState({
+                    [e.target.name]: e.target.value
+                })
+            }
+
         }
 
     }
@@ -140,20 +152,38 @@ class FormOrder extends Component {
 
 
     render() {
-
         console.log(this.state);
         // render customers
         let customerValue = ''
         if (this.state.order_customer._id) {
             customerValue = this.state.order_customer._id
         }
-        let customersJsx = <option value="" selected disabled>Müşteriler yükleniyor...</option>
+        let customersJsx = <LoaderSpin />
         if (this.state.is_customers_loaded) {
-            customersJsx = this.state.customers.map((item, index) => {
-                return (
-                    <option value={item._id}>{item.customer_name}</option>
+            if (this.state.order_customer) {
+                customersJsx = (
+                    <div className="col-lg-12">
+                        <div className="card order-select-card active">
+                            <div className="card-body">
+                                <p> <i className="fas fa-user"></i> {this.props.state.order_customer.customer_name} <IconActiveCard /> </p>
+                            </div>
+                        </div>
+                    </div>
                 )
-            })
+            } else {
+                customersJsx = this.state.customers.map((item, index) => {
+                    return (
+                        <div className="col-lg-4">
+                            <div className="card order-select-card">
+                                <div className="card-body">
+                                    <p> <i className="fas fa-user"></i> {item.customer_name}</p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+
         }
 
 
@@ -162,59 +192,99 @@ class FormOrder extends Component {
         if (this.state.order_office._id) {
             officeValue = this.state.order_office._id
         }
-        let officesJsx = <option value="" selected disabled>Şubeler yükleniyor...</option>
+        let officesJsx = <LoaderSpin />
         if (this.state.is_offices_loaded) {
             officesJsx = this.state.offices.map((item) => {
+                let activityClass = ''
+                if (this.state.order_office._id == item._id) {
+                    activityClass = 'active'
+                }
                 return (
-                    <option value={item._id}>{item.office_name}</option>
+                    <div className="col-lg-4">
+                        <div onClick={this.handleOnChange} data-name="order_office" data-office_id={item._id} className={`card order-select-card ${activityClass}`}>
+                            <div className="card-body">
+                                <p> <i className="fas fa-map-marker-alt"></i> {item.office_name} <IconActiveCard /></p>
+                            </div>
+                        </div>
+                    </div>
+
                 )
             })
         }
 
         // render products
-        let productsJsx = <option value="" selected disabled>Ürünler yükleniyor...</option>
+        let productsJsx = <LoaderSpin />
         if (this.state.is_products_loaded) {
             productsJsx = this.state.products.map((item) => {
                 return (
-                    <option value={item._id}>{item.product_name}</option>
+                    <div className="col-lg-4">
+                        <div className="card order-select-card">
+                            <div className="card-header">
+                                <h5 class="card-title">{item.product_name}</h5>
+                                <div class="btn-group btn-group-sm order-product-piece-field pt-3">
+                                    <button type="button" class="btn btn-primary btn-xs">-</button>
+                                    <input type="text" className="form-control form-control-xs" value="0" />
+                                    <button type="button" class="btn btn-primary btn-xs">+</button>
+                                </div>
+                            </div>
+
+                            <div className="card-body">
+                                <button type="button" className="btn btn-outline-primary btn-xs m-1">Soğansız</button>
+                                <button type="button" className="btn btn-outline-primary btn-xs m-1">Soğansız</button>
+                                <button type="button" className="btn btn-outline-primary btn-xs m-1">Ketçaplı</button>
+                                <button type="button" className="btn btn-outline-primary btn-xs m-1">Mayonezsiz Az Pişmiş</button>
+                                <button type="button" className="btn btn-outline-primary btn-xs m-1">Soğansız</button>
+                                <button type="button" className="btn btn-outline-primary btn-xs m-1">Soğansız</button>
+                            </div>
+                            <div className="card-footer">
+
+                                <button className="btn btn-success btn-sm w-100">Sepete Ekle</button>
+                            </div>
+                        </div>
+                    </div>
                 )
             })
         }
 
 
         return (
-            <form method="POST" onSubmit={this.handleOnSubmit}>
+            <div className="row">
+                <div className="col-lg-6">
+                    <form method="POST" onSubmit={this.handleOnSubmit}>
 
-                <div class="form-group">
-                    <label>Müşteri</label>
-                    <select className="form-control" name="order_customer" value={customerValue} onChange={this.handleOnChange}>
-                        <option value="" selected disabled>Müşteri seçiniz</option>
-                        {customersJsx}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Şube</label>
-                    <select className="form-control" name="order_office" value={officeValue} onChange={this.handleOnChange}>
-                        <option value="" selected disabled>Şube seçiniz</option>
-                        {officesJsx}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Ürünler</label>
-                    <select multiple className="form-control" name="order_products" value={this.state.order_products} onChange={this.handleOnChange}>
-                        <option value="" selected disabled>Ürünler seçiniz</option>
-                        {productsJsx}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Toplam Tutar</label>
-                    <input type="number" step=".01" class="form-control" name="order_amount" value={this.state.order_amount} onChange={this.handleOnChange} />
-                </div>
+                        <div class="form-group">
+                            <label>Müşteri</label>
+                            <div className="row">
+                                {customersJsx}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Şube</label>
+                            <div className="row">
+                                {officesJsx}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ana Yemekler</label>
+                            <div className="row">
+                                {productsJsx}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Toplam Tutar</label>
+                            <input type="number" step=".01" class="form-control" name="order_amount" value={this.state.order_amount} onChange={this.handleOnChange} />
+                        </div>
 
-                <div class="text-right">
-                    <button type="submit" class="btn btn-primary">Kaydet <i className="fas fa-save"></i></button>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Kaydet <i className="fas fa-save"></i></button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+                <div className="col-lg-6">
+
+                </div>
+            </div>
+
         )
     }
 }

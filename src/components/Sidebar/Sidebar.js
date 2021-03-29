@@ -21,6 +21,9 @@ class Sidebar extends Component {
                                 <Link to={urls.OFFICE_LIST_VIEW}><i className="fas fa-map-pin"></i> <span>Şubeler</span></Link>
                             </li>
                             <li>
+                                <Link to={urls.CATEGORY_LIST_VIEW}><i className="fas fa-database"></i> <span>Kategoriler</span></Link>
+                            </li>
+                            <li>
                                 <Link to={urls.PRODUCT_LIST_VIEW}><i className="fas fa-cubes"></i> <span>Ürünler</span></Link>
                             </li>
                             <li>

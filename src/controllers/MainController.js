@@ -34,6 +34,31 @@ export const getOrders = async (page = 1, params = {}, cb) => {
     cb(orders)
 }
 
+
+export const getUsers = async (page = 1, params = {}, cb) => {
+    const users = await api.get(`/users/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
+
+    cb(users)
+}
+
+
+
+export const getCategories = async (page = 1, params = {}, cb) => {
+    const categories = await api.get(`/categories/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
+
+    cb(categories)
+}
+
+export const getMessages = async (page = 1, params = {}, cb) => {
+    const messages = await api.get(`/messages/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
+    cb(messages)
+}
+
+export const getChats = async (page = 1, params = {}, cb) => {
+    const chats = await api.get(`/chats/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
+    cb(chats)
+}
+
 export const getReservations = async (page = 1, params = {}, cb) => {
     const reservations = await api.get(`/reservations/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
 
@@ -45,3 +70,4 @@ export const deleteObject = async (url, cb) => {
 
     cb(response)
 }
+

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { ContextAuth } from '../../contexts/ContextAuth'
 import { urls } from '../../lib/urls'
+import FormSearchCustomer from '../Form/Customer/FormSearchCustomer'
 
 
 class Header extends Component {
@@ -31,6 +32,9 @@ class Header extends Component {
                 <a className="mobile_btn" id="mobile_btn">
                     <i className="fas fa-bars"></i>
                 </a>
+                <div class="top-nav-search">
+                    <FormSearchCustomer />
+                </div>
                 <ul className="nav user-menu">
                     <li className="nav-item dropdown has-arrow main-drop">
                         <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">

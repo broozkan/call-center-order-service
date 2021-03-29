@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2'
+import { getCategories } from '../../../controllers/MainController'
 import api from '../../../services/api'
 
 class FormProduct extends Component {
@@ -9,11 +10,14 @@ class FormProduct extends Component {
 
         this.state = {
             product_name: '',
+            product_category: {},
             product_unit: '',
             product_unit_price: '',
             product_photo: '',
             is_product_available: true,
-            product_order_number: ''
+            product_order_number: '',
+            categories: [],
+            is_categories_loaded: false
         }
 
         this.handleOnChange = this.handleOnChange.bind(this)
@@ -26,12 +30,19 @@ class FormProduct extends Component {
         if (this.props.product_id) {
             this.getProduct()
         }
+
+        getCategories(1, {}, (results) => {
+            this.setState({
+                categories: results.data.docs,
+                is_categories_loaded: true
+            })
+        })
+
     }
 
     getProduct = async () => {
         const product = await api.get('/products/1', { headers: { 'auth-token': localStorage.getItem('auth-token') }, params: { "_id": this.props.product_id } })
         this.setState(product.data.docs[0])
-
     }
 
 
@@ -44,6 +55,18 @@ class FormProduct extends Component {
         } else if (e.target.type === "checkbox") {
             this.setState({
                 [e.target.name]: e.target.checked
+            })
+        } else if (e.target.name === "product_category") {
+            let productCategory = {}
+
+            this.state.categories.map((item) => {
+                if (item._id == e.target.value) {
+                    productCategory = item
+                }
+            })
+
+            this.setState({
+                product_category: productCategory
             })
         } else {
             this.setState({
@@ -70,7 +93,7 @@ class FormProduct extends Component {
             submitResponse = await api.post(`/products`, formData, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
         }
 
-        
+
         if (submitResponse.data.status != 400) {
             Swal.fire({
                 title: "İşlem başarılı!",
@@ -89,15 +112,33 @@ class FormProduct extends Component {
 
 
     render() {
+        console.log(this.state);
+        // render categories
+        let categoriesJsx = ''
+        if (this.state.is_categories_loaded) {
+            categoriesJsx = this.state.categories.map((item) => {
+                return (
+                    <option value={item._id}>{item.category_name}</option>
+                )
+            })
+        }
+
         return (
             <form method="POST" onSubmit={this.handleOnSubmit}>
                 <div class="form-group">
-                    <label>Adı</label>
-                    <input type="text" class="form-control" name="product_name" value={this.state.product_name} onChange={this.handleOnChange} />
+                    <label>Adı *</label>
+                    <input type="text" required class="form-control" name="product_name" value={this.state.product_name} onChange={this.handleOnChange} />
                 </div>
                 <div class="form-group">
-                    <label>Birimi</label>
-                    <select className="form-control" name="product_unit" value={this.state.product_unit} onChange={this.handleOnChange}>
+                    <label>Kategorisi *</label>
+                    <select className="form-control" name="product_category" value={this.state.product_category._id} onChange={this.handleOnChange}>
+                        <option value="" selected disabled>Kategori seçiniz</option>
+                        {categoriesJsx}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Birimi *</label>
+                    <select className="form-control" required name="product_unit" value={this.state.product_unit} onChange={this.handleOnChange}>
                         <option value="" selected disabled>Birim seçiniz</option>
                         <option value="ADET">ADET</option>
                         <option value="KG">KG</option>
@@ -105,8 +146,8 @@ class FormProduct extends Component {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Birim Başı Fiyatı</label>
-                    <input type="number" step=".01" class="form-control" name="product_unit_price" value={this.state.product_unit_price} onChange={this.handleOnChange} />
+                    <label>Birim Başı Fiyatı *</label>
+                    <input type="number" required step=".01" class="form-control" name="product_unit_price" value={this.state.product_unit_price} onChange={this.handleOnChange} />
                 </div>
                 <div class="form-group">
                     <label>Görseli</label>
@@ -121,8 +162,8 @@ class FormProduct extends Component {
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Sıralama Öncelik Numarası</label>
-                    <input type="number" class="form-control" name="product_order_number" value={this.state.product_order_number} onChange={this.handleOnChange} />
+                    <label>Sıralama Öncelik Numarası *</label>
+                    <input type="number" required class="form-control" name="product_order_number" value={this.state.product_order_number} onChange={this.handleOnChange} />
                 </div>
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary">Kaydet <i className="fas fa-save"></i></button>
