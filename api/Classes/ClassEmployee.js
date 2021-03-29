@@ -20,15 +20,7 @@ class Employee {
 
 
     async save(cb) {
-        const savedEmployee = new EmployeeModel.employeeModel({
-            employee_name: this.employee_name,
-            employee_province: this.employee_province,
-            employee_email_address: this.employee_email_address,
-            employee_phone_number: this.employee_phone_number,
-            employee_address: this.employee_address,
-            employee_id_number: this.employee_id_number,
-            employee_password: this.employee_password,
-        })
+        const savedEmployee = new EmployeeModel.employeeModel(this)
 
         await savedEmployee.save((err) => {
             if (err) {

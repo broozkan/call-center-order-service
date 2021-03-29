@@ -1,11 +1,13 @@
 const mongoose = require('mongoose')
 var aggregatePaginate = require("mongoose-aggregate-paginate-v2")
+const Category = require('./ModelCategory')
 
 const productSchema = mongoose.Schema({
     product_name: {
         type: String,
         required: [true, "Ürün adı zorunludur"]
     },
+    product_category: Category.categorySchema,
     product_unit: {
         type: String,
         required: [true, "Ürün birimi zorunludur"]

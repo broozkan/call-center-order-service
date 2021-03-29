@@ -1,24 +1,23 @@
-const ReservationModel = require('../Models/ModelReservation')
+const CategoryModel = require('../Models/ModelCategory')
 
 
-class Reservation {
-    constructor(reservation_customer, reservation_office, reservation_date) {
-        this.reservation_id = ''
-        this.reservation_customer = reservation_customer
-        this.reservation_office = reservation_office
-        this.reservation_date = reservation_date
+class Category {
+    constructor(category_name, category_order_priority_number) {
+        this.category_id = ''
+        this.category_name = category_name
+        this.category_order_priority_number = category_order_priority_number
 
     }
 
-    setReservationId(reservation_id) {
-        this.reservation_id = reservation_id
+    setCategoryId(category_id) {
+        this.category_id = category_id
     }
 
 
     async save(cb) {
-        const savedReservation = new ReservationModel.reservationModel(this)
+        const savedCategory = new CategoryModel.categoryModel(this)
 
-        await savedReservation.save((err) => {
+        await savedCategory.save((err) => {
             if (err) {
                 cb({
                     response: false,
@@ -28,8 +27,8 @@ class Reservation {
             } else {
                 cb({
                     response: true,
-                    responseData: savedReservation,
-                    status: 201
+                    responseData: savedCategory,
+                    status: 400
                 })
             }
         })
@@ -38,7 +37,7 @@ class Reservation {
 
     async update(cb) {
 
-        if (this.reservation_id == '') {
+        if (this.category_id == '') {
             cb({
                 response: false,
                 responseData: "Kayıt bulunamadı"
@@ -46,31 +45,28 @@ class Reservation {
             return false
         }
 
-        await ReservationModel.reservationModel.findByIdAndUpdate(
-            { _id: this.reservation_id },
+        await CategoryModel.categoryModel.findByIdAndUpdate(
+            { _id: this.category_id },
             this
 
-            , (err, updatedReservation) => {
+            , (err, updatedCategory) => {
                 if (err) {
                     cb({
                         response: false,
-                        responseData: err.message,
-                        status: 400
+                        responseData: err.message
                     })
                 } else {
                     cb({
                         response: true,
-                        responseData: updatedReservation,
-                        status: 204
+                        responseData: updatedCategory
                     })
                 }
             })
     }
 
 
-
     async delete(cb) {
-        await ReservationModel.reservationModel.deleteOne({ _id: this.reservation_id }, (err) => {
+        await CategoryModel.categoryModel.deleteOne({ _id: this.category_id }, (err) => {
             if (err) {
                 cb({
                     response: false,
@@ -86,4 +82,4 @@ class Reservation {
     }
 }
 
-module.exports = Reservation
+module.exports = Category

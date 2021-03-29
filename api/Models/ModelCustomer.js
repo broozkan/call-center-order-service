@@ -19,12 +19,8 @@ const customerSchema = mongoose.Schema({
         required: [true, "Müşteri telefon numarası zorunludur"]
     },
     customer_address: {
-        type: String,
+        type: Array,
         required: [true, "Müşteri adresi zorunludur"]
-    },
-    customer_address_description: {
-        type: String,
-        required: false
     },
     customer_note: {
         type: String,

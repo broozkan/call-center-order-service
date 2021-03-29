@@ -60,4 +60,36 @@ router.post('/', async (req, res) => {
 
 })
 
+
+
+
+// get user list
+router.get('/:page', async (req, res) => {
+
+    if (req.query) {
+        req.query = Controller.deleteEmptyFilters(req.query)
+
+        if (req.query._id) {
+            req.query._id = mongoose.Types.ObjectId(req.query._id)
+        }
+
+        if (req.query["_id"]) {
+            req.query["_id"] = mongoose.Types.ObjectId(req.query["_id"])
+        }
+
+    }
+    const aggregate = UserModel.userModel.aggregate([{
+        $match: req.query
+    }])
+
+    const options = {
+        page: req.params.page,
+        limit: 10
+    }
+
+    UserModel.userModel.aggregatePaginate(aggregate, options, (err, result) => {
+        res.send(result)
+    })
+})
+
 module.exports = router;

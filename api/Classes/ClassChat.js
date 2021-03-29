@@ -1,25 +1,22 @@
-const OfficeModel = require('../Models/ModelOffice')
+const ChatModel = require('../Models/ModelChat')
 
 
-class Office {
-    constructor(office_name, office_province, office_address, office_order_priority_number) {
-        this.office_id = ''
-        this.office_name = office_name
-        this.office_province = office_province
-        this.office_address = office_address
-        this.office_order_priority_number = office_order_priority_number
-
+class Chat {
+    constructor(chat_host_user, chat_client_user) {
+        this.chat_id = ''
+        this.chat_host_user = chat_host_user
+        this.chat_client_user = chat_client_user
     }
 
-    setOfficeId(office_id) {
-        this.office_id = office_id
+    setChatId(chat_id) {
+        this.chat_id = chat_id
     }
 
 
     async save(cb) {
-        const savedOffice = new OfficeModel.officeModel(this)
+        const savedChat = new ChatModel.chatModel(this)
 
-        await savedOffice.save((err) => {
+        await savedChat.save((err) => {
             if (err) {
                 cb({
                     response: false,
@@ -28,7 +25,7 @@ class Office {
             } else {
                 cb({
                     response: true,
-                    responseData: savedOffice
+                    responseData: savedChat
                 })
             }
         })
@@ -37,7 +34,7 @@ class Office {
 
     async update(cb) {
 
-        if (this.office_id == '') {
+        if (this.chat_id == '') {
             cb({
                 response: false,
                 responseData: "Kayıt bulunamadı"
@@ -45,11 +42,11 @@ class Office {
             return false
         }
 
-        await OfficeModel.officeModel.findByIdAndUpdate(
-            { _id: this.office_id },
+        await ChatModel.chatModel.findByIdAndUpdate(
+            { _id: this.chat_id },
             this
 
-            , (err, updatedOffice) => {
+            , (err, updatedChat) => {
                 if (err) {
                     cb({
                         response: false,
@@ -58,15 +55,16 @@ class Office {
                 } else {
                     cb({
                         response: true,
-                        responseData: updatedOffice
+                        responseData: updatedChat
                     })
                 }
             })
     }
 
 
+
     async delete(cb) {
-        await OfficeModel.officeModel.deleteOne({ _id: this.office_id }, (err) => {
+        await ChatModel.chatModel.deleteOne({ _id: this.chat_id }, (err) => {
             if (err) {
                 cb({
                     response: false,
@@ -82,4 +80,4 @@ class Office {
     }
 }
 
-module.exports = Office
+module.exports = Chat

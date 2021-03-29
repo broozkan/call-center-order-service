@@ -25,6 +25,10 @@ router.get('/:page', async (req, res) => {
             req.query["_id"] = mongoose.Types.ObjectId(req.query["_id"])
         }
 
+        if (req.query["order_customer._id"]) {
+            req.query["order_customer._id"] = mongoose.Types.ObjectId(req.query["order_customer._id"])
+        }
+
     }
     const aggregate = OrderModel.orderModel.aggregate([{
         $match: req.query

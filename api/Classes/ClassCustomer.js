@@ -2,15 +2,14 @@ const CustomerModel = require('../Models/ModelCustomer')
 
 
 class Customer {
-    constructor(customer_name, customer_province, customer_email_address, customer_phone_number, customer_address, customer_address_description, customer_note) {
+    constructor(customer_name, customer_province, customer_email_address, customer_phone_number, customer_address, customer_note) {
         this.customer_id = ''
         this.customer_name = customer_name
         this.customer_province = customer_province
         this.customer_email_address = customer_email_address
         this.customer_phone_number = customer_phone_number
         this.customer_address = customer_address
-        this.customer_address_description = customer_address_description,
-            this.customer_note = customer_note
+        this.customer_note = customer_note
 
     }
 
@@ -20,26 +19,20 @@ class Customer {
 
 
     async save(cb) {
-        const savedCustomer = new CustomerModel.customerModel({
-            customer_name: this.customer_name,
-            customer_province: this.customer_province,
-            customer_email_address: this.customer_email_address,
-            customer_phone_number: this.customer_phone_number,
-            customer_address: this.customer_address,
-            customer_address_description: this.customer_address_description,
-            customer_note: this.customer_note
-        })
+        const savedCustomer = new CustomerModel.customerModel(this)
 
         await savedCustomer.save((err) => {
             if (err) {
                 cb({
                     response: false,
-                    responseData: err.message
+                    responseData: err.message,
+                    status: 400
                 })
             } else {
                 cb({
                     response: true,
-                    responseData: savedCustomer
+                    responseData: savedCustomer,
+                    status: 201
                 })
             }
         })

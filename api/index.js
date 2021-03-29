@@ -10,7 +10,10 @@ const customerRouter = require('./Routes/RouteCustomer')
 const productRouter = require('./Routes/RouteProduct')
 const orderRouter = require('./Routes/RouteOrder')
 const reservationRouter = require('./Routes/RouteReservation')
+const messageRouter = require('./Routes/RouteMessage')
 const userRouter = require('./Routes/RouteUser')
+const chatRouter = require('./Routes/RouteChat')
+const categoryRouter = require('./Routes/RouteCategory')
 
 const cors = require('cors');
 
@@ -65,6 +68,9 @@ app.use('/callcenter_backend/products', productRouter);
 app.use('/callcenter_backend/orders', orderRouter);
 app.use('/callcenter_backend/reservations', reservationRouter);
 app.use('/callcenter_backend/users', userRouter);
+app.use('/callcenter_backend/messages', messageRouter);
+app.use('/callcenter_backend/chats', chatRouter);
+app.use('/callcenter_backend/categories', categoryRouter);
 
 
 

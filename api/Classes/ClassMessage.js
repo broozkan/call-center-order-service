@@ -1,24 +1,25 @@
-const ReservationModel = require('../Models/ModelReservation')
+const MessageModel = require('../Models/ModelMessage')
 
 
-class Reservation {
-    constructor(reservation_customer, reservation_office, reservation_date) {
-        this.reservation_id = ''
-        this.reservation_customer = reservation_customer
-        this.reservation_office = reservation_office
-        this.reservation_date = reservation_date
+class Message {
+    constructor(message, message_sender, message_receiver, message_chat) {
+        this.message_id = ''
+        this.message = message
+        this.message_sender = message_sender
+        this.message_receiver = message_receiver
+        this.message_chat = message_chat
 
     }
 
-    setReservationId(reservation_id) {
-        this.reservation_id = reservation_id
+    setMessageId(message_id) {
+        this.message_id = message_id
     }
 
 
     async save(cb) {
-        const savedReservation = new ReservationModel.reservationModel(this)
+        const savedMessage = new MessageModel.messageModel(this)
 
-        await savedReservation.save((err) => {
+        await savedMessage.save((err) => {
             if (err) {
                 cb({
                     response: false,
@@ -28,7 +29,7 @@ class Reservation {
             } else {
                 cb({
                     response: true,
-                    responseData: savedReservation,
+                    responseData: savedMessage,
                     status: 201
                 })
             }
@@ -38,7 +39,7 @@ class Reservation {
 
     async update(cb) {
 
-        if (this.reservation_id == '') {
+        if (this.message_id == '') {
             cb({
                 response: false,
                 responseData: "Kayıt bulunamadı"
@@ -46,22 +47,20 @@ class Reservation {
             return false
         }
 
-        await ReservationModel.reservationModel.findByIdAndUpdate(
-            { _id: this.reservation_id },
+        await MessageModel.messageModel.findByIdAndUpdate(
+            { _id: this.message_id },
             this
 
-            , (err, updatedReservation) => {
+            , (err, updatedMessage) => {
                 if (err) {
                     cb({
                         response: false,
-                        responseData: err.message,
-                        status: 400
+                        responseData: err.message
                     })
                 } else {
                     cb({
                         response: true,
-                        responseData: updatedReservation,
-                        status: 204
+                        responseData: updatedMessage
                     })
                 }
             })
@@ -70,7 +69,7 @@ class Reservation {
 
 
     async delete(cb) {
-        await ReservationModel.reservationModel.deleteOne({ _id: this.reservation_id }, (err) => {
+        await MessageModel.messageModel.deleteOne({ _id: this.message_id }, (err) => {
             if (err) {
                 cb({
                     response: false,
@@ -86,4 +85,4 @@ class Reservation {
     }
 }
 
-module.exports = Reservation
+module.exports = Message

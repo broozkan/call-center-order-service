@@ -2,9 +2,10 @@ const ProductModel = require('../Models/ModelProduct')
 
 
 class Product {
-    constructor(product_name, product_unit, product_unit_price, product_photo, is_product_available, product_order_number) {
+    constructor(product_name, product_category, product_unit, product_unit_price, product_photo, is_product_available, product_order_number) {
         this.product_id = ''
         this.product_name = product_name
+        this.product_category = product_category
         this.product_unit = product_unit
         this.product_unit_price = product_unit_price
         this.product_photo = product_photo
@@ -19,14 +20,7 @@ class Product {
 
 
     async save(cb) {
-        const savedProduct = new ProductModel.productModel({
-            product_name: this.product_name,
-            product_unit: this.product_unit,
-            product_unit_price: this.product_unit_price,
-            product_photo: this.product_photo,
-            is_product_available: this.is_product_available,
-            product_order_number: this.product_order_number
-        })
+        const savedProduct = new ProductModel.productModel(this)
 
         await savedProduct.save((err) => {
             if (err) {

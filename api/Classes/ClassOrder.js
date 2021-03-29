@@ -17,12 +17,7 @@ class Order {
 
 
     async save(cb) {
-        const savedOrder = new OrderModel.orderModel({
-            order_customer: this.order_customer,
-            order_products: this.order_products,
-            order_office: this.order_office,
-            order_amount: this.order_amount
-        })
+        const savedOrder = new OrderModel.orderModel(this)
 
         await savedOrder.save((err) => {
             if (err) {

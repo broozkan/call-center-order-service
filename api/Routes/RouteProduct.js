@@ -80,8 +80,11 @@ router.post('/', MultipartyMiddleware, async (req, res) => {
     }
 
 
+
+
     const product = new Product(
         req.body.product_name,
+        req.body.product_category,
         req.body.product_unit,
         req.body.product_unit_price,
         req.body.product_photo,
@@ -103,6 +106,7 @@ router.put('/:productId', async (req, res) => {
 
     const product = new Product(
         req.body.product_name,
+        req.body.product_category,
         req.body.product_unit,
         req.body.product_unit_price,
         req.body.product_photo,

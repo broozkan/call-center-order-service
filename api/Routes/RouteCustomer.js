@@ -54,7 +54,6 @@ router.post('/', async (req, res) => {
         req.body.customer_email_address,
         req.body.customer_phone_number,
         req.body.customer_address,
-        req.body.customer_address_description,
         req.body.customer_note
     )
 
@@ -76,7 +75,6 @@ router.put('/:customerId', async (req, res) => {
         req.body.customer_email_address,
         req.body.customer_phone_number,
         req.body.customer_address,
-        req.body.customer_address_description,
         req.body.customer_note
     )
 
