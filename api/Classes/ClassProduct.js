@@ -2,13 +2,15 @@ const ProductModel = require('../Models/ModelProduct')
 
 
 class Product {
-    constructor(product_name, product_category, product_unit, product_unit_price, product_photo, is_product_available, product_order_number) {
+    constructor(product_name, product_category, product_unit, product_office, product_unit_price, product_photo, product_properties, is_product_available, product_order_number) {
         this.product_id = ''
         this.product_name = product_name
         this.product_category = product_category
         this.product_unit = product_unit
+        this.product_office = product_office
         this.product_unit_price = product_unit_price
         this.product_photo = product_photo
+        this.product_properties = product_properties
         this.is_product_available = is_product_available
         this.product_order_number = product_order_number
 

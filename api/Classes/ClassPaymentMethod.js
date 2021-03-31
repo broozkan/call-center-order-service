@@ -1,29 +1,23 @@
-const OrderModel = require('../Models/ModelOrder')
+const PaymentMethodModel = require('../Models/ModelPaymentMethod')
 
 
-class Order {
-    constructor(order_customer, order_address, order_products, order_office, order_amount, order_payment_method, order_note, order_user) {
-        this.order_id = ''
-        this.order_customer = order_customer
-        this.order_address = order_address
-        this.order_products = order_products
-        this.order_office = order_office
-        this.order_amount = order_amount
-        this.order_payment_method = order_payment_method
-        this.order_note = order_note
-        this.order_user = order_user
+class PaymentMethod {
+    constructor(payment_method_name, payment_method_order_priority_number) {
+        this.payment_method_id = ''
+        this.payment_method_name = payment_method_name
+        this.payment_method_order_priority_number = payment_method_order_priority_number
 
     }
 
-    setOrderId(order_id) {
-        this.order_id = order_id
+    setPaymentMethodId(payment_method_id) {
+        this.payment_method_id = payment_method_id
     }
 
 
     async save(cb) {
-        const savedOrder = new OrderModel.orderModel(this)
+        const savedPaymentMethod = new PaymentMethodModel.paymentMethodModel(this)
 
-        await savedOrder.save((err) => {
+        await savedPaymentMethod.save((err) => {
             if (err) {
                 cb({
                     response: false,
@@ -33,8 +27,8 @@ class Order {
             } else {
                 cb({
                     response: true,
-                    responseData: savedOrder,
-                    status: 201
+                    responseData: savedPaymentMethod,
+                    status: 400
                 })
             }
         })
@@ -43,7 +37,7 @@ class Order {
 
     async update(cb) {
 
-        if (this.order_id == '') {
+        if (this.payment_method_id == '') {
             cb({
                 response: false,
                 responseData: "Kayıt bulunamadı"
@@ -51,11 +45,11 @@ class Order {
             return false
         }
 
-        await OrderModel.orderModel.findByIdAndUpdate(
-            { _id: this.order_id },
+        await PaymentMethodModel.paymentMethodModel.findByIdAndUpdate(
+            { _id: this.payment_method_id },
             this
 
-            , (err, updatedOrder) => {
+            , (err, updatedPaymentMethod) => {
                 if (err) {
                     cb({
                         response: false,
@@ -64,16 +58,15 @@ class Order {
                 } else {
                     cb({
                         response: true,
-                        responseData: updatedOrder
+                        responseData: updatedPaymentMethod
                     })
                 }
             })
     }
 
 
-
     async delete(cb) {
-        await OrderModel.orderModel.deleteOne({ _id: this.order_id }, (err) => {
+        await PaymentMethodModel.paymentMethodModel.deleteOne({ _id: this.payment_method_id }, (err) => {
             if (err) {
                 cb({
                     response: false,
@@ -89,4 +82,4 @@ class Order {
     }
 }
 
-module.exports = Order
+module.exports = PaymentMethod

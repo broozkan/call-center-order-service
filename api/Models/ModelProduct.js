@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 var aggregatePaginate = require("mongoose-aggregate-paginate-v2")
 const Category = require('./ModelCategory')
+const Office = require('./ModelOffice')
 
 const productSchema = mongoose.Schema({
     product_name: {
@@ -12,12 +13,17 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, "Ürün birimi zorunludur"]
     },
+    product_office: Office.officeSchema,
     product_unit_price: {
-        type: String,
-        required: [true, "Birim fiyat zorunludur"]
+        type: Number,
+        required: true
     },
     product_photo: {
         type: Object,
+        required: false
+    },
+    product_properties: {
+        type: Array,
         required: false
     },
     is_product_available: {

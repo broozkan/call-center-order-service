@@ -7,10 +7,6 @@ const customerSchema = mongoose.Schema({
         type: String,
         required: [true, "Müşteri adı zorunludur"]
     },
-    customer_province: {
-        type: String,
-        required: [true, "Müşteri şehiri zorunludur"]
-    },
     customer_email_address: {
         type: String,
         required: false

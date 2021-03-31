@@ -15,7 +15,7 @@ const deleteEmptyFilters = (object) => {
 
 const verifySiteToken = (req, res, next) => {
 
-    const token = req.header('site-token')
+    const token = req.header('auth-token')
 
 
     if (!token) {

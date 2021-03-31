@@ -25,6 +25,10 @@ router.get('/:page', async (req, res) => {
             req.query["_id"] = mongoose.Types.ObjectId(req.query["_id"])
         }
 
+        if (req.query["product_category._id"]) {
+            req.query["product_category._id"] = mongoose.Types.ObjectId(req.query["product_category._id"])
+        }
+
     }
     const aggregate = ProductModel.productModel.aggregate([{
         $match: req.query
@@ -81,13 +85,14 @@ router.post('/', MultipartyMiddleware, async (req, res) => {
 
 
 
-
     const product = new Product(
         req.body.product_name,
         req.body.product_category,
         req.body.product_unit,
+        req.body.product_office,
         req.body.product_unit_price,
         req.body.product_photo,
+        req.body.product_properties,
         req.body.is_product_available,
         req.body.product_order_number
     )
@@ -101,15 +106,45 @@ router.post('/', MultipartyMiddleware, async (req, res) => {
 })
 
 
-router.put('/:productId', async (req, res) => {
+router.put('/:productId', MultipartyMiddleware, async (req, res) => {
+
+
+    req.body = JSON.parse(req.body.data)
+
+    if (req.files.file) {
+        const tmp_path = req.files.file.path
+        const target_path = path.join(uploadDir, req.files.file.name)
+
+
+        fs.rename(tmp_path, target_path, (err) => {
+            if (err) {
+                res.send({
+                    response: false,
+                    responseData: "Dosya yüklenemedi"
+                })
+                res.end()
+
+                return false
+            } else {
+                fs.unlink(tmp_path, (err) => {
+
+                })
+
+            }
+        })
+
+        req.body.product_photo = req.files.file
+    }
 
 
     const product = new Product(
         req.body.product_name,
         req.body.product_category,
         req.body.product_unit,
+        req.body.product_office,
         req.body.product_unit_price,
         req.body.product_photo,
+        req.body.product_properties,
         req.body.is_product_available,
         req.body.product_order_number
     )

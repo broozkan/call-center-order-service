@@ -54,17 +54,21 @@ router.get('/get/:orderId', async (req, res) => {
 
 
 
-router.post('/', async (req, res) => {
+router.post('/', Controller.verifySiteToken, async (req, res) => {
+
 
 
     const order = new Order(
         req.body.order_customer,
+        req.body.order_address,
         req.body.order_products,
         req.body.order_office,
-        req.body.order_amount
+        req.body.order_amount,
+        req.body.order_payment_method,
+        req.body.order_note,
+        req.user
     )
 
-    console.log(order);
     order.save((result) => {
         console.log(result);
         res.send(result)
@@ -78,9 +82,13 @@ router.put('/:orderId', async (req, res) => {
 
     const order = new Order(
         req.body.order_customer,
-        req.body.order_orders,
+        req.body.order_address,
+        req.body.order_products,
         req.body.order_office,
-        req.body.order_amount
+        req.body.order_amount,
+        req.body.order_payment_method,
+        req.body.order_note,
+        req.user
     )
 
     await order.setOrderId(req.params.orderId)
@@ -90,6 +98,24 @@ router.put('/:orderId', async (req, res) => {
     })
 })
 
+
+router.patch('/:orderId', async (req, res) => {
+
+    await OrderModel.orderModel.findByIdAndUpdate({ _id: req.params.orderId }, req.body, (err, updatedOrder) => {
+        if (err) {
+            res.send({
+                response: false,
+                responseData: err.message,
+                status: 400
+            })
+        } else {
+            res.send({
+                response: true,
+                responseData: updatedOrder
+            })
+        }
+    });
+})
 
 router.delete('/:orderId', async (req, res) => {
 

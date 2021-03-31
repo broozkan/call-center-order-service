@@ -10,6 +10,10 @@ const addressSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    address_minimum_amount: {
+        type: Number,
+        required: true
+    },
     address_province: {
         type: String,
         required: [true, "Adres şehiri zorunludur"]

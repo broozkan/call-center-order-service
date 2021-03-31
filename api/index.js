@@ -14,6 +14,8 @@ const messageRouter = require('./Routes/RouteMessage')
 const userRouter = require('./Routes/RouteUser')
 const chatRouter = require('./Routes/RouteChat')
 const categoryRouter = require('./Routes/RouteCategory')
+const fileRouter = require('./Routes/RouteFile')
+const paymentMethodRouter = require('./Routes/RoutePaymentMethod')
 
 const cors = require('cors');
 
@@ -71,6 +73,8 @@ app.use('/callcenter_backend/users', userRouter);
 app.use('/callcenter_backend/messages', messageRouter);
 app.use('/callcenter_backend/chats', chatRouter);
 app.use('/callcenter_backend/categories', categoryRouter);
+app.use('/callcenter_backend/files', fileRouter);
+app.use('/callcenter_backend/payment-methods', paymentMethodRouter);
 
 
 
