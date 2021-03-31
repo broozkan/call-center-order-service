@@ -30,6 +30,9 @@ class Sidebar extends Component {
                                 <Link to={urls.CUSTOMER_LIST_VIEW}><i className="fas fa-users"></i> <span>Müşteriler</span></Link>
                             </li>
                             <li>
+                                <Link to={urls.PAYMENT_METHOD_LIST_VIEW}><i className="fas fa-money-bill"></i> <span>Ödeme Tipleri</span></Link>
+                            </li>
+                            <li>
                                 <Link to={urls.ORDER_LIST_VIEW}><i className="fas fa-database"></i> <span>Siparişler</span></Link>
                             </li>
                             <li>

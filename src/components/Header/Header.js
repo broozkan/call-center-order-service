@@ -19,12 +19,12 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="header-left">
-                    <a href="index.html" className="logo">
+                    {/* <a href="index.html" className="logo">
                         <img src="/assets/img/logo.png" alt="Logo" />
                     </a>
                     <a href="index.html" className="logo logo-small">
                         <img src="/assets/img/logo-small.png" alt="Logo" width="30" height="30" />
-                    </a>
+                    </a> */}
                 </div>
                 <a href="#" id="toggle_btn">
                     <i className="fas fa-bars"></i>

@@ -37,6 +37,9 @@ import CustomerResultView from "./views/App/Customer/CustomerResultView";
 import CategoryListView from "./views/App/Category/CategoryListView";
 import NewCategoryView from "./views/App/Category/NewCategoryView";
 import UpdateCategoryView from "./views/App/Category/UpdateCategoryView";
+import PaymentMethodListView from "./views/App/PaymentMethod/PaymentMethodListView";
+import NewPaymentMethodView from "./views/App/PaymentMethod/NewPaymentMethodView";
+import UpdatePaymentMethodView from "./views/App/PaymentMethod/UpdatePaymentMethodView";
 
 
 class App extends Component {
@@ -47,7 +50,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path={urls.LOGIN_VIEW} exact component={LoginView}></Route>
-            <Route path={urls.LIVE_ORDER_VIEW} exact component={LiveOrderView}></Route>
+            <Route path={`${urls.LIVE_ORDER_VIEW}/:orderState?`} exact component={LiveOrderView}></Route>
             <Route path={`${urls.CHAT_VIEW}/:aside/:chatId?`} exact component={ChatView}></Route>
             <div className="main-wrapper">
               <ContextAuthWrapper>
@@ -64,6 +67,10 @@ class App extends Component {
                     <Route path={urls.CATEGORY_LIST_VIEW} exact component={CategoryListView}></Route>
                     <Route path={urls.NEW_CATEGORY_VIEW} exact component={NewCategoryView}></Route>
                     <Route path={`${urls.UPDATE_CATEGORY_VIEW}/:categoryId`} exact component={UpdateCategoryView}></Route>
+
+                    <Route path={urls.PAYMENT_METHOD_LIST_VIEW} exact component={PaymentMethodListView}></Route>
+                    <Route path={urls.NEW_PAYMENT_METHOD_VIEW} exact component={NewPaymentMethodView}></Route>
+                    <Route path={`${urls.UPDATE_PAYMENT_METHOD_VIEW}/:paymentMethodId`} exact component={UpdatePaymentMethodView}></Route>
 
                     <Route path={urls.EMPLOYEE_LIST_VIEW} exact component={EmployeeListView}></Route>
                     <Route path={urls.NEW_EMPLOYEE_VIEW} exact component={NewEmployeeView}></Route>

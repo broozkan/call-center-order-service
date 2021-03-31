@@ -12,12 +12,12 @@ class FormCustomer extends Component {
         this.state = {
             customer_id: '',
             customer_name: '',
-            customer_province: '',
             customer_email_address: '',
             customer_phone_number: '',
             customer_address: [{
                 address: '',
                 address_description: '',
+                address_minimum_amount: 0,
                 address_province: ''
             }],
             customer_note: '',
@@ -70,6 +70,7 @@ class FormCustomer extends Component {
         customerAddresses.push({
             address: '',
             address_description: '',
+            address_minimum_amount: 0,
             address_province: ''
         })
 
@@ -97,7 +98,7 @@ class FormCustomer extends Component {
     }
 
     handleOnChange = (e) => {
-        if (e.target.name == "address" || e.target.name == "address_description" || e.target.name == "address_province") {
+        if (e.target.name == "address" || e.target.name == "address_description" || e.target.name == "address_province" || e.target.name == "address_minimum_amount") {
             let customerAddresses = this.state.customer_address
 
             customerAddresses.map((item, index) => {
@@ -157,18 +158,26 @@ class FormCustomer extends Component {
 
 
     render() {
-        console.log(this.state);
+
         // render adresses
         let adressesJsx = this.state.customer_address.map((item, index) => {
             return (
                 <div className="row py-1">
-                    <div className="col-lg-5">
+                    <div className="col-lg-4">
+                        <label>Adres</label>
                         <input type="text" class="form-control" required data-index={index} name="address" value={item.address} onChange={this.handleOnChange} placeholder="Adres giriniz" />
                     </div>
                     <div className="col-lg-3">
+                        <label>Adres Tanımı</label>
+
                         <input type="text" class="form-control" required data-index={index} name="address_description" value={item.address_description} onChange={this.handleOnChange} placeholder="Adres tanımı giriniz" />
                     </div>
-                    <div className="col-lg-3">
+                    <div className="col-lg-2">
+                        <label>Minimum Tutar</label>
+                        <input type="number" step=".01" class="form-control" required data-index={index} name="address_minimum_amount" value={item.address_minimum_amount} onChange={this.handleOnChange} placeholder="Minimum paket tutarı giriniz" />
+                    </div>
+                    <div className="col-lg-2">
+                        <label>İl </label>
                         <select className="form-control" data-index={index} name="address_province" value={item.address_province} onChange={this.handleOnChange}>
                             <option value="" disabled selected>İl Seçiniz</option>
                             <option value="Sivas">Sivas</option>
@@ -176,6 +185,7 @@ class FormCustomer extends Component {
                         </select>
                     </div>
                     <div className="col-lg-1">
+                        <label>İşlem</label>
                         <button type="button" className="btn btn-danger" onClick={this.handleOnClickDeleteAddress} data-index={index}><i className="fas fa-trash"></i></button>
                     </div>
                 </div>
@@ -192,16 +202,26 @@ class FormCustomer extends Component {
                 <form method="POST" onSubmit={this.handleOnSubmit}>
                     {this.state.redirect_jsx}
                     <div class="form-group">
-                        <label>Adı *</label>
-                        <input type="text" required class="form-control" name="customer_name" value={this.state.customer_name} onChange={this.handleOnChange} />
-                    </div>
-                    <div class="form-group">
-                        <label>Şehir *</label>
-                        <select className="form-control" required name="customer_province" value={this.state.customer_province} onChange={this.handleOnChange}>
-                            <option value="" selected disabled>Şehir Seçiniz</option>
-                            <option value="Sivas">Sivas</option>
-                            <option value="Kayseri">Kayseri</option>
-                        </select>
+                        <div className="row">
+                            <div className="col-lg-4">
+                                <label>Adı *</label>
+                                <input type="text" required class="form-control" name="customer_name" value={this.state.customer_name} onChange={this.handleOnChange} />
+                            </div>
+                            <div className="col-lg-4">
+                                <div class="form-group">
+                                    <label>Telefon Numarası *</label>
+                                    <input type="number" class="form-control" required name="customer_phone_number" value={this.state.customer_phone_number} onChange={this.handleOnChange} />
+                                </div>
+                            </div>
+                            <div className="col-lg-4">
+                                <div class="form-group">
+                                    <label>E-posta Adresi</label>
+                                    <input type="email" class="form-control" name="customer_email_address" value={this.state.customer_email_address} onChange={this.handleOnChange} />
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label>
@@ -214,15 +234,9 @@ class FormCustomer extends Component {
                         <label>Not</label>
                         <input type="text" class="form-control" name="customer_note" value={this.state.customer_note} onChange={this.handleOnChange} />
                     </div>
-                    <div class="form-group">
-                        <label>Telefon Numarası *</label>
-                        <input type="number" class="form-control" required name="customer_phone_number" value={this.state.customer_phone_number} onChange={this.handleOnChange} />
-                    </div>
 
-                    <div class="form-group">
-                        <label>E-posta Adresi</label>
-                        <input type="email" class="form-control" name="customer_email_address" value={this.state.customer_email_address} onChange={this.handleOnChange} />
-                    </div>
+
+
 
 
                     <div class="text-right">

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import FormLogin from '../../components/Form/User/FormLogin'
 import { urls } from '../../lib/urls'
-
+import logo from '../../images/call_center_logo.jpeg'
 
 class LoginView extends Component {
 
@@ -28,7 +28,7 @@ class LoginView extends Component {
                 <div class="login-wrapper">
                     <div class="container">
 
-                        <img class="img-fluid logo-dark mb-2" src="assets/img/logo.png" alt="Logo" />
+                        <img class="img-fluid logo-dark mb-2" width="180" src={logo} alt="Logo" />
                         <div class="loginbox">
 
                             <div class="login-right">
@@ -36,7 +36,6 @@ class LoginView extends Component {
                                     <h1>Giriş Yapın</h1>
                                     <p class="account-subtitle">Has Döner Call Center Sipariş Uygulaması</p>
                                     <FormLogin />
-
                                 </div>
                             </div>
                         </div>

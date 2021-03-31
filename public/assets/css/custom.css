@@ -63,6 +63,14 @@
     padding: 0;
 }
 
+.order-select-card.address {
+    height: 150px;
+}
+
+.address-field {
+    height: 80px;
+}
+
 .order-select-card .card-footer button {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -70,7 +78,7 @@
 
 .order-select-card.active {
     background: #7638ff;
-    color: white;
+    color: white!important;
     box-shadow: 2px 6px 6px #888888;
 }
 
@@ -85,8 +93,124 @@
 .order-select-card p {
     font-size: 1rem;
     font-weight: 600;
+    color: #455560 !important;
+}
+
+.order-select-card.active p {
+    color: white !important;
 }
 
 .order-select-card .card-body {
     padding: 1rem;
+}
+
+.categories-column {
+    padding-right: 0;
+    padding-left: 0;
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.products-column {
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 21vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+}
+
+#categories button {
+    text-transform: uppercase;
+    margin: 0.2rem;
+}
+
+.product {
+    padding: 10px!important;
+    cursor: pointer;
+}
+
+.product:hover {
+    filter: brightness(0.8);
+}
+
+.product .badge {
+    position: absolute;
+    top: 15px;
+    font-size: 1rem;
+    left: 25px;
+    z-index: 1;
+}
+
+.product label {
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    z-index: 1;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.product img {
+    filter: brightness(0.5);
+    background: black;
+    border-radius: 20px;
+    height: 135px;
+}
+
+#order-products-column .card .card-header {
+    display: block;
+    padding: 10px;
+}
+
+#order-products-column .card .card-body {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 150px;
+    padding-top: 1rem;
+}
+
+#order-products-column .card .card-header .card-title {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+#order-products-column .card .card-header .btn-group input {
+    height: 35px;
+    text-align: center;
+    padding: 2px;
+    line-height: 1;
+}
+
+.order-product-piece {
+    text-align: center;
+    line-height: 1;
+    font-size: 1rem;
+}
+
+.product-property-button.selected {
+    background-color: #7638ff;
+    border-color: #7638ff;
+    color: white;
+}
+
+#order-total-band {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background: #7638ff;
+    z-index: 100000;
+    text-align: right;
+    left: 0;
 }

@@ -19,12 +19,20 @@ class TableLiveOrder extends Component {
         }
 
         this.loadOrders = this.loadOrders.bind(this)
+        this.handleOnClickDelete = this.handleOnClickDelete.bind(this)
+        this.handleOnClickChangeOrderStatus = this.handleOnClickChangeOrderStatus.bind(this)
     }
 
 
     async componentWillReceiveProps(nextProps) {
-        if (this.props.params != nextProps.params) {
-            getOrders(this.state.current_page, nextProps.params, (response) => {
+
+        if (this.props.match != nextProps.match) {
+            let params = {}
+            if (nextProps.match.params.orderState) {
+                params.order_status = nextProps.match.params.orderState
+            }
+
+            getOrders(this.state.current_page, params, (response) => {
                 this.setState({
                     orders: response.data.docs,
                     pagination_info: response.data,
@@ -38,6 +46,11 @@ class TableLiveOrder extends Component {
         let params = {}
         if (this.props.params) {
             params = this.props.params
+        }
+
+
+        if (this.props.match) {
+            params.order_status = this.props.match.params.orderState
         }
 
         getOrders(this.state.current_page, params, (response) => {
@@ -54,6 +67,8 @@ class TableLiveOrder extends Component {
         if (this.props.params) {
             params = this.props.params
         }
+        console.log(this.props.params);
+
         getOrders(page, params, (response) => {
             this.setState({
                 orders: response.data.docs,
@@ -62,6 +77,26 @@ class TableLiveOrder extends Component {
                 current_page: page
             })
         })
+    }
+
+    async handleOnClickChangeOrderStatus(e) {
+        const params = {
+            'order_status': e.currentTarget.dataset.order_status
+        }
+        const submitResponse = await api.patch(`/orders/${e.currentTarget.dataset.order_id}`, params, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
+
+        if (submitResponse.data.status != 400) {
+            Swal.fire({
+                title: 'Kaydedildi',
+                icon: 'success'
+            })
+            this.loadOrders()
+        } else {
+            Swal.fire({
+                title: 'Bir sorun oluştu',
+                icon: 'error'
+            })
+        }
     }
 
 
@@ -109,14 +144,19 @@ class TableLiveOrder extends Component {
                 // render order products
                 let orderProductsJsx = ''
                 orderProductsJsx = item.order_products.map((product) => {
+                    let selectedProductPropertiesJsx = ''
+                    selectedProductPropertiesJsx = product.selected_properties.map((selectedProductPropertyItem) => {
+                        return (
+                            <span>{selectedProductPropertyItem.property}</span>
+                        )
+                    })
                     return (
                         <>
                             <p>
                                 <h2>
-                                    3 x {product.product_name}
-                                    <span>Soğansız</span>
-                                    <span>Yeşilliksiz</span>
-                                    <span>Domatessiz</span>
+                                    {product.product_piece} x {product.product.product_name}
+
+                                    {selectedProductPropertiesJsx}
                                 </h2>
                             </p>
 
@@ -126,7 +166,14 @@ class TableLiveOrder extends Component {
                 })
 
                 // check user type ? if call_center user remove operation column
-                let operationColumnJsx = <td>-</td>
+                let operationColumnJsx = (
+                    <td>
+                        <h2>
+                            {item.order_created_at}
+                            <span><i className="fas fa-user"></i> B***** Ö*****</span>
+                        </h2>
+                    </td>
+                )
                 if (user.user_type == "office_user") {
                     operationColumnJsx = (
                         <td>
@@ -138,9 +185,9 @@ class TableLiveOrder extends Component {
                             <p>
                                 <h6>Durumunu değiştir</h6>
                                 <div class="btn-group btn-group-md">
-                                    <button type="button" class="btn btn-primary">Hazırlanıyor</button>
-                                    <button type="button" class="btn btn-primary">Yolda</button>
-                                    <button type="button" class="btn btn-primary">Teslim Edildi</button>
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="preparing" class="btn btn-primary">Hazırlanıyor</button>
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="on_delivery" class="btn btn-primary">Yolda</button>
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="delivered" class="btn btn-primary">Teslim Edildi</button>
                                 </div>
                             </p>
                         </td>
@@ -153,13 +200,16 @@ class TableLiveOrder extends Component {
                         <td>
                             <p><strong>Ad Soyad: </strong>{item.order_customer.customer_name}</p>
                             <p><strong>Telefon: </strong>{item.order_customer.customer_phone_number}</p>
-                            <p><strong>Adres: </strong>{item.order_customer.customer_address}</p>
-                            <p>{item.order_customer.customer_address_description}</p>
+                            <p><strong>Adres: </strong>{item.order_address.address}</p>
+                            <p>{item.order_address.address_description}</p>
 
 
                         </td>
                         <td className="product">{orderProductsJsx}</td>
-                        <td>{item.order_amount} TL</td>
+                        <td>
+                            {parseFloat(item.order_amount).toFixed(2)} ₺
+                            <p className="mx-0">{item.order_payment_method.payment_method_name}</p>
+                        </td>
                         <td>{orderStatusJsx}</td>
                         <td className="order-note-field"><h2><span>{item.order_note}</span></h2></td>
                         {operationColumnJsx}
@@ -173,11 +223,11 @@ class TableLiveOrder extends Component {
             <div className="row">
                 <div className="col-lg-12 mt-5">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                        <li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1" data-toggle="tab">Tümü</a></li>
-                        <li class="nav-item"><a class="nav-link text-warning" href="#bottom-justified-tab2" data-toggle="tab">Bekliyor</a></li>
-                        <li class="nav-item"><a class="nav-link text-warning" href="#bottom-justified-tab2" data-toggle="tab">Hazırlanıyor</a></li>
-                        <li class="nav-item"><a class="nav-link text-danger" href="#bottom-justified-tab2" data-toggle="tab">Yolda</a></li>
-                        <li class="nav-item"><a class="nav-link text-success" href="#bottom-justified-tab2" data-toggle="tab">Teslim Edildi</a></li>
+                        <li class="nav-item"><Link class="nav-link active" to={`${urls.LIVE_ORDER_VIEW}`} data-toggle="tab">Tümü</Link></li>
+                        <li class="nav-item"><Link class="nav-link text-warning" to={`${urls.LIVE_ORDER_VIEW}/pending`} data-toggle="tab">Bekliyor</Link></li>
+                        <li class="nav-item"><Link class="nav-link text-info" to={`${urls.LIVE_ORDER_VIEW}/preparing`} data-toggle="tab">Hazırlanıyor</Link></li>
+                        <li class="nav-item"><Link class="nav-link text-danger" to={`${urls.LIVE_ORDER_VIEW}/on_delivery`} data-toggle="tab">Yolda</Link></li>
+                        <li class="nav-item"><Link class="nav-link text-success" to={`${urls.LIVE_ORDER_VIEW}/delivered`} data-toggle="tab">Teslim Edildi</Link></li>
                     </ul>
                 </div>
                 <div className="col-lg-12">

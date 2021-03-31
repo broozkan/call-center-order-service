@@ -7,7 +7,31 @@ import TableOrder from '../../../components/Table/Order/TableOrder'
 import { urls } from '../../../lib/urls'
 
 class LiveOrderView extends Component {
+
+
+    constructor() {
+        super()
+        this.state = {
+            match: ''
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            match: this.props.match
+        })
+    }
+    async componentWillReceiveProps(nextProps) {
+        if (this.props.match.params.orderState != nextProps.match.params.orderState) {
+            this.setState({
+                match: nextProps.match
+            })
+        }
+    }
+
     render() {
+        console.log(this.state);
+
         return (
 
             <div className="row">
@@ -21,8 +45,8 @@ class LiveOrderView extends Component {
                             </div>
                         </div>
                         <div class="card-body">
-                            <TabLiveOrder  match={this.props.match} />
-                            <TableLiveOrder />
+                            <TabLiveOrder match={this.state.match} />
+                            <TableLiveOrder match={this.state.match} />
                         </div>
                     </div>
                 </div>

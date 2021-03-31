@@ -38,7 +38,7 @@ class CustomerResultView extends Component {
         await this.setState({
             customer_id: this.props.match.params.customerId
         })
-        this.loadCustomers()
+        await this.loadCustomers()
     }
 
     async loadCustomers() {
@@ -57,6 +57,19 @@ class CustomerResultView extends Component {
                 <LoaderSpin />
             )
         } else {
+
+            let customerNoteJsx = ''
+            if (this.state.customer.customer_note != '') {
+                customerNoteJsx = (
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Not!</strong> {this.state.customer.customer_note}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                )
+            }
+
             return (
                 <>
                     <div class="row">
@@ -73,6 +86,7 @@ class CustomerResultView extends Component {
                                     </li>
                                 </ul>
                             </div>
+                            {customerNoteJsx}
                         </div>
                     </div>
                     <div className="row">

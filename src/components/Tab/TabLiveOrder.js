@@ -15,8 +15,8 @@ class TabLiveOrder extends Component {
             tabLinksActivity[0] = ''
             tabLinksActivity[1] = 'active'
         } else {
-            tabLinksActivity[0] = ''
-            tabLinksActivity[1] = 'active'
+            tabLinksActivity[0] = 'active'
+            tabLinksActivity[1] = ''
         }
 
         return (

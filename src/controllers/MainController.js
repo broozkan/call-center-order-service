@@ -43,6 +43,12 @@ export const getUsers = async (page = 1, params = {}, cb) => {
 
 
 
+export const getPaymentMethods = async (page = 1, params = {}, cb) => {
+    const paymentMethods = await api.get(`/payment-methods/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
+
+    cb(paymentMethods)
+}
+
 export const getCategories = async (page = 1, params = {}, cb) => {
     const categories = await api.get(`/categories/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
 
