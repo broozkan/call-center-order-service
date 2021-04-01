@@ -29,10 +29,26 @@ router.get('/:page', async (req, res) => {
             req.query["product_category._id"] = mongoose.Types.ObjectId(req.query["product_category._id"])
         }
 
+        if (req.query["product_office._id"]) {
+            req.query["product_office._id"] = mongoose.Types.ObjectId(req.query["product_office._id"])
+        }
+
+        if (req.query["is_product_available"]) {
+            req.query["is_product_available"] = !(req.query["is_product_available"] == 'false')
+        }
+
+
+
+
     }
-    const aggregate = ProductModel.productModel.aggregate([{
-        $match: req.query
-    }])
+    const aggregate = ProductModel.productModel.aggregate([
+        {
+            $match: req.query,
+        },
+        {
+            $sort: { product_order_number: 1 }
+        }
+    ])
 
     const options = {
         page: req.params.page,
@@ -52,6 +68,24 @@ router.get('/get/:productId', async (req, res) => {
     })
 })
 
+
+router.patch('/:productId', async (req, res) => {
+
+    await ProductModel.productModel.findByIdAndUpdate({ _id: req.params.productId }, req.body, (err, updatedProduct) => {
+        if (err) {
+            res.send({
+                response: false,
+                responseData: err.message,
+                status: 400
+            })
+        } else {
+            res.send({
+                response: true,
+                responseData: updatedProduct
+            })
+        }
+    });
+})
 
 
 router.post('/', MultipartyMiddleware, async (req, res) => {

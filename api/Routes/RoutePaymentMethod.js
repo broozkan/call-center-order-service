@@ -24,6 +24,10 @@ router.get('/:page', async (req, res) => {
     }
     const aggregate = PaymentMethodModel.paymentMethodModel.aggregate([{
         $match: req.query
+    },
+
+    {
+        $sort: { payment_method_order_priority_number: 1 }
     }])
 
     const options = {

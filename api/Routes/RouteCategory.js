@@ -24,7 +24,12 @@ router.get('/:page', async (req, res) => {
     }
     const aggregate = CategoryModel.categoryModel.aggregate([{
         $match: req.query
-    }])
+    },
+
+    {
+        $sort: { category_order_priority_number: 1 }
+    }
+    ])
 
     const options = {
         page: req.params.page,

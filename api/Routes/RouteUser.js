@@ -3,12 +3,13 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const Controller = require('../Controllers/Controller')
 const UserModel = require('../Models/ModelUser')
+const User = require('../Classes/ClassUser')
 const jwt = require('jsonwebtoken')
 
 
 
 // loginn
-router.post('/', async (req, res) => {
+router.post('/login', async (req, res) => {
     let authHeader = req.headers.authorization;
 
 
@@ -61,6 +62,55 @@ router.post('/', async (req, res) => {
 })
 
 
+router.post('/', async (req, res) => {
+
+    const user = new User(
+        req.body.user_name,
+        req.body.user_email_address,
+        req.body.user_password,
+        req.body.user_office,
+        req.body.user_type
+    )
+
+
+    user.save((result) => {
+        console.log(result);
+        res.send(result)
+    })
+
+})
+
+
+router.put('/:userId', async (req, res) => {
+
+
+    const user = new User(
+        req.body.user_name,
+        req.body.user_email_address,
+        req.body.user_password,
+        req.body.user_office,
+        req.body.user_type
+    )
+
+    await user.setUserId(req.params.userId)
+
+    await user.update((result) => {
+        res.send(result)
+    })
+})
+
+
+router.delete('/:userId', async (req, res) => {
+
+    const user = new User
+
+    await user.setUserId(req.params.userId)
+
+    await user.delete((result) => {
+        res.send(result)
+    })
+
+})
 
 
 // get user list
