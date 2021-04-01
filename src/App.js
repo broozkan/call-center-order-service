@@ -40,6 +40,10 @@ import UpdateCategoryView from "./views/App/Category/UpdateCategoryView";
 import PaymentMethodListView from "./views/App/PaymentMethod/PaymentMethodListView";
 import NewPaymentMethodView from "./views/App/PaymentMethod/NewPaymentMethodView";
 import UpdatePaymentMethodView from "./views/App/PaymentMethod/UpdatePaymentMethodView";
+import OfficeMenuView from "./views/App/Office/OfficeMenuView";
+import UserListView from "./views/App/User/UserListView";
+import NewUserView from "./views/App/User/NewUserView";
+import UpdateUserView from "./views/App/User/UpdateUserView";
 
 
 class App extends Component {
@@ -51,6 +55,7 @@ class App extends Component {
           <Switch>
             <Route path={urls.LOGIN_VIEW} exact component={LoginView}></Route>
             <Route path={`${urls.LIVE_ORDER_VIEW}/:orderState?`} exact component={LiveOrderView}></Route>
+            <Route path={`${urls.OFFICE_MENU_VIEW}/:availabilityState?`} exact component={OfficeMenuView}></Route>
             <Route path={`${urls.CHAT_VIEW}/:aside/:chatId?`} exact component={ChatView}></Route>
             <div className="main-wrapper">
               <ContextAuthWrapper>
@@ -75,6 +80,10 @@ class App extends Component {
                     <Route path={urls.EMPLOYEE_LIST_VIEW} exact component={EmployeeListView}></Route>
                     <Route path={urls.NEW_EMPLOYEE_VIEW} exact component={NewEmployeeView}></Route>
                     <Route path={`${urls.UPDATE_EMPLOYEE_VIEW}/:employeeId`} exact component={UpdateEmployeeView}></Route>
+
+                    <Route path={urls.USER_LIST_VIEW} exact component={UserListView}></Route>
+                    <Route path={urls.NEW_USER_VIEW} exact component={NewUserView}></Route>
+                    <Route path={`${urls.UPDATE_USER_VIEW}/:userId`} exact component={UpdateUserView}></Route>
 
                     <Route path={`${urls.CUSTOMER_RESULT_VIEW}/:customerId`} exact component={CustomerResultView}></Route>
                     <Route path={urls.CUSTOMER_LIST_VIEW} exact component={CustomerListView}></Route>

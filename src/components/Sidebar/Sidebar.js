@@ -15,7 +15,7 @@ class Sidebar extends Component {
                                 <Link to={urls.DASHBOARD_VIEW}><i className="fas fa-home"></i> <span>Panel</span></Link>
                             </li>
                             <li>
-                                <Link to={urls.EMPLOYEE_LIST_VIEW}><i className="fas fa-users"></i> <span>Çalışanlar</span></Link>
+                                <Link to={urls.USER_LIST_VIEW}><i className="fas fa-users"></i> <span>Kullanıcılar</span></Link>
                             </li>
                             <li>
                                 <Link to={urls.OFFICE_LIST_VIEW}><i className="fas fa-map-pin"></i> <span>Şubeler</span></Link>

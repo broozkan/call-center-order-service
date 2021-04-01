@@ -219,8 +219,11 @@ class TableLiveOrder extends Component {
             })
         }
 
-        return (
-            <div className="row">
+
+        // render filter tabs
+        let filterTabsJsx = ''
+        if (user.user_type == "office_user") {
+            filterTabsJsx = (
                 <div className="col-lg-12 mt-5">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                         <li class="nav-item"><Link class="nav-link active" to={`${urls.LIVE_ORDER_VIEW}`} data-toggle="tab">Tümü</Link></li>
@@ -230,6 +233,12 @@ class TableLiveOrder extends Component {
                         <li class="nav-item"><Link class="nav-link text-success" to={`${urls.LIVE_ORDER_VIEW}/delivered`} data-toggle="tab">Teslim Edildi</Link></li>
                     </ul>
                 </div>
+            )
+        }
+
+        return (
+            <div className="row">
+
                 <div className="col-lg-12">
                     <div class="table-responsive">
                         <table class="table table-hover mb-0 table-live-order">

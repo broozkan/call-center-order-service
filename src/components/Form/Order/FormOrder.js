@@ -227,6 +227,9 @@ class FormOrder extends Component {
     }
 
     handleOnClickNewOrderProduct(e) {
+        if (e.currentTarget.dataset.is_product_available == 'false') {
+            return false
+        }
         let orderProducts = this.state.order_products
 
         this.state.products.map((item) => {
@@ -298,25 +301,25 @@ class FormOrder extends Component {
         let orderProducts = this.state.order_products
 
         orderProducts.map((item) => {
+            let selectedProperties = [...item.selected_properties]
 
             if (e.currentTarget.dataset.unique_id == item.unique_id) {
                 item.product.product_properties.map((productPropertyItem, index) => {
                     if (e.currentTarget.dataset.index == index) {
-                        if (item.selected_properties.length > 0) {
-                            item.selected_properties.map((selectedPropertiesItem) => {
-                                console.log(selectedPropertiesItem.property, productPropertyItem.property);
-                                if (selectedPropertiesItem.property == productPropertyItem.property) {
-                                    item.selected_properties.splice(item.selected_properties.indexOf(productPropertyItem), 1);
-                                } else {
-                                    item.selected_properties.push(productPropertyItem)
+                        console.log(productPropertyItem.property)
+                        if (e.currentTarget.dataset.is_added == 'false') {
+                            selectedProperties.push(productPropertyItem);
+                        } else {
+                            selectedProperties.map((selectedProperty, selectedPropertyIndex) => {
+                                if (selectedProperty.property == productPropertyItem.property) {
+                                    selectedProperties.splice(selectedPropertyIndex, 1);
                                 }
                             })
-                        } else {
-                            item.selected_properties.push(productPropertyItem)
                         }
                     }
                 })
             }
+            item.selected_properties = selectedProperties
         })
 
         this.setState({
@@ -399,9 +402,19 @@ class FormOrder extends Component {
         } else {
             if (this.state.is_products_loaded) {
                 productsJsx = this.state.products.map((item) => {
+                    let stockClass = ''
+                    let outOfStockJsx = ''
+                    if (item.is_product_available == false) {
+                        stockClass = 'out-of-stock'
+                        outOfStockJsx = (
+                            <span className="badge badge-danger">Stok Yok</span>
+                        )
+                    }
+
                     return (
-                        <div className="col-lg-2 product" data-product_id={item._id} onClick={this.handleOnClickNewOrderProduct}>
+                        <div className={`col-lg-3 product ${stockClass}`} data-is_product_available={item.is_product_available} data-product_id={item._id} onClick={this.handleOnClickNewOrderProduct}>
                             <span className="badge badge-warning">{item.product_unit_price} ₺</span>
+                            {outOfStockJsx}
                             <label>{item.product_name}</label>
                             <img src={`${process.env.REACT_APP_API_ENDPOINT}files/${item.product_photo.name}`} className="img-fluid" />
                         </div>
@@ -421,11 +434,13 @@ class FormOrder extends Component {
 
                     let checkedIconJsx = ''
                     let activityClass = ''
+                    let is_added = false
                     item.selected_properties.map((selectedPropertiesItem) => {
                         if (selectedPropertiesItem.property == propertyItem.property) {
                             orderProductAdditionalPrice += parseFloat(propertyItem.property_additional_price) * item.product_piece
                             checkedIconJsx = <i className="fas fa-check-circle text-warning"></i>
                             activityClass = 'selected'
+                            is_added = true
                         }
                     })
 
@@ -434,7 +449,7 @@ class FormOrder extends Component {
                         propertyTextJsx = `${propertyTextJsx}+${propertyItem.property_additional_price}₺`
                     }
                     return (
-                        <button type="button" className={`btn btn-xs product-property-button btn-outline-primary ${activityClass}`} onClick={this.handleOnClickToggleProductProperty} data-unique_id={item.unique_id} data-index={propertyIndex}>
+                        <button type="button" className={`btn btn-xs product-property-button btn-outline-primary ${activityClass}`} onClick={this.handleOnClickToggleProductProperty} data-unique_id={item.unique_id} data-is_added={is_added} data-index={propertyIndex}>
                             {propertyTextJsx} {checkedIconJsx}
                         </button>
                     )
@@ -442,39 +457,39 @@ class FormOrder extends Component {
 
                 this.state.order_amount += (parseFloat(item.product.product_unit_price) * parseInt(item.product_piece) + orderProductAdditionalPrice)
                 return (
-                    <div className="col-lg-2">
+                    <div className="col-lg-12">
                         <div className="card">
                             <div className="card-header">
                                 <div className="row">
-                                    <div className="col-lg-4">
-                                        <div className="avatar avatar-md">
+                                    <div className="col-lg-1">
+                                        <div className="avatar avatar-sm">
                                             <img className="avatar-img rounded-circle" alt="User Image" src={`${process.env.REACT_APP_API_ENDPOINT}files/${item.product.product_photo.name}`} />
                                         </div>
                                     </div>
-                                    <div className="col-lg-8">
-                                        <div className="btn-group">
-                                            <button type="button" onClick={this.handleOnClickDecreasePiece} data-unique_id={item.unique_id} className="btn btn-primary btn-xs">-</button>
-                                            <input className="form-control" min="1" name="product_piece" placeholder="Adet" value={item.product_piece} />
-                                            <button type="button" onClick={this.handleOnClickIncreasePiece} data-unique_id={item.unique_id} className="btn btn-primary btn-xs">+</button>
-                                        </div>
+                                    <div className="col-lg-5">
+                                        <h5 className="card-title text-center">{item.product.product_name} - {item.product.product_unit}</h5>
 
                                     </div>
+                                    <div className="col-lg-2 align-center">
+                                        <h5>{(parseFloat(item.product.product_unit_price) * parseInt(item.product_piece) + orderProductAdditionalPrice).toFixed(2)} ₺</h5>
+                                    </div>
+                                    <div className="col-lg-2  align-center">
+                                        <div className="btn-group">
+                                            <button type="button" onClick={this.handleOnClickDecreasePiece} data-unique_id={item.unique_id} className="btn btn-primary btn-sm">-</button>
+                                            <input className="form-control" min="1" name="product_piece" placeholder="Adet" value={item.product_piece} />
+                                            <button type="button" onClick={this.handleOnClickIncreasePiece} data-unique_id={item.unique_id} className="btn btn-primary btn-sm">+</button>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-lg-2  align-center">
+                                        <button type="button" data-index={index} onClick={this.handleOnClickDeleteOrderProduct} className="btn btn-sm w-100 btn-danger"><i className="fas fa-trash"></i></button>
+                                    </div>
+
                                 </div>
 
-                                <h5 className="card-title text-center">{item.product.product_name} - {item.product.product_unit}</h5>
                             </div>
                             <div className="card-body">
                                 {productPropertiesJsx}
-                            </div>
-                            <div className="card-footer">
-                                <div className="row">
-                                    <div className="col-lg-8">
-                                        <h5>{(parseFloat(item.product.product_unit_price) * parseInt(item.product_piece) + orderProductAdditionalPrice).toFixed(2)} ₺</h5>
-                                    </div>
-                                    <div className="col-lg-4">
-                                        <button type="button" data-index={index} onClick={this.handleOnClickDeleteOrderProduct} className="btn btn-xs w-100 btn-danger"><i className="fas fa-trash"></i></button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -494,7 +509,7 @@ class FormOrder extends Component {
                     activityClass = 'active'
                 }
                 return (
-                    <div className="col-lg-2">
+                    <div className="col-lg-4">
                         <div onClick={this.handleOnClick} data-name="order_payment_method" data-payment_method_id={item._id} className={`card order-select-card ${activityClass}`}>
                             <div className="card-body">
                                 <p> <i className="fas fa-money-bill"></i> {item.payment_method_name} {checkedIconJsx}</p>
@@ -513,52 +528,72 @@ class FormOrder extends Component {
                     <div className="col-lg-12">
                         <form method="POST" onSubmit={this.handleOnSubmit}>
 
-
-                            <div className="form-group">
-                                <label>Adresleri</label>
-                                <div className="row">
-                                    {addressesJsx}
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label>Ürünler</label>
-                                <div className="row">
-                                    <div className="col-lg-12" id="categories">
-                                        {categoriesJsx}
-                                    </div>
-
-                                </div>
-                                <div className="row">
-                                    <div className="col-lg-12 products-column">
+                            <div className="row">
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>Adresleri</label>
                                         <div className="row">
-                                            {productsJsx}
+                                            {addressesJsx}
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>Ürünler</label>
+                                        <div className="row">
+                                            <div className="col-lg-12" id="categories">
+                                                {categoriesJsx}
+                                            </div>
+                                            <div className="col-lg-12 products-column">
+                                                <div className="row">
+                                                    {productsJsx}
+                                                </div>
+                                            </div>
 
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-lg-12">
+                                                <div className="form-group mt-4">
+                                                    <div className="row" id="order-payment-methods-column">
+                                                        {paymentMethodsJsx}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-lg-12">
+                                                <div className="form-group">
+                                                    <div className="form-group">
+                                                        <label>Sipariş Notu</label>
+                                                        <input className="form-control" name="order_note" onChange={this.handleOnChange} value={this.state.order_note} placeholder="Sipariş notu giriniz" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-lg-12">
+                                                <div className="form-group mb-0">
+                                                    <h3>Toplam Tutar: {this.state.order_amount.toFixed(2)} ₺</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>Sipariş İçeriği</label>
+                                        <div className="row" id="order-products-column">
+                                            {orderProductsJsx}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label>Sipariş İçeriği</label>
-                                <div className="row" id="order-products-column">
-                                    {orderProductsJsx}
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label>Ödeme Şekli</label>
-                                <div className="row" id="order-payment-methods-column">
-                                    {paymentMethodsJsx}
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="form-group">
-                                    <label>Sipariş Notu</label>
-                                    <input className="form-control" name="order_note" onChange={this.handleOnChange} value={this.state.order_note} placeholder="Sipariş notu giriniz" />
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <h3>Toplam Tutar: {this.state.order_amount.toFixed(2)} ₺</h3>
 
-                            </div>
+
+
+
                             {/* <div className="row" id="order-total-band">
                                 <div className="float-right">
                                     <h4 className="text-white text-right">170.00 ₺</h4>

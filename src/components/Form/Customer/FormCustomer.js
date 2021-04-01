@@ -137,7 +137,7 @@ class FormCustomer extends Component {
             })
 
             // redirect to customer detail view if user added customer via search on header
-            if (this.props.state.customer_phone_number) {
+            if (this.props.state) {
                 this.setState({
                     redirect_jsx: (
                         <Redirect to={`${urls.CUSTOMER_RESULT_VIEW}/${submitResponse.data.responseData._id}`}></Redirect>
@@ -164,21 +164,21 @@ class FormCustomer extends Component {
             return (
                 <div className="row py-1">
                     <div className="col-lg-4">
-                        <label>Adres</label>
-                        <input type="text" class="form-control" required data-index={index} name="address" value={item.address} onChange={this.handleOnChange} placeholder="Adres giriniz" />
+                        <label>Adres *</label>
+                        <input type="text" required class="form-control" autoComplete="off" required data-index={index} name="address" value={item.address} onChange={this.handleOnChange} placeholder="Adres giriniz" />
                     </div>
                     <div className="col-lg-3">
-                        <label>Adres Tanımı</label>
+                        <label>Adres Tanımı </label>
 
-                        <input type="text" class="form-control" required data-index={index} name="address_description" value={item.address_description} onChange={this.handleOnChange} placeholder="Adres tanımı giriniz" />
+                        <input type="text" class="form-control" autoComplete="off"  data-index={index} name="address_description" value={item.address_description} onChange={this.handleOnChange} placeholder="Adres tanımı giriniz" />
                     </div>
                     <div className="col-lg-2">
-                        <label>Minimum Tutar</label>
-                        <input type="number" step=".01" class="form-control" required data-index={index} name="address_minimum_amount" value={item.address_minimum_amount} onChange={this.handleOnChange} placeholder="Minimum paket tutarı giriniz" />
+                        <label>Minimum Tutar *</label>
+                        <input type="number" required step=".01" class="form-control" required data-index={index} name="address_minimum_amount" value={item.address_minimum_amount} onChange={this.handleOnChange} placeholder="Minimum paket tutarı giriniz" />
                     </div>
                     <div className="col-lg-2">
-                        <label>İl </label>
-                        <select className="form-control" data-index={index} name="address_province" value={item.address_province} onChange={this.handleOnChange}>
+                        <label>İl *</label>
+                        <select required className="form-control" data-index={index} name="address_province" value={item.address_province} onChange={this.handleOnChange}>
                             <option value="" disabled selected>İl Seçiniz</option>
                             <option value="Sivas">Sivas</option>
                             <option value="Kayseri">Kayseri</option>
@@ -186,6 +186,7 @@ class FormCustomer extends Component {
                     </div>
                     <div className="col-lg-1">
                         <label>İşlem</label>
+                        <br></br>
                         <button type="button" className="btn btn-danger" onClick={this.handleOnClickDeleteAddress} data-index={index}><i className="fas fa-trash"></i></button>
                     </div>
                 </div>

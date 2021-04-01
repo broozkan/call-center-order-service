@@ -65,6 +65,7 @@
 
 .order-select-card.address {
     height: 150px;
+    border: 1px solid lightgray;
 }
 
 .address-field {
@@ -115,7 +116,7 @@
 .products-column {
     padding-right: 15px;
     padding-left: 15px;
-    height: 21vh;
+    height: 25vh;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -128,14 +129,34 @@
     background: lightgray;
 }
 
+#categories {
+    max-height: 90px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 #categories button {
     text-transform: uppercase;
-    margin: 0.2rem;
+    padding: 3px;
+    margin: 0.1rem;
+    font-size: 1rem;
 }
 
 .product {
     padding: 10px!important;
     cursor: pointer;
+}
+
+.product.out-of-stock {
+    cursor: not-allowed;
+}
+
+.product.out-of-stock label {
+    cursor: not-allowed;
+}
+
+.product.out-of-stock img {
+    filter: brightness(0.2);
 }
 
 .product:hover {
@@ -166,19 +187,37 @@
     height: 135px;
 }
 
+#order-products-column {
+    max-height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 #order-products-column .card .card-header {
     display: block;
     padding: 10px;
 }
 
+#order-products-column .card {
+    margin-bottom: 5px;
+    border: 1px solid lightgray;
+}
+
+#order-payment-methods-column .card {
+    margin-bottom: 5px!important;
+    border: 1px solid lightgray;
+}
+
 #order-products-column .card .card-body {
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 1rem;
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 150px;
-    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
 }
 
 #order-products-column .card .card-header .card-title {

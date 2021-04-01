@@ -34,7 +34,7 @@ class FormLogin extends Component {
     handleOnSubmit = async (e) => {
         e.preventDefault()
 
-        const submitResponse = await api.post('/users', {}, { auth: { username: this.state.user_email_address, password: this.state.user_password } })
+        const submitResponse = await api.post('/users/login', {}, { auth: { username: this.state.user_email_address, password: this.state.user_password } })
 
 
         if (submitResponse.data.status != 400) {
