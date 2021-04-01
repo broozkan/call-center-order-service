@@ -94,7 +94,7 @@ class CustomerResultView extends Component {
                             <div class="card">
                                 <div class="card-header">
                                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                                        <li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1" data-toggle="tab">Sipariş Gir</a></li>
+                                        <li class="nav-item"><a class="nav-link active" onClick={this.loadCustomers} href="#bottom-justified-tab1" data-toggle="tab">Sipariş Gir</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2" data-toggle="tab">Geçmiş Siparişleri</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab3" data-toggle="tab">Bilgilerini Düzenle</a></li>
                                     </ul>

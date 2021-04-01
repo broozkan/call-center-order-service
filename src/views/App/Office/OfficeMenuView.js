@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 import TabLiveOrder from '../../../components/Tab/TabLiveOrder';
-import TableLiveOrder from '../../../components/Table/Order/TableLiveOrder';
-import TableOrder from '../../../components/Table/Order/TableOrder'
+import TableOffice from '../../../components/Table/Office/TableOffice'
+import TableProduct from '../../../components/Table/Product/TableProduct';
 import { urls } from '../../../lib/urls'
 
-class LiveOrderView extends Component {
-
-
+class OfficeMenuView extends Component {
     constructor() {
         super()
         this.state = {
@@ -22,18 +20,17 @@ class LiveOrderView extends Component {
         })
     }
     async componentWillReceiveProps(nextProps) {
-        if (this.props.match.params.orderState != nextProps.match.params.orderState) {
+        if (this.props.match.params.availabilityState != nextProps.match.params.availabilityState) {
             this.setState({
                 match: nextProps.match
             })
         }
     }
 
+
     render() {
         const user = JSON.parse(localStorage.getItem('user'))
-
         return (
-
             <div className="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -46,15 +43,13 @@ class LiveOrderView extends Component {
                         </div>
                         <div class="card-body">
                             <TabLiveOrder match={this.state.match} />
-                            <TableLiveOrder match={this.state.match} />
+                            <TableProduct params={{ 'product_office._id': user.user_office._id }} match={this.state.match} />
                         </div>
                     </div>
                 </div>
             </div>
-
-
         )
     }
 }
 
-export default LiveOrderView
+export default OfficeMenuView
