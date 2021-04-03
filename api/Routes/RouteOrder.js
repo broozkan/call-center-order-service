@@ -10,6 +10,19 @@ const MultipartyMiddleware = multiparty({ keepExtensions: true, uploadDir: uploa
 const fs = require('fs')
 const path = require('path');
 
+const WebSocket = require("ws");
+
+const broadcast = (clients, message) => {
+
+    clients.forEach((client) => {
+
+        if (client.readyState === WebSocket.OPEN) {
+
+            client.send(message);
+        }
+    });
+};
+
 
 // get order list
 router.get('/:page', async (req, res) => {
@@ -70,7 +83,8 @@ router.post('/', Controller.verifySiteToken, async (req, res) => {
     )
 
     order.save((result) => {
-        console.log(result);
+        broadcast(req.app.locals.clients, "ORDER_STATE_CHANGED");
+
         res.send(result)
     })
 
@@ -79,6 +93,7 @@ router.post('/', Controller.verifySiteToken, async (req, res) => {
 
 router.put('/:orderId', async (req, res) => {
 
+    broadcast(req.app.locals.clients, "ORDER_STATE_CHANGED");
 
     const order = new Order(
         req.body.order_customer,
@@ -101,6 +116,10 @@ router.put('/:orderId', async (req, res) => {
 
 router.patch('/:orderId', async (req, res) => {
 
+    broadcast(req.app.locals.clients, "ORDER_STATE_CHANGED");
+
+
+
     await OrderModel.orderModel.findByIdAndUpdate({ _id: req.params.orderId }, req.body, (err, updatedOrder) => {
         if (err) {
             res.send({
@@ -115,6 +134,7 @@ router.patch('/:orderId', async (req, res) => {
             })
         }
     });
+
 })
 
 router.delete('/:orderId', async (req, res) => {

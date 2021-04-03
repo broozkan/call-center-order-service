@@ -9,7 +9,18 @@ const uploadDir = './public/images'
 const MultipartyMiddleware = multiparty({ keepExtensions: true, uploadDir: uploadDir })
 const fs = require('fs')
 const path = require('path');
+const WebSocket = require("ws");
 
+const broadcast = (clients, message) => {
+
+    clients.forEach((client) => {
+
+        if (client.readyState === WebSocket.OPEN) {
+
+            client.send(message);
+        }
+    });
+};
 
 // get product list
 router.get('/:page', async (req, res) => {
@@ -79,6 +90,8 @@ router.patch('/:productId', async (req, res) => {
                 status: 400
             })
         } else {
+            broadcast(req.app.locals.clients, "PRODUCT_STOCK_CHANGED");
+
             res.send({
                 response: true,
                 responseData: updatedProduct

@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
-
+const WebSocket = require('ws')
+const http = require('http')
 const app = express();
 
 
@@ -16,6 +17,7 @@ const chatRouter = require('./Routes/RouteChat')
 const categoryRouter = require('./Routes/RouteCategory')
 const fileRouter = require('./Routes/RouteFile')
 const paymentMethodRouter = require('./Routes/RoutePaymentMethod')
+const analyseRouter = require('./Routes/RouteAnalyse')
 
 const cors = require('cors');
 
@@ -37,6 +39,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // cors middleware
 app.use(cors());
+
+
 
 
 app.use(express.static('/public'));
@@ -75,11 +79,19 @@ app.use('/callcenter_backend/chats', chatRouter);
 app.use('/callcenter_backend/categories', categoryRouter);
 app.use('/callcenter_backend/files', fileRouter);
 app.use('/callcenter_backend/payment-methods', paymentMethodRouter);
+app.use('/callcenter_backend/analyse', analyseRouter);
 
 
+const server = http.createServer(app);
 
+server.listen(process.env.PORT || 8999, () => {
+    console.log(`Server started on port ${server.address().port} :)`);
+});
 
+const webSocketServer = new WebSocket.Server({ server: server });
+webSocketServer.on("connection", (webSocket) => {
 
+    console.info("Total connected clients:", webSocketServer.clients.size);
 
-//comment
-app.listen(process.env.PORT || 8000)
+    app.locals.clients = webSocketServer.clients;
+});
