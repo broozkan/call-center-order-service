@@ -45,9 +45,20 @@ class FormLogin extends Component {
 
             localStorage.setItem('auth-token', submitResponse.data.token)
             localStorage.setItem('user', JSON.stringify(submitResponse.data.responseData[0]))
-            this.setState({
-                redirect_component: <Redirect to="/app" />
-            })
+            if (submitResponse.data.responseData[0].user_type == "call_center_user") {
+                this.setState({
+                    redirect_component: <Redirect to="/app/musteriler/detay" />
+                })
+            } else if (submitResponse.data.responseData[0].user_type == "office_user") {
+                this.setState({
+                    redirect_component: <Redirect to="/canli-siparis-ekrani" />
+                })
+            } else {
+                this.setState({
+                    redirect_component: <Redirect to="/app" />
+                })
+            }
+
         } else {
             Swal.fire({
                 title: "Hata",

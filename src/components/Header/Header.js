@@ -16,6 +16,32 @@ class Header extends Component {
     }
 
     render() {
+        const user = JSON.parse(localStorage.getItem('user'))
+        // render search customer form
+        let searchCustomerFormJsx = ''
+        if (user.user_type == "call_center_user") {
+            searchCustomerFormJsx = (
+                <div class="top-nav-search">
+                    <FormSearchCustomer />
+                </div>
+            )
+        }
+
+        // render bars
+        let barsJsx = ''
+        if (user.user_type != "office_user") {
+            barsJsx = (
+                <>
+                    <a href="#" id="toggle_btn" >
+                        <i className="fas fa-bars"></i>
+                    </a>
+                    <a className="mobile_btn" id="mobile_btn" onClick={this.props.onClickToggleMobileMenu}>
+                        <i className="fas fa-bars"></i>
+                    </a>
+                </>
+            )
+        }
+
         return (
             <div className="header">
                 <div className="header-left">
@@ -26,15 +52,9 @@ class Header extends Component {
                         <img src="/assets/img/logo-small.png" alt="Logo" width="30" height="30" />
                     </a> */}
                 </div>
-                <a href="#" id="toggle_btn">
-                    <i className="fas fa-bars"></i>
-                </a>
-                <a className="mobile_btn" id="mobile_btn">
-                    <i className="fas fa-bars"></i>
-                </a>
-                <div class="top-nav-search">
-                    <FormSearchCustomer />
-                </div>
+
+                {barsJsx}
+                {searchCustomerFormJsx}
                 <ul className="nav user-menu">
                     <li className="nav-item dropdown has-arrow main-drop">
                         <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">

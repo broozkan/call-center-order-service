@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2'
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 import { getCategories, getOffices, getPaymentMethods, getProducts } from '../../../controllers/MainController'
 import api from '../../../services/api'
 import IconActiveCard from '../../Icon/IconActiveCard'
 import LoaderSpin from '../../Loader/LoaderSpin'
+const client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
 
 class FormOrder extends Component {
 
@@ -26,6 +28,7 @@ class FormOrder extends Component {
             is_products_loading: false,
             categories: [],
             is_categories_loaded: false,
+            clicked_category_id: '',
             payment_methods: [],
             is_payment_methods_loaded: false,
             order_amount: 0
@@ -83,7 +86,6 @@ class FormOrder extends Component {
         if (this.props.state) {
             await this.setState(this.props.state)
         }
-        console.log(this.state);
 
         if (this.state.order_customer.customer_address) {
             if (this.state.order_customer.customer_address.length < 2) {
@@ -107,6 +109,28 @@ class FormOrder extends Component {
                 payment_methods: results.data.docs,
                 is_payment_methods_loaded: true
             })
+
+            client.onopen = () => {
+                console.log('WebSocket Client Connected');
+                alert('WebSocket Client Connected');
+            };
+
+            client.onmessage = (message) => {
+                if (message.data == "PRODUCT_STOCK_CHANGED") {
+                    this.setState({
+                        is_products_loading: true
+                    })
+
+
+                    getProducts(1, { 'product_category._id': this.state.clicked_category_id, 'product_office.office_province': this.state.order_address.address_province }, (results) => {
+                        this.setState({
+                            products: results.data.docs,
+                            is_products_loaded: true,
+                            is_products_loading: false
+                        })
+                    })
+                }
+            };
         })
     }
 
@@ -167,12 +191,12 @@ class FormOrder extends Component {
         }
 
         this.setState({
-            is_products_loading: true
+            is_products_loading: true,
+            clicked_category_id: e.currentTarget.dataset.id
         })
-        const categoryId = e.currentTarget.dataset.id
 
 
-        getProducts(1, { 'product_category._id': categoryId, 'product_office.office_province': this.state.order_address.address_province }, (results) => {
+        getProducts(1, { 'product_category._id': this.state.clicked_category_id, 'product_office.office_province': this.state.order_address.address_province }, (results) => {
             this.setState({
                 products: results.data.docs,
                 is_products_loaded: true,

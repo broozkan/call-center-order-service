@@ -5,7 +5,8 @@ import { deleteObject, getOrders } from '../../../controllers/MainController'
 import { urls } from '../../../lib/urls'
 import api from '../../../services/api'
 import Pagination from '../../Pagination/Pagination'
-
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+const client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
 
 class TableLiveOrder extends Component {
     constructor() {
@@ -23,6 +24,9 @@ class TableLiveOrder extends Component {
         this.handleOnClickChangeOrderStatus = this.handleOnClickChangeOrderStatus.bind(this)
     }
 
+    componentWillMount() {
+
+    }
 
     async componentWillReceiveProps(nextProps) {
 
@@ -42,7 +46,12 @@ class TableLiveOrder extends Component {
         }
     }
 
-    componentDidMount() {
+
+
+    async componentDidMount() {
+
+
+
         let params = {}
         if (this.props.params) {
             params = this.props.params
@@ -53,13 +62,26 @@ class TableLiveOrder extends Component {
             params.order_status = this.props.match.params.orderState
         }
 
-        getOrders(this.state.current_page, params, (response) => {
+        await getOrders(this.state.current_page, params, (response) => {
             this.setState({
                 orders: response.data.docs,
                 pagination_info: response.data,
                 is_orders_loaded: true
             })
+
+            client.onopen = () => {
+                console.log('WebSocket Client Connected');
+                alert('WebSocket Client Connected');
+            };
+
+            client.onmessage = (message) => {
+                console.log(message.data);
+                if (message.data == "ORDER_STATE_CHANGED") {
+                    this.loadOrders()
+                }
+            };
         })
+
     }
 
     loadOrders = (page = this.state.current_page) => {
@@ -67,7 +89,6 @@ class TableLiveOrder extends Component {
         if (this.props.params) {
             params = this.props.params
         }
-        console.log(this.props.params);
 
         getOrders(page, params, (response) => {
             this.setState({
@@ -90,7 +111,7 @@ class TableLiveOrder extends Component {
                 title: 'Kaydedildi',
                 icon: 'success'
             })
-            this.loadOrders()
+            //this.loadOrders()
         } else {
             Swal.fire({
                 title: 'Bir sorun oluştu',
@@ -238,7 +259,7 @@ class TableLiveOrder extends Component {
 
         return (
             <div className="row">
-
+                {filterTabsJsx}
                 <div className="col-lg-12">
                     <div class="table-responsive">
                         <table class="table table-hover mb-0 table-live-order">
