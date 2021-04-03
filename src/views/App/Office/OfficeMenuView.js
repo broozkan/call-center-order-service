@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
+import Header from '../../../components/Header/Header';
 import TabLiveOrder from '../../../components/Tab/TabLiveOrder';
 import TableOffice from '../../../components/Table/Office/TableOffice'
 import TableProduct from '../../../components/Table/Product/TableProduct';
@@ -31,23 +32,31 @@ class OfficeMenuView extends Component {
     render() {
         const user = JSON.parse(localStorage.getItem('user'))
         return (
-            <div className="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div className="row">
-                                <div class="col">
-                                    <h5 class="card-title">{user.user_office.office_name} Sipariş Yönetim</h5>
+            <>
+                <Header onClickToggleMobileMenu={this.handleOnClickToggleMobileMenu} />
+                <div className="page-wrapper" style={{ minHeight: '754px', marginLeft: '0px' }}>
+                    <div className="content container-fluid">
+                        <div className="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div className="row">
+                                            <div class="col">
+                                                <h5 class="card-title">{user.user_office.office_name} Sipariş Yönetim</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <TabLiveOrder match={this.state.match} />
+                                        <TableProduct params={{ 'product_office._id': user.user_office._id }} match={this.state.match} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <TabLiveOrder match={this.state.match} />
-                            <TableProduct params={{ 'product_office._id': user.user_office._id }} match={this.state.match} />
-                        </div>
                     </div>
                 </div>
-            </div>
+
+            </>
         )
     }
 }

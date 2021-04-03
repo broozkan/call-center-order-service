@@ -48,66 +48,87 @@ import UpdateUserView from "./views/App/User/UpdateUserView";
 
 class App extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      mobile_menu_class_name: ''
+    }
+
+    this.handleOnClickToggleMobileMenu = this.handleOnClickToggleMobileMenu.bind(this)
+  }
+
+  handleOnClickToggleMobileMenu() {
+    if (this.state.mobile_menu_class_name == 'slide-nav') {
+      this.setState({
+        mobile_menu_class_name: ''
+      })
+    } else {
+      this.setState({
+        mobile_menu_class_name: 'slide-nav'
+      })
+    }
+  }
+
   render() {
+
+
     return (
       <div className="App">
         <Router>
           <Switch>
             <Route path={urls.LOGIN_VIEW} exact component={LoginView}></Route>
-            <Route path={`${urls.LIVE_ORDER_VIEW}/:orderState?`} exact component={LiveOrderView}></Route>
-            <Route path={`${urls.OFFICE_MENU_VIEW}/:availabilityState?`} exact component={OfficeMenuView}></Route>
-            <Route path={`${urls.CHAT_VIEW}/:aside/:chatId?`} exact component={ChatView}></Route>
-            <div className="main-wrapper">
+            <Route path={'/'} exact component={LoginView}></Route>
+
+            <div className={`main-wrapper ${this.state.mobile_menu_class_name}`}>
               <ContextAuthWrapper>
-                <Header />
-                <Sidebar />
-                <div className="page-wrapper" style={{ minHeight: '754px' }}>
-                  <div className="content container-fluid">
-                    <Route path={urls.DASHBOARD_VIEW} exact component={DashboardView}></Route>
+                <Route path={`${urls.LIVE_ORDER_VIEW}/:orderState?`} exact component={LiveOrderView}></Route>
+                <Route path={`${urls.OFFICE_MENU_VIEW}/:availabilityState?`} exact component={OfficeMenuView}></Route>
+                <Route path={`${urls.CHAT_VIEW}/:aside/:chatId?`} exact component={ChatView}></Route>
+                <Route path={urls.DASHBOARD_VIEW} exact component={DashboardView}></Route>
 
-                    <Route path={urls.OFFICE_LIST_VIEW} exact component={OfficeListView}></Route>
-                    <Route path={urls.NEW_OFFICE_VIEW} exact component={NewOfficeView}></Route>
-                    <Route path={`${urls.UPDATE_OFFICE_VIEW}/:officeId`} exact component={UpdateOfficeView}></Route>
+                <Route path={urls.OFFICE_LIST_VIEW} exact component={OfficeListView}></Route>
+                <Route path={urls.NEW_OFFICE_VIEW} exact component={NewOfficeView}></Route>
+                <Route path={`${urls.UPDATE_OFFICE_VIEW}/:officeId`} exact component={UpdateOfficeView}></Route>
 
-                    <Route path={urls.CATEGORY_LIST_VIEW} exact component={CategoryListView}></Route>
-                    <Route path={urls.NEW_CATEGORY_VIEW} exact component={NewCategoryView}></Route>
-                    <Route path={`${urls.UPDATE_CATEGORY_VIEW}/:categoryId`} exact component={UpdateCategoryView}></Route>
+                <Route path={urls.CATEGORY_LIST_VIEW} exact component={CategoryListView}></Route>
+                <Route path={urls.NEW_CATEGORY_VIEW} exact component={NewCategoryView}></Route>
+                <Route path={`${urls.UPDATE_CATEGORY_VIEW}/:categoryId`} exact component={UpdateCategoryView}></Route>
 
-                    <Route path={urls.PAYMENT_METHOD_LIST_VIEW} exact component={PaymentMethodListView}></Route>
-                    <Route path={urls.NEW_PAYMENT_METHOD_VIEW} exact component={NewPaymentMethodView}></Route>
-                    <Route path={`${urls.UPDATE_PAYMENT_METHOD_VIEW}/:paymentMethodId`} exact component={UpdatePaymentMethodView}></Route>
+                <Route path={urls.PAYMENT_METHOD_LIST_VIEW} exact component={PaymentMethodListView}></Route>
+                <Route path={urls.NEW_PAYMENT_METHOD_VIEW} exact component={NewPaymentMethodView}></Route>
+                <Route path={`${urls.UPDATE_PAYMENT_METHOD_VIEW}/:paymentMethodId`} exact component={UpdatePaymentMethodView}></Route>
 
-                    <Route path={urls.EMPLOYEE_LIST_VIEW} exact component={EmployeeListView}></Route>
-                    <Route path={urls.NEW_EMPLOYEE_VIEW} exact component={NewEmployeeView}></Route>
-                    <Route path={`${urls.UPDATE_EMPLOYEE_VIEW}/:employeeId`} exact component={UpdateEmployeeView}></Route>
+                <Route path={urls.EMPLOYEE_LIST_VIEW} exact component={EmployeeListView}></Route>
+                <Route path={urls.NEW_EMPLOYEE_VIEW} exact component={NewEmployeeView}></Route>
+                <Route path={`${urls.UPDATE_EMPLOYEE_VIEW}/:employeeId`} exact component={UpdateEmployeeView}></Route>
 
-                    <Route path={urls.USER_LIST_VIEW} exact component={UserListView}></Route>
-                    <Route path={urls.NEW_USER_VIEW} exact component={NewUserView}></Route>
-                    <Route path={`${urls.UPDATE_USER_VIEW}/:userId`} exact component={UpdateUserView}></Route>
+                <Route path={urls.USER_LIST_VIEW} exact component={UserListView}></Route>
+                <Route path={urls.NEW_USER_VIEW} exact component={NewUserView}></Route>
+                <Route path={`${urls.UPDATE_USER_VIEW}/:userId`} exact component={UpdateUserView}></Route>
 
-                    <Route path={`${urls.CUSTOMER_RESULT_VIEW}/:customerId`} exact component={CustomerResultView}></Route>
-                    <Route path={urls.CUSTOMER_LIST_VIEW} exact component={CustomerListView}></Route>
-                    <Route path={`${urls.NEW_CUSTOMER_VIEW}/:customerPhoneNumber?`} exact component={NewCustomerView}></Route>
-                    <Route path={`${urls.UPDATE_CUSTOMER_VIEW}/:customerId`} exact component={UpdateCustomerView}></Route>
+                <Route path={`${urls.CUSTOMER_RESULT_VIEW}/:customerId?`} exact component={CustomerResultView}></Route>
+                <Route path={urls.CUSTOMER_LIST_VIEW} exact component={CustomerListView}></Route>
+                <Route path={`${urls.NEW_CUSTOMER_VIEW}/:customerPhoneNumber?`} exact component={NewCustomerView}></Route>
+                <Route path={`${urls.UPDATE_CUSTOMER_VIEW}/:customerId`} exact component={UpdateCustomerView}></Route>
 
 
-                    <Route path={urls.PRODUCT_LIST_VIEW} exact component={ProductListView}></Route>
-                    <Route path={urls.NEW_PRODUCT_VIEW} exact component={NewProductView}></Route>
-                    <Route path={`${urls.UPDATE_PRODUCT_VIEW}/:productId`} exact component={UpdateProductView}></Route>
+                <Route path={urls.PRODUCT_LIST_VIEW} exact component={ProductListView}></Route>
+                <Route path={urls.NEW_PRODUCT_VIEW} exact component={NewProductView}></Route>
+                <Route path={`${urls.UPDATE_PRODUCT_VIEW}/:productId`} exact component={UpdateProductView}></Route>
 
-                    <Route path={urls.ORDER_LIST_VIEW} exact component={OrderListView}></Route>
-                    <Route path={urls.NEW_ORDER_VIEW} exact component={NewOrderView}></Route>
-                    <Route path={`${urls.UPDATE_ORDER_VIEW}/:orderId`} exact component={UpdateOrderView}></Route>
+                <Route path={urls.ORDER_LIST_VIEW} exact component={OrderListView}></Route>
+                <Route path={urls.NEW_ORDER_VIEW} exact component={NewOrderView}></Route>
+                <Route path={`${urls.UPDATE_ORDER_VIEW}/:orderId`} exact component={UpdateOrderView}></Route>
 
-                    <Route path={urls.RESERVATION_LIST_VIEW} exact component={ReservationListView}></Route>
-                    <Route path={urls.NEW_RESERVATION_VIEW} exact component={NewReservationView}></Route>
-                    <Route path={`${urls.UPDATE_RESERVATION_VIEW}/:reservationId`} exact component={UpdateReservationView}></Route>
-                  </div>
-                </div>
+                <Route path={urls.RESERVATION_LIST_VIEW} exact component={ReservationListView}></Route>
+                <Route path={urls.NEW_RESERVATION_VIEW} exact component={NewReservationView}></Route>
+                <Route path={`${urls.UPDATE_RESERVATION_VIEW}/:reservationId`} exact component={UpdateReservationView}></Route>
+
 
               </ContextAuthWrapper>
 
             </div>
+
           </Switch>
         </Router>
       </div>

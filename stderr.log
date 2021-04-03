@@ -1,0 +1,505 @@
+(node:1817074) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at Function.listen (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:94:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:87:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:87:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60
+      throw new TypeError(
+      ^
+
+TypeError: One of the "port", "server", or "noServer" options must be specified
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60:13)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:87:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60
+      throw new TypeError(
+      ^
+
+TypeError: One of the "port", "server", or "noServer" options must be specified
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60:13)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:87:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60
+      throw new TypeError(
+      ^
+
+TypeError: One of the "port", "server", or "noServer" options must be specified
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60:13)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:87:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60
+      throw new TypeError(
+      ^
+
+TypeError: One of the "port", "server", or "noServer" options must be specified
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:60:13)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:87:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)

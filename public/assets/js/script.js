@@ -35,6 +35,9 @@ Version      : 1.0
 
 
 	$(document).ready(function () {
+
+
+
 		// Sidebar
 		var Sidemenu = function () {
 			this.$menuItem = $('#sidebar-menu a');
@@ -43,7 +46,7 @@ Version      : 1.0
 		// Sidebar Initiate
 		init();
 
-		
+
 
 	})
 

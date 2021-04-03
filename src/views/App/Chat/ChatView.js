@@ -11,6 +11,7 @@ import {
 import { urls } from '../../../lib/urls';
 import ChatUsersList from '../../../components/Chat/ChatUsersList';
 import ChatConversation from '../../../components/Chat/ChatConversation';
+import Header from '../../../components/Header/Header';
 
 class ChatView extends Component {
 
@@ -38,43 +39,51 @@ class ChatView extends Component {
 
 
         return (
-            <div className="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div className="row">
-                                <div class="col">
-                                    <h5 class="card-title">Kayseri Şube Sipariş Yönetim</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <TabLiveOrder match={this.props.match} />
-
-                            <div class="chat-window mt-5">
-                                <Router>
-                                    <div className="row">
-                                        <div className="col-lg-6 offset-lg-3 col-md-12 col-12">
-                                            <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                                                <li class="nav-item"><Link class="nav-link active" to={`${urls.CHAT_LIST_VIEW}`}>Sohbetler</Link></li>
-                                                <li class="nav-item"><Link class="nav-link" to={`${urls.NEW_CHAT_VIEW}`}>Kişiler</Link></li>
-                                            </ul>
-                                            <Switch>
-                                                <Route path={`${urls.CHAT_LIST_VIEW}`} exact component={ChatList}></Route>
-                                                <Route path={`${urls.NEW_CHAT_VIEW}`} exact component={ChatUsersList}></Route>
-                                                <Route path={`${urls.CHAT_DETAIL_VIEW}/:chatId`} exact component={ChatConversation}></Route>
-                                            </Switch>
+            <>
+                <Header onClickToggleMobileMenu={this.handleOnClickToggleMobileMenu} />
+                <div className="page-wrapper" style={{ minHeight: '754px', marginLeft: '0px' }}>
+                    <div className="content container-fluid">
+                        <div className="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div className="row">
+                                            <div class="col">
+                                                <h5 class="card-title">Kayseri Şube Sipariş Yönetim</h5>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="card-body">
+                                        <TabLiveOrder match={this.props.match} />
 
-                                </Router>
+                                        <div class="chat-window mt-5">
+                                            <Router>
+                                                <div className="row">
+                                                    <div className="col-lg-6 offset-lg-3 col-md-12 col-12">
+                                                        <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                                                            <li class="nav-item"><Link class="nav-link active" to={`${urls.CHAT_LIST_VIEW}`}>Sohbetler</Link></li>
+                                                            <li class="nav-item"><Link class="nav-link" to={`${urls.NEW_CHAT_VIEW}`}>Kişiler</Link></li>
+                                                        </ul>
+                                                        <Switch>
+                                                            <Route path={`${urls.CHAT_LIST_VIEW}`} exact component={ChatList}></Route>
+                                                            <Route path={`${urls.NEW_CHAT_VIEW}`} exact component={ChatUsersList}></Route>
+                                                            <Route path={`${urls.CHAT_DETAIL_VIEW}/:chatId`} exact component={ChatConversation}></Route>
+                                                        </Switch>
+                                                    </div>
+                                                </div>
+
+                                            </Router>
 
 
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </>
 
 
         )
