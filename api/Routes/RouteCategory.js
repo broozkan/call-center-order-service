@@ -33,7 +33,7 @@ router.get('/:page', async (req, res) => {
 
     const options = {
         page: req.params.page,
-        limit: 10
+        limit: 50
     }
 
     CategoryModel.categoryModel.aggregatePaginate(aggregate, options, (err, result) => {

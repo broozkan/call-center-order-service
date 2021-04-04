@@ -44,8 +44,12 @@ router.get('/:page', async (req, res) => {
 
     }
     const aggregate = OrderModel.orderModel.aggregate([{
-        $match: req.query
-    }])
+        $match: req.query,
+    },
+    {
+        $sort: { order_created_at: -1 }
+    }
+    ])
 
     const options = {
         page: req.params.page,
