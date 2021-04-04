@@ -41,7 +41,7 @@ class LiveOrderView extends Component {
                         <div className="row">
                             <div class="col-lg-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header no-print">
                                         <div className="row">
                                             <div class="col">
                                                 <h5 class="card-title">{user.user_office.office_name} Sipariş Yönetim</h5>

@@ -68,8 +68,6 @@
     border: 1px solid lightgray;
 }
 
-
-
 .address-field {
     height: 80px;
 }
@@ -254,4 +252,35 @@
     z-index: 100000;
     text-align: right;
     left: 0;
+}
+
+#print-order-table tr td {
+    padding: .25rem!important;
+    white-space: break-spaces!important;
+}
+
+/* PRINT */
+
+@media print {
+    .no-print {
+        display: none!important;
+    }
+    .page-wrapper {
+        margin: 0!important;
+        padding: 0!important;
+    }
+    .content {
+        margin: 0!important;
+        padding: 0!important;
+    }
+    .table {
+        width: 100%!important;
+    }
+    .table tr td {
+        padding: .25rem!important;
+        white-space: pre!important;
+    }
+    p {
+        margin-bottom: 0!important;
+    }
 }

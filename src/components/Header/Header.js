@@ -43,7 +43,7 @@ class Header extends Component {
         }
 
         return (
-            <div className="header">
+            <div className="header  no-print">
                 <div className="header-left">
                     {/* <a href="index.html" className="logo">
                         <img src="/assets/img/logo.png" alt="Logo" />

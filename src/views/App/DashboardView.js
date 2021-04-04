@@ -10,6 +10,18 @@ import api from '../../services/api'
 class DashboardView extends Component {
 
     render() {
+        const user = JSON.parse(localStorage.getItem('user'))
+
+        // render analyses tables
+        let tableOfficeAnalysesJsx = ''
+        let tableEmployeeAnalysesJsx = ''
+        let tableProductAnalysesJsx = ''
+        if (user.user_type == 'super_user') {
+            tableOfficeAnalysesJsx = <TableAnalyseOffice />
+            tableEmployeeAnalysesJsx = <TableAnalyseEmployee />
+            tableProductAnalysesJsx = <TableAnalyseProduct />
+        }
+
         return (
             <>
                 <Header onClickToggleMobileMenu={this.handleOnClickToggleMobileMenu} />
@@ -29,13 +41,13 @@ class DashboardView extends Component {
                                     <div class="card-body">
                                         <div class="tab-content mt-0">
                                             <div class="tab-pane show active" id="bottom-justified-tab1">
-                                                <TableAnalyseOffice />
+                                                {tableOfficeAnalysesJsx}
                                             </div>
                                             <div class="tab-pane" id="bottom-justified-tab2">
-                                                <TableAnalyseEmployee />
+                                                {tableEmployeeAnalysesJsx}
                                             </div>
                                             <div class="tab-pane" id="bottom-justified-tab3">
-                                                <TableAnalyseProduct />
+                                                {tableProductAnalysesJsx}
                                             </div>
                                         </div>
                                     </div>

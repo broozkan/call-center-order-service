@@ -6,6 +6,8 @@ import { urls } from '../../../lib/urls'
 import api from '../../../services/api'
 import Pagination from '../../Pagination/Pagination'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
+import hasdoner from '../../../images/hasdoner.png'
+
 const client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
 
 class TableLiveOrder extends Component {
@@ -16,12 +18,14 @@ class TableLiveOrder extends Component {
             orders: [],
             pagination_info: '',
             current_page: 1,
-            is_orders_loaded: false
+            is_orders_loaded: false,
+            print_order: {}
         }
 
         this.loadOrders = this.loadOrders.bind(this)
         this.handleOnClickDelete = this.handleOnClickDelete.bind(this)
         this.handleOnClickChangeOrderStatus = this.handleOnClickChangeOrderStatus.bind(this)
+        this.handleOnClickPrint = this.handleOnClickPrint.bind(this)
     }
 
     componentWillMount() {
@@ -120,6 +124,22 @@ class TableLiveOrder extends Component {
         }
     }
 
+    async handleOnClickPrint(e) {
+        let printOrder = {}
+        this.state.orders.map((item) => {
+            if (e.target.dataset.id == item._id) {
+                printOrder = item
+            }
+        })
+
+        await this.setState({
+            print_order: printOrder
+        })
+        window.print()
+        await this.setState({
+            print_order: {}
+        })
+    }
 
     handleOnClickDelete = (e) => {
         deleteObject(`/orders/${e.target.dataset.id}`, (response) => {
@@ -190,7 +210,7 @@ class TableLiveOrder extends Component {
                 let operationColumnJsx = (
                     <td>
                         <h2>
-                            {item.order_created_at}
+                            {item.date_time}
                             <span><i className="fas fa-user"></i> B***** Ö*****</span>
                         </h2>
                     </td>
@@ -199,10 +219,10 @@ class TableLiveOrder extends Component {
                     operationColumnJsx = (
                         <td>
                             <h2 className="float-right">
-                                {item.order_created_at}
+                                {item.date_time}
                                 <span><i className="fas fa-user"></i> B***** Ö*****</span>
                             </h2>
-                            <button data-id={item._id} onClick={this.handleOnClickDelete} className="btn btn-outline-primary"><i className="fas fa-print"></i> Yazdır</button>
+                            <button data-id={item._id} onClick={this.handleOnClickPrint} className="btn btn-outline-primary"><i className="fas fa-print"></i> Yazdır</button>
                             <p>
                                 <h6>Durumunu değiştir</h6>
                                 <div class="btn-group btn-group-md">
@@ -256,34 +276,150 @@ class TableLiveOrder extends Component {
                 </div>
             )
         }
+        if (this.state.print_order.order_code) {
+            let dashes = (
+                <>-----------------------------------------------------------------------------</>
+            )
 
-        return (
-            <div className="row">
-                {filterTabsJsx}
-                <div className="col-lg-12">
-                    <div class="table-responsive">
-                        <table class="table table-hover mb-0 table-live-order">
-                            <thead>
-                                <tr>
-                                    <th>Kodu</th>
-                                    <th>Müşteri</th>
-                                    <th>Ürün</th>
-                                    <th>Tutar</th>
-                                    <th>Durum</th>
-                                    <th>Not</th>
-                                    <th>İşlem</th>
-                                </tr>
-                            </thead>
+            let orderProductsJsx = this.state.print_order.order_products.map((item) => {
+                let propertiesJsx = item.selected_properties.map((property) => {
+                    return (
+                        <p>-{property.property}</p>
+                    )
+                })
+
+                let productAmount = parseInt(item.product_piece) * parseFloat(item.product.product_unit_price)
+                return (
+                    <div className="table-responsive">
+                        <table className="table">
                             <tbody>
-                                {ordersJsx}
+                                <tr>
+                                    <td style={{ width: '35%' }}>
+                                        <strong>{item.product_piece} X {item.product.product_name}</strong>
+                                        <br></br>
+                                        {propertiesJsx}
+                                    </td>
+                                    <td>
+                                        <h2 style={{ fontSize: '20px' }}>
+                                            {productAmount} ₺
+                                        </h2>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-                        <Pagination object={this.state.pagination_info} onClick={this.loadOrders} />
+                    </div>
+                )
+            })
+
+
+            return (
+                <>
+                    <div className="row">
+                        <div className="col-12">
+                            <img src={hasdoner} width="80" style={{ marginLeft: '17%' }} />
+                            <br></br>
+                            <div className="table-responsive">
+                                <table className="table">
+                                    <tbody>
+
+                                        <tr>
+                                            <td>
+                                                <strong>No: </strong>  {this.state.print_order.order_code}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Tarih: </strong>  {this.state.print_order.date_time}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Müşteri: </strong>  {this.state.print_order.order_customer.customer_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Telefon: </strong>  {this.state.print_order.order_customer.customer_phone_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Adres: </strong>
+                                                {this.state.print_order.order_address.address}
+                                                <br></br>
+                                                {this.state.print_order.order_address.address_description}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Not: </strong>
+                                                {this.state.print_order.order_note}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            {dashes}
+                        </div>
+
+                        <h3 style={{ marginLeft: '18%' }}>Ürünler</h3>
+                        {orderProductsJsx}
+                        <br></br>
+                        {dashes}
+                        <br></br>
+                        {dashes}
+                        <br></br>
+                        <div className="table-responsive">
+                            <table className="table">
+                                <tbody>
+                                    <tr>
+                                        <td style={{ borderTop: 'none' }}>
+                                            <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginLeft: '9%' }}>Toplam : {this.state.print_order.order_amount} ₺</h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {dashes}
+                        <br></br>
+                        {dashes}
+                    </div>
+                    <div className="row">
+                        <p style={{ marginLeft: '9%' }}>Bizi tercih ettiğiniz için teşekkür ederiz</p>
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <div className="row">
+                    {filterTabsJsx}
+                    <div className="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 table-live-order">
+                                <thead>
+                                    <tr>
+                                        <th>Kodu</th>
+                                        <th>Müşteri</th>
+                                        <th>Ürün</th>
+                                        <th>Tutar</th>
+                                        <th>Durum</th>
+                                        <th>Not</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {ordersJsx}
+                                </tbody>
+                            </table>
+                            <Pagination object={this.state.pagination_info} onClick={this.loadOrders} />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        )
+            )
+        }
+
     }
 }
 export default TableLiveOrder
