@@ -23,6 +23,8 @@ class FormSearchCustomer extends Component {
 
 
     handleOnChange = (e) => {
+
+
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -31,7 +33,34 @@ class FormSearchCustomer extends Component {
     async handleOnSubmit(e) {
         e.preventDefault()
 
-        getCustomers(1, { 'customer_phone_number': this.state.customer_phone_number }, (results) => {
+        let phoneNumber = ''
+        for (let index = 0; index < this.state.customer_phone_number.length; index++) {
+            if (index == 0) {
+                if (this.state.customer_phone_number[0] == "0" || this.state.customer_phone_number[0] == "+") {
+                    continue
+                } else {
+                    phoneNumber += this.state.customer_phone_number[index]
+                }
+            } else if (index == 1) {
+                if (this.state.customer_phone_number[1] == "9") {
+                    continue
+                } else {
+                    phoneNumber += this.state.customer_phone_number[index]
+                }
+            } else if (index == 2) {
+                if (this.state.customer_phone_number[2] == "0") {
+                    continue
+                } else {
+                    phoneNumber += this.state.customer_phone_number[index]
+                }
+            } else {
+                phoneNumber += this.state.customer_phone_number[index]
+            }
+
+        }
+
+
+        getCustomers(1, { 'customer_phone_number': phoneNumber }, (results) => {
             this.setState({
                 customer: results.data.docs,
                 is_customer_loaded: true

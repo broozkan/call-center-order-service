@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb';
 import Header from '../../../components/Header/Header';
 import Sidebar from '../../../components/Sidebar/Sidebar';
+import TableLiveOrder from '../../../components/Table/Order/TableLiveOrder';
 import TableOrder from '../../../components/Table/Order/TableOrder'
 import { urls } from '../../../lib/urls'
 
@@ -32,7 +33,7 @@ class OrderListView extends Component {
 
                                 </div>
                                 <div class="card-body">
-                                    <TableOrder />
+                                    <TableLiveOrder />
                                 </div>
                             </div>
                         </div>

@@ -85,6 +85,15 @@ class TableCustomer extends Component {
 
         return (
             <div class="table-responsive">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <form method="POST" className="form-inline">
+
+                        </form>
+
+                    </div>
+
+                </div>
                 <table class="table table-hover mb-0">
                     <thead>
                         <tr>

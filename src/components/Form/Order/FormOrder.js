@@ -34,6 +34,7 @@ class FormOrder extends Component {
             order_amount: 0
         }
 
+        this.resetState = this.resetState.bind(this)
         this.handleOnClick = this.handleOnClick.bind(this)
         this.handleOnClickGetProducts = this.handleOnClickGetProducts.bind(this)
         this.handleOnSubmit = this.handleOnSubmit.bind(this)
@@ -70,12 +71,15 @@ class FormOrder extends Component {
 
     resetState() {
         this.setState({
-            products: [],
-            order_address: {},
-            order_office: {},
-            order_payment_method: {},
             order_products: [],
-            is_products_loaded: false
+            order_office: {},
+            order_address: {},
+            order_payment_method: {},
+            order_amount: 0.00,
+            order_note: '',
+            order_product_piece: 1,
+            clicked_category_id: '',
+            order_amount: 0
         })
     }
     async componentDidMount() {
@@ -179,7 +183,7 @@ class FormOrder extends Component {
     }
 
 
-    handleOnClickGetProducts(e) {
+    async handleOnClickGetProducts(e) {
 
         if (!this.state.order_address._id) {
             Swal.fire({
@@ -190,7 +194,7 @@ class FormOrder extends Component {
             return false
         }
 
-        this.setState({
+        await this.setState({
             is_products_loading: true,
             clicked_category_id: e.currentTarget.dataset.id
         })
@@ -226,13 +230,13 @@ class FormOrder extends Component {
         } else {
             submitResponse = await api.post(`/orders`, data, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
         }
-        console.log(submitResponse.data.status);
 
         if (submitResponse.data.status != 400) {
             Swal.fire({
                 title: "İşlem başarılı!",
                 icon: "success"
             })
+            this.resetState()
         } else {
             Swal.fire({
                 title: "Hata",
@@ -625,8 +629,8 @@ class FormOrder extends Component {
                                 </div>
                             </div> */}
                             <div className="form-group">
-                                <button type="submit" className="btn btn-primary btn-lg"><i className="fas fa-save"></i> Kaydet</button>
-
+                                <button type="submit" className="btn btn-primary btn-lg"><i className="fas fa-save"></i> Gönder</button>
+                                <button type="button" className="btn btn-outline-danger ml-2 btn-lg" onClick={this.resetState}><i className="fas fa-times"></i> İptal</button>
                             </div>
                         </form>
 

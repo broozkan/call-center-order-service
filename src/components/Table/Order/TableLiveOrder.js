@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { deleteObject, getOrders } from '../../../controllers/MainController'
+import { deleteObject, getOffices, getOrders } from '../../../controllers/MainController'
 import { urls } from '../../../lib/urls'
 import api from '../../../services/api'
 import Pagination from '../../Pagination/Pagination'
@@ -19,7 +19,10 @@ class TableLiveOrder extends Component {
             pagination_info: '',
             current_page: 1,
             is_orders_loaded: false,
-            print_order: {}
+            print_order: {},
+            offices: [],
+            is_offices_loaded: false,
+            filters: {}
         }
 
         this.loadOrders = this.loadOrders.bind(this)
@@ -45,6 +48,13 @@ class TableLiveOrder extends Component {
                     orders: response.data.docs,
                     pagination_info: response.data,
                     is_orders_loaded: true
+                })
+            })
+
+            getOffices(1, params, (response) => {
+                this.setState({
+                    offices: response.data.docs,
+                    is_offices_loaded: true
                 })
             })
         }
@@ -159,7 +169,29 @@ class TableLiveOrder extends Component {
 
     }
 
+    handleOnChange(e) {
+        if (e.target.name == "office_id") {
+            let filters = this.state.filters
+            filters[e.target.name] = e.target.value
+
+            this.setState({
+                filters
+            })
+        }
+
+    }
+
     render() {
+
+        // render offices 
+        let officesJsx = ''
+        if (this.state.is_offices_loaded) {
+            officesJsx = this.state.offices.map((item) => {
+                return (
+                    <option value={item._id}>{item.office_name}</option>
+                )
+            })
+        }
 
         const user = JSON.parse(localStorage.getItem('user'))
 
@@ -344,6 +376,11 @@ class TableLiveOrder extends Component {
                                         </tr>
                                         <tr>
                                             <td>
+                                                <strong>Ödeme: </strong>  {this.state.print_order.order_payment_method.payment_method_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 <strong>Adres: </strong>
                                                 {this.state.print_order.order_address.address}
                                                 <br></br>
@@ -393,6 +430,23 @@ class TableLiveOrder extends Component {
         } else {
             return (
                 <div className="row">
+                    <div className="col-lg-12">
+                        <form className="form-inline d-flex justify-content-center py-3">
+                            <div className="form-group">
+                                <label>Şube</label>
+                                <select className="form-control" name="office_id" onChange={this.handleOnChange}>
+                                    <option value="" selected>Şube Seçiniz</option>
+                                    {officesJsx}
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <button className="btn btn-primary ml-2"><i className="fas fa-search"></i></button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
                     {filterTabsJsx}
                     <div className="col-lg-12">
                         <div class="table-responsive">

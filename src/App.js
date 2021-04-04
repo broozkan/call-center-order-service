@@ -57,6 +57,7 @@ class App extends Component {
     this.handleOnClickToggleMobileMenu = this.handleOnClickToggleMobileMenu.bind(this)
   }
 
+
   handleOnClickToggleMobileMenu() {
     if (this.state.mobile_menu_class_name == 'slide-nav') {
       this.setState({
