@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2'
+import provinces from '../../../lib/provinces'
 import api from '../../../services/api'
 
 class FormEmployee extends Component {
@@ -72,6 +73,14 @@ class FormEmployee extends Component {
 
 
     render() {
+        // render provinces
+        let provincesJsx = provinces.map((item) => {
+            return (
+                <option value={item}>{item}</option>
+            )
+        })
+
+
         return (
             <form method="POST" onSubmit={this.handleOnSubmit}>
                 <div class="form-group">
@@ -82,8 +91,7 @@ class FormEmployee extends Component {
                     <label>Şehir</label>
                     <select className="form-control" name="employee_province" value={this.state.employee_province} onChange={this.handleOnChange}>
                         <option value="" selected disabled>Şehir Seçiniz</option>
-                        <option value="Sivas">Sivas</option>
-                        <option value="Kayseri">Kayseri</option>
+                        {provincesJsx}
                     </select>
                 </div>
                 <div class="form-group">

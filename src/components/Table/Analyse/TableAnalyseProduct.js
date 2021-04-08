@@ -111,6 +111,7 @@ class TableAnalyseProduct extends Component {
                 return (
                     <tr>
                         <td>{item._id.product.product_name}</td>
+                        <td>{item.count}</td>
                         <td>{parseFloat(item.total).toFixed(2)} ₺</td>
                     </tr>
                 )
@@ -163,18 +164,18 @@ class TableAnalyseProduct extends Component {
                             <div className="form-row">
                                 <div class="form-group">
                                     <label>Şube</label>
-                                    <select className="form-control" name="product_office" value={this.state.filters["product_office"]} onChange={this.handleOnChange}>
+                                    <select className="form-control" required name="product_office" value={this.state.filters["product_office"]} onChange={this.handleOnChange}>
                                         <option value="" selected disabled>Hiçbiri</option>
                                         {officesJsx}
                                     </select>
                                 </div>
                                 <div className="form-group">
                                     <label>Başlangıç Tarihi</label>
-                                    <input className="form-control" name="beginning_date" value={this.state.filters["beginning_date"]} onChange={this.handleOnChange} type="date" />
+                                    <input className="form-control" required name="beginning_date" value={this.state.filters["beginning_date"]} onChange={this.handleOnChange} type="date" />
                                 </div>
                                 <div className="form-group ml-3">
                                     <label>Bitiş Tarihi</label>
-                                    <input className="form-control" name="ending_date" value={this.state.filters["ending_date"]} onChange={this.handleOnChange} type="date" />
+                                    <input className="form-control" required name="ending_date" value={this.state.filters["ending_date"]} onChange={this.handleOnChange} type="date" />
                                 </div>
                                 <div className="form-group ml-3">
                                     <button type="submit" className="btn btn-primary"><i className="fas fa-search"></i></button>
@@ -187,6 +188,7 @@ class TableAnalyseProduct extends Component {
                     <thead>
                         <tr>
                             <th>Ürün</th>
+                            <th>Adet</th>
                             <th>Sipariş Toplamı</th>
                         </tr>
                     </thead>

@@ -213,6 +213,22 @@ class FormOrder extends Component {
     handleOnSubmit = async (e) => {
         e.preventDefault()
 
+        if (!this.state.order_payment_method.payment_method_name) {
+            Swal.fire({
+                title: 'Lütfen ödeme yöntemi seçiniz',
+                icon: 'error'
+            })
+            return false
+        }
+
+        if (this.state.order_products.length < 1) {
+            Swal.fire({
+                title: 'Ürün seçimi yapmalısınız',
+                icon: 'error'
+            })
+            return false
+        }
+
         const data = {
             order_customer: this.state.order_customer,
             order_address: this.state.order_address,

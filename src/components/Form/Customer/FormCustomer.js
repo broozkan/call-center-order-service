@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import Swal from 'sweetalert2'
+import provinces from '../../../lib/provinces'
 import { urls } from '../../../lib/urls'
 import api from '../../../services/api'
 
@@ -159,6 +160,14 @@ class FormCustomer extends Component {
 
     render() {
 
+        // render provinces
+        let provincesJsx = provinces.map((item) => {
+            return (
+                <option value={item}>{item}</option>
+            )
+        })
+
+
         // render adresses
         let adressesJsx = this.state.customer_address.map((item, index) => {
             return (
@@ -170,7 +179,7 @@ class FormCustomer extends Component {
                     <div className="col-lg-3">
                         <label>Adres Tanımı </label>
 
-                        <input type="text" class="form-control" autoComplete="off"  data-index={index} name="address_description" value={item.address_description} onChange={this.handleOnChange} placeholder="Adres tanımı giriniz" />
+                        <input type="text" class="form-control" autoComplete="off" data-index={index} name="address_description" value={item.address_description} onChange={this.handleOnChange} placeholder="Adres tanımı giriniz" />
                     </div>
                     <div className="col-lg-2">
                         <label>Minimum Tutar *</label>
@@ -180,8 +189,7 @@ class FormCustomer extends Component {
                         <label>İl *</label>
                         <select required className="form-control" data-index={index} name="address_province" value={item.address_province} onChange={this.handleOnChange}>
                             <option value="" disabled selected>İl Seçiniz</option>
-                            <option value="Sivas">Sivas</option>
-                            <option value="Kayseri">Kayseri</option>
+                            {provincesJsx}
                         </select>
                     </div>
                     <div className="col-lg-1">

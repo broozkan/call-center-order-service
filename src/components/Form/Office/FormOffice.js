@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Swal from 'sweetalert2'
 import api from '../../../services/api'
+import provinces from '../../../lib/provinces'
 
 class FormOffice extends Component {
 
@@ -68,7 +69,17 @@ class FormOffice extends Component {
     }
 
 
+
+
     render() {
+
+        // render provinces
+        let provincesJsx = provinces.map((item) => {
+            return (
+                <option value={item}>{item}</option>
+            )
+        })
+
         return (
             <form method="POST" onSubmit={this.handleOnSubmit}>
                 <div class="form-group">
@@ -76,11 +87,10 @@ class FormOffice extends Component {
                     <input type="text" class="form-control" name="office_name" value={this.state.office_name} onChange={this.handleOnChange} />
                 </div>
                 <div class="form-group">
-                    <label>Şehri</label>
+                    <label>Şehir</label>
                     <select className="form-control" name="office_province" value={this.state.office_province} onChange={this.handleOnChange}>
-                        <option value="" selected disabled>Şube Seçiniz</option>
-                        <option value="Sivas">Sivas</option>
-                        <option value="Kayseri">Kayseri</option>
+                        <option value="" selected disabled>Şehir Seçiniz</option>
+                        {provincesJsx}
                     </select>
                 </div>
                 <div class="form-group">

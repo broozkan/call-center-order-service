@@ -31,9 +31,6 @@ class TableLiveOrder extends Component {
         this.handleOnClickPrint = this.handleOnClickPrint.bind(this)
     }
 
-    componentWillMount() {
-
-    }
 
     async componentWillReceiveProps(nextProps) {
 
@@ -72,9 +69,18 @@ class TableLiveOrder extends Component {
         }
 
 
+
         if (this.props.match) {
             params.order_status = this.props.match.params.orderState
         }
+
+        const user = JSON.parse(localStorage.getItem('user'))
+        if (user.user_type == "office_user") {
+            params['order_office._id'] = user.user_office._id
+        }
+
+        console.log(params);
+
 
         await getOrders(this.state.current_page, params, (response) => {
             this.setState({
@@ -85,7 +91,6 @@ class TableLiveOrder extends Component {
 
             client.onopen = () => {
                 console.log('WebSocket Client Connected');
-                alert('WebSocket Client Connected');
             };
 
             client.onmessage = (message) => {
@@ -103,6 +108,8 @@ class TableLiveOrder extends Component {
         if (this.props.params) {
             params = this.props.params
         }
+
+
 
         getOrders(page, params, (response) => {
             this.setState({
@@ -430,7 +437,7 @@ class TableLiveOrder extends Component {
         } else {
             return (
                 <div className="row">
-                    <div className="col-lg-12">
+                    {/* <div className="col-lg-12">
                         <form className="form-inline d-flex justify-content-center py-3">
                             <div className="form-group">
                                 <label>Şube</label>
@@ -446,7 +453,7 @@ class TableLiveOrder extends Component {
 
                         </form>
 
-                    </div>
+                    </div> */}
                     {filterTabsJsx}
                     <div className="col-lg-12">
                         <div class="table-responsive">
