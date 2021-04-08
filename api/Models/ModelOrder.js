@@ -15,7 +15,7 @@ const checkOrderProductsLength = (val) => {
 const orderSchema = mongoose.Schema({
     order_code: {
         type: String,
-        default: Math.floor(Math.random() * 1000)
+        required: true
     },
     order_customer: CustomerModel.customerSchema,
     order_address: AddressModel.addressSchema,

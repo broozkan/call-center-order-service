@@ -4,6 +4,7 @@ const OrderModel = require('../Models/ModelOrder')
 class Order {
     constructor(order_customer, order_address, order_products, order_office, order_amount, order_payment_method, order_note, order_user) {
         this.order_id = ''
+        this.order_code = parseInt(Math.floor(Math.random() * 1000))
         this.order_customer = order_customer
         this.order_address = order_address
         this.order_products = order_products
