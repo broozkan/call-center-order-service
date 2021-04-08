@@ -503,3 +503,773 @@ TypeError: One of the "port", "server", or "noServer" options must be specified
     at Module.load (internal/modules/cjs/loader.js:653:32)
     at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
     at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+(node:2611888) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
+(node:113746) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:113746) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 2)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 4)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 5)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 6)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 7)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 8)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 9)
+(node:113746) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "_id" for model "Category"
+    at model.Query.exec (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4361:21)
+    at model.Query.Query.then (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4455:15)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 10)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 11)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 12)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 13)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 14)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 15)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 16)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 17)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 18)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 19)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 20)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 21)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 22)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 23)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 24)
+(node:113746) UnhandledPromiseRejectionWarning: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:142:11)
+    at new Aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/aggregate.js:56:17)
+    at Function.aggregate (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/model.js:3973:21)
+    at router.get (/home/turkeyba/callcenter_backend/Routes/RouteAnalyse.js:64:45)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:113746) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 25)
+(node:2361860) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'forEach' of undefined
+    at broadcast (/home/turkeyba/callcenter_backend/Routes/RouteOrder.js:17:13)
+    at router.patch (/home/turkeyba/callcenter_backend/Routes/RouteOrder.js:123:5)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at param (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:2361860) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2361860) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+(node:2361860) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'forEach' of undefined
+    at broadcast (/home/turkeyba/callcenter_backend/Routes/RouteOrder.js:17:13)
+    at router.patch (/home/turkeyba/callcenter_backend/Routes/RouteOrder.js:123:5)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at param (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:2361860) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 2)
+(node:2361860) UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'forEach' of undefined
+    at broadcast (/home/turkeyba/callcenter_backend/Routes/RouteOrder.js:17:13)
+    at router.patch (/home/turkeyba/callcenter_backend/Routes/RouteOrder.js:123:5)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:281:22
+    at param (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:317:13)
+    at /home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/express/lib/router/index.js:284:7
+(node:2361860) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3)
+(node:2361860) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
+(node:2508532) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#findandmodify
+(node:2508532) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "_id" for model "Product"
+    at model.Query.exec (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4361:21)
+    at model.Query.Query.then (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4455:15)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+(node:2508532) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2508532) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+(node:2508532) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "_id" for model "Product"
+    at model.Query.exec (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4361:21)
+    at model.Query.Query.then (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4455:15)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+(node:2508532) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 2)
+(node:2508532) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "_id" for model "Product"
+    at model.Query.exec (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4361:21)
+    at model.Query.Query.then (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4455:15)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+(node:2508532) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3)
+(node:2508532) UnhandledPromiseRejectionWarning: CastError: Cast to ObjectId failed for value "undefined" at path "_id" for model "Product"
+    at model.Query.exec (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4361:21)
+    at model.Query.Query.then (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/mongoose/lib/query.js:4455:15)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+(node:2508532) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 4)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+/usr/local/lsws/fcgi-bin/lsnode.js:68
+        throw new Error("http.Server.listen() was called more than once " +
+        ^
+
+Error: http.Server.listen() was called more than once which is not allowed.
+    at Server.customListen [as listen] (/usr/local/lsws/fcgi-bin/lsnode.js:68:15)
+    at new WebSocketServer (/home/turkeyba/nodevenv/callcenter_backend/10/lib/node_modules/ws/lib/websocket-server.js:75:20)
+    at Object.<anonymous> (/home/turkeyba/callcenter_backend/index.js:91:25)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at startApplication (/usr/local/lsws/fcgi-bin/lsnode.js:48:15)
+    at Object.<anonymous> (/usr/local/lsws/fcgi-bin/lsnode.js:16:1)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)

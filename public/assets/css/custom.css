@@ -116,7 +116,7 @@
 .products-column {
     padding-right: 15px;
     padding-left: 15px;
-    height: 25vh;
+    height: 28vh;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -130,7 +130,7 @@
 }
 
 #categories {
-    max-height: 90px;
+    max-height: 105px;
     overflow: hidden;
     overflow-y: scroll;
 }
