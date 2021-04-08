@@ -57,6 +57,12 @@ class App extends Component {
     this.handleOnClickToggleMobileMenu = this.handleOnClickToggleMobileMenu.bind(this)
   }
 
+  componentDidMount() {
+    if (window.location.protocol == 'http:') {
+      window.location.href = `https://${window.location.host}`
+    }
+  }
+
 
   handleOnClickToggleMobileMenu() {
     if (this.state.mobile_menu_class_name == 'slide-nav') {
