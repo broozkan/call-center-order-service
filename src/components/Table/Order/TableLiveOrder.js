@@ -10,6 +10,11 @@ import hasdoner from '../../../images/hasdoner.png'
 
 const client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
 
+client.onopen = () => {
+    console.log('WebSocket Client Connected');
+};
+const audioEl = document.getElementsByClassName("audio-element")[0]
+
 class TableLiveOrder extends Component {
     constructor() {
         super()
@@ -22,9 +27,9 @@ class TableLiveOrder extends Component {
             print_order: {},
             offices: [],
             is_offices_loaded: false,
-            filters: {}
+            filters: {},
+            play: false
         }
-
         this.loadOrders = this.loadOrders.bind(this)
         this.handleOnClickDelete = this.handleOnClickDelete.bind(this)
         this.handleOnClickChangeOrderStatus = this.handleOnClickChangeOrderStatus.bind(this)
@@ -58,10 +63,7 @@ class TableLiveOrder extends Component {
     }
 
 
-
     async componentDidMount() {
-
-
 
         let params = {}
         if (this.props.params) {
@@ -79,7 +81,6 @@ class TableLiveOrder extends Component {
             params['order_office._id'] = user.user_office._id
         }
 
-        console.log(params);
 
 
         await getOrders(this.state.current_page, params, (response) => {
@@ -89,17 +90,24 @@ class TableLiveOrder extends Component {
                 is_orders_loaded: true
             })
 
-            client.onopen = () => {
-                console.log('WebSocket Client Connected');
-            };
+
+
 
             client.onmessage = (message) => {
                 console.log(message.data);
                 if (message.data == "ORDER_STATE_CHANGED") {
+                    audioEl.play()
                     this.loadOrders()
                 }
             };
         })
+
+        const interval = setInterval(() => {
+            // console.log(client)
+            if (client.readyState != 1) {
+                window.location.reload()
+            }
+        }, 5000);
 
     }
 
@@ -437,6 +445,9 @@ class TableLiveOrder extends Component {
         } else {
             return (
                 <div className="row">
+                    <audio className="audio-element">
+                        <source src="https://assets.coderrocketfuel.com/pomodoro-times-up.mp3"></source>
+                    </audio>
                     {/* <div className="col-lg-12">
                         <form className="form-inline d-flex justify-content-center py-3">
                             <div className="form-group">
