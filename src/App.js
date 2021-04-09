@@ -59,7 +59,7 @@ class App extends Component {
 
   componentDidMount() {
     if (window.location.protocol == 'http:') {
-      window.location.href = `https://${window.location.host}`
+      // window.location.href = `https://${window.location.host}`
     }
   }
 

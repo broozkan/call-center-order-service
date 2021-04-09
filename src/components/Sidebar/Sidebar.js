@@ -24,7 +24,8 @@ class Sidebar extends Component {
                 </>
             )
         } else {
-            <>
+            linksJsx = (
+                <>
                 <li className="menu-title"><span>Main</span></li>
                 <li className="active">
                     <Link to={urls.DASHBOARD_VIEW}><i className="fas fa-home"></i> <span>Panel</span></Link>
@@ -54,6 +55,8 @@ class Sidebar extends Component {
                     <Link to={urls.RESERVATION_LIST_VIEW}><i className="fas fa-edit"></i> <span>Rezervasyonlar</span></Link>
                 </li>
             </>
+            )
+            
         }
 
 
