@@ -22,7 +22,7 @@ class OrderListView extends Component {
                                 <div class="card-header">
                                     <div className="row">
                                         <div class="col">
-                                            <h5 class="card-title">Siparişlar</h5>
+                                            <h5 class="card-title">Siparişler</h5>
                                         </div>
                                         <div class="col-auto">
                                             <Link to={urls.NEW_ORDER_VIEW} class="btn-right btn btn-sm btn-outline-primary">
