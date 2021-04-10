@@ -262,6 +262,9 @@
 /* PRINT */
 
 @media print {
+    .print {
+        height: 100px!important;
+    }
     .no-print {
         display: none!important;
     }
@@ -277,8 +280,13 @@
         width: 100%!important;
     }
     .table tr td {
-        padding: .25rem!important;
+        padding: .15rem!important;
         white-space: pre!important;
+        font-size: 3rem!important;
+    }
+    .table tr td h2#total_amount{
+        text-align: center;
+        font-size: 5rem!important;
     }
     p {
         margin-bottom: 0!important;

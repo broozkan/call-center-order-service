@@ -44,6 +44,7 @@ import OfficeMenuView from "./views/App/Office/OfficeMenuView";
 import UserListView from "./views/App/User/UserListView";
 import NewUserView from "./views/App/User/NewUserView";
 import UpdateUserView from "./views/App/User/UpdateUserView";
+import OfficeAnalyseView from "./views/App/Office/OfficeAnalyseView";
 
 
 class App extends Component {
@@ -59,7 +60,7 @@ class App extends Component {
 
   componentDidMount() {
     if (window.location.protocol == 'http:') {
-      // window.location.href = `https://${window.location.host}`
+      window.location.href = `https://${window.location.host}`
     }
   }
 
@@ -89,6 +90,7 @@ class App extends Component {
             <div className={`main-wrapper ${this.state.mobile_menu_class_name}`}>
               <ContextAuthWrapper>
                 <Route path={`${urls.LIVE_ORDER_VIEW}/:orderState?`} exact component={LiveOrderView}></Route>
+                <Route path={`${urls.OFFICE_ANALYSE_VIEW}`} exact component={OfficeAnalyseView}></Route>
                 <Route path={`${urls.OFFICE_MENU_VIEW}/:availabilityState?`} exact component={OfficeMenuView}></Route>
                 <Route path={`${urls.CHAT_VIEW}/:aside/:chatId?`} exact component={ChatView}></Route>
                 <Route path={urls.DASHBOARD_VIEW} exact component={DashboardView}></Route>

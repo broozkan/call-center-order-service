@@ -6,7 +6,7 @@ Options -MultiViews
 
     RewriteRule ^ index.html [QSA,L]
 
-    RewriteRule ^(.*)$ https://callcenter.broozkan.com/$1 [R,L]
+    RewriteRule ^(.*)$ https://sarikurye.com/$1 [R,L]
 
 # php -- BEGIN cPanel-generated handler, do not edit
 # “ea-php73” paketini varsayılan “PHP” programlama dili olarak ayarlayın.

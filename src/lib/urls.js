@@ -3,6 +3,7 @@ export const urls = {
 
     "LOGIN_VIEW": "/login",
     "LIVE_ORDER_VIEW": "/canli-siparis-ekrani",
+    "OFFICE_ANALYSE_VIEW": "/sube-analiz",
     "OFFICE_MENU_VIEW": "/sube-menusu",
     "OFFICE_MENU_VIEW_OUT_OF_STOCK": "/sube-menusu/out-of-stock",
     "OFFICE_MENU_VIEW_ON_STOCK": "/sube-menusu/on-stock",

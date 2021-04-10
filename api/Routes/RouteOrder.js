@@ -42,6 +42,10 @@ router.get('/:page', async (req, res) => {
             req.query["order_customer._id"] = mongoose.Types.ObjectId(req.query["order_customer._id"])
         }
 
+        if (req.query["order_customer.customer_name"]) {
+            req.query["order_customer.customer_name"] = { $regex: new RegExp(req.query["order_customer.customer_name"], "i") }
+        }
+
         if (req.query["order_office._id"]) {
             req.query["order_office._id"] = mongoose.Types.ObjectId(req.query["order_office._id"])
         }
@@ -136,6 +140,10 @@ router.patch('/:orderId', async (req, res) => {
                 status: 400
             })
         } else {
+            console.log(req.body);
+            if (req.body.order_status == "cancelled") {
+                broadcast(req.app.locals.clients, "ORDER_CANCELLED");
+            }
             res.send({
                 response: true,
                 responseData: updatedOrder

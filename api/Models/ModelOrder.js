@@ -41,7 +41,9 @@ const orderSchema = mongoose.Schema({
             "pending",
             "preparing",
             "on_delivery",
-            "delivered"
+            "delivered",
+            "cancelled",
+            "cancellation_accepted"
         ]
     },
     order_created_at: {

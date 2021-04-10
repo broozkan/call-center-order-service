@@ -88,7 +88,7 @@ server.listen(process.env.PORT || 8999, () => {
     console.log(`Server started on port ${server.address().port} :)`);
 });
 
-const webSocketServer = new WebSocket.Server({ port: 9000 });
+const webSocketServer = new WebSocket.Server({ server: server });
 webSocketServer.on("connection", (webSocket) => {
 
     console.info("Total connected clients:", webSocketServer.clients.size);
