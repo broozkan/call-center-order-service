@@ -29,10 +29,20 @@ class TableAnalyseProduct extends Component {
 
 
     async componentDidMount() {
-        await getOffices(1, {}, (results) => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        let params = {}
+        let filters = {}
+
+        if (user.user_type == "office_user") {
+            params = { '_id': user.user_office._id }
+            filters["order_office._id"] = user.user_office._id
+        }
+
+        await getOffices(1, params, (results) => {
             this.setState({
                 offices: results.data.docs,
-                is_offices_loaded: true
+                is_offices_loaded: true,
+                filters: filters
             })
 
         })
@@ -57,7 +67,7 @@ class TableAnalyseProduct extends Component {
 
         let filters = this.state.filters
 
-        if (e.target.name === "product_office") {
+        if (e.target.name === "order_office._id") {
             this.state.offices.map((item) => {
                 if (item._id == e.target.value) {
                     filters["order_office._id"] = item._id
@@ -121,7 +131,7 @@ class TableAnalyseProduct extends Component {
 
                 productAnalysesJsx = (
                     <tr>
-                        <td colSpan="2">
+                        <td colSpan="3">
                             <LoaderSpin />
                         </td>
                     </tr>
@@ -129,7 +139,7 @@ class TableAnalyseProduct extends Component {
             } else {
                 productAnalysesJsx = (
                     <tr>
-                        <td colSpan="2">
+                        <td colSpan="3">
                             <h5 className="text-center my-5 text-muted">Lütfen tarih aralığı seçiniz</h5>
                         </td>
                     </tr>
@@ -164,7 +174,7 @@ class TableAnalyseProduct extends Component {
                             <div className="form-row">
                                 <div class="form-group">
                                     <label>Şube</label>
-                                    <select className="form-control" required name="product_office" value={this.state.filters["product_office"]} onChange={this.handleOnChange}>
+                                    <select className="form-control" required name="order_office._id" value={this.state.filters["order_office._id"]} onChange={this.handleOnChange}>
                                         <option value="" selected disabled>Hiçbiri</option>
                                         {officesJsx}
                                     </select>

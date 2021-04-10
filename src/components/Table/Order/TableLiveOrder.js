@@ -12,8 +12,8 @@ const client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
 
 client.onopen = () => {
     console.log('WebSocket Client Connected');
-};
-const audioEl = document.getElementsByClassName("audio-element")[0]
+}
+
 
 class TableLiveOrder extends Component {
     constructor() {
@@ -34,6 +34,11 @@ class TableLiveOrder extends Component {
         this.handleOnClickDelete = this.handleOnClickDelete.bind(this)
         this.handleOnClickChangeOrderStatus = this.handleOnClickChangeOrderStatus.bind(this)
         this.handleOnClickPrint = this.handleOnClickPrint.bind(this)
+        this.handleOnSubmit = this.handleOnSubmit.bind(this)
+        this.handleOnChange = this.handleOnChange.bind(this)
+
+        this.audioEl = document.getElementsByClassName("audio-element")[0]
+
     }
 
 
@@ -53,12 +58,7 @@ class TableLiveOrder extends Component {
                 })
             })
 
-            getOffices(1, params, (response) => {
-                this.setState({
-                    offices: response.data.docs,
-                    is_offices_loaded: true
-                })
-            })
+
         }
     }
 
@@ -92,34 +92,62 @@ class TableLiveOrder extends Component {
 
 
 
-
             client.onmessage = (message) => {
-                console.log(message.data);
+
                 if (message.data == "ORDER_STATE_CHANGED") {
-                    audioEl.play()
+                    if (this.audioEl) {
+                        this.audioEl.play()
+                    }
                     this.loadOrders()
                 }
+
+
+                if (message.data == "ORDER_CANCELLED") {
+                    Swal.fire({
+                        title: "Sipariş iptal edildi",
+                        text: 'İPTAL BEKLEYENLER sekmesinde görebilirsiniz',
+                        icon: 'info'
+                    })
+                    if (this.audioEl) {
+                        this.audioEl.play()
+                    }
+                    this.loadOrders()
+                }
+
+
             };
+        })
+
+        getOffices(1, params, (response) => {
+            this.setState({
+                offices: response.data.docs,
+                is_offices_loaded: true
+            })
         })
 
         const interval = setInterval(() => {
             // console.log(client)
             if (client.readyState != 1) {
-                window.location.reload()
+                if (user.user_type == "office_user") {
+                    window.location.reload()
+                }
             }
         }, 5000);
 
     }
 
-    loadOrders = (page = this.state.current_page) => {
-        let params = {}
+    loadOrders = (page = this.state.current_page, params = {}) => {
+
         if (this.props.params) {
             params = this.props.params
         }
 
 
 
-        getOrders(page, params, (response) => {
+        getOrders(page, params, async (response) => {
+
+
+
             this.setState({
                 orders: response.data.docs,
                 pagination_info: response.data,
@@ -159,8 +187,9 @@ class TableLiveOrder extends Component {
 
         await this.setState({
             print_order: printOrder
+        }, () => {
+            window.print()
         })
-        window.print()
         await this.setState({
             print_order: {}
         })
@@ -184,19 +213,33 @@ class TableLiveOrder extends Component {
 
     }
 
+
     handleOnChange(e) {
-        if (e.target.name == "office_id") {
-            let filters = this.state.filters
-            filters[e.target.name] = e.target.value
+        if (e.target.name == "order_office._id" || e.target.name == "order_customer.customer_name") {
+
+            let filtersState = this.state.filters
+            filtersState[e.target.name] = e.target.value
 
             this.setState({
-                filters
+                filters: filtersState
             })
         }
 
     }
 
+
+    handleOnSubmit(e) {
+        e.preventDefault()
+
+
+        this.loadOrders(1, this.state.filters)
+
+    }
+
+
     render() {
+
+
 
         // render offices 
         let officesJsx = ''
@@ -212,8 +255,14 @@ class TableLiveOrder extends Component {
 
         // render orders
         let ordersJsx = ''
+        let cancelledOrderCount = 0
         if (this.state.is_orders_loaded) {
             ordersJsx = this.state.orders.map((item) => {
+
+                if (item.order_status == "cancelled") {
+                    cancelledOrderCount++
+                }
+
 
                 // render order status
                 let orderStatusJsx = ''
@@ -225,6 +274,10 @@ class TableLiveOrder extends Component {
                     orderStatusJsx = <span className="badge badge-danger">Yolda</span>
                 } else if (item.order_status == "delivered") {
                     orderStatusJsx = <span className="badge badge-success">Teslim Edildi</span>
+                } else if (item.order_status == "cancelled") {
+                    orderStatusJsx = <span className="badge badge-danger"><i className="fas fa-times"></i> İPTAL</span>
+                } else if (item.order_status == "cancellation_approved") {
+                    orderStatusJsx = <span className="badge badge-danger"><i className="fas fa-times"></i> ONAYLI İPTAL</span>
                 } else {
                     orderStatusJsx = <span className="badge badge-primary">Diğer</span>
                 }
@@ -263,6 +316,30 @@ class TableLiveOrder extends Component {
                     </td>
                 )
                 if (user.user_type == "office_user") {
+                    let buttonGroupJsx = ''
+                    if (item.order_status == "cancelled") {
+                        buttonGroupJsx = (
+                            <p>
+                                <h6>İptal Onay Bekliyor</h6>
+                                <div class="btn-group btn-group-md">
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="cancellation_approved" class="btn btn-danger">İptali Onayla</button>
+                                </div>
+                            </p>
+                        )
+                    } else if (item.order_status == "cancellation_approved") {
+
+                    } else {
+                        buttonGroupJsx = (
+                            <p>
+                                <h6>Durumunu değiştir</h6>
+                                <div class="btn-group btn-group-md">
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="cancelled" class="btn btn-primary">Hazırlanıyor</button>
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="on_delivery" class="btn btn-primary">Yolda</button>
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="delivered" class="btn btn-primary">Teslim Edildi</button>
+                                </div>
+                            </p>
+                        )
+                    }
                     operationColumnJsx = (
                         <td>
                             <h2 className="float-right">
@@ -270,14 +347,15 @@ class TableLiveOrder extends Component {
                                 <span><i className="fas fa-user"></i> B***** Ö*****</span>
                             </h2>
                             <button data-id={item._id} onClick={this.handleOnClickPrint} className="btn btn-outline-primary"><i className="fas fa-print"></i> Yazdır</button>
-                            <p>
-                                <h6>Durumunu değiştir</h6>
-                                <div class="btn-group btn-group-md">
-                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="preparing" class="btn btn-primary">Hazırlanıyor</button>
-                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="on_delivery" class="btn btn-primary">Yolda</button>
-                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="delivered" class="btn btn-primary">Teslim Edildi</button>
-                                </div>
-                            </p>
+
+                            {buttonGroupJsx}
+
+                        </td>
+                    )
+                } else if (user.user_type == "call_center_user" || user.user_type == "super_user") {
+                    operationColumnJsx = (
+                        <td>
+                            <button data-id={item._id} onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="cancelled" className="btn btn-outline-danger"><i className="fas fa-times"></i> İptal Et</button>
                         </td>
                     )
                 }
@@ -319,6 +397,7 @@ class TableLiveOrder extends Component {
                         <li class="nav-item"><Link class="nav-link text-info" to={`${urls.LIVE_ORDER_VIEW}/preparing`} data-toggle="tab">Hazırlanıyor</Link></li>
                         <li class="nav-item"><Link class="nav-link text-danger" to={`${urls.LIVE_ORDER_VIEW}/on_delivery`} data-toggle="tab">Yolda</Link></li>
                         <li class="nav-item"><Link class="nav-link text-success" to={`${urls.LIVE_ORDER_VIEW}/delivered`} data-toggle="tab">Teslim Edildi</Link></li>
+                        <li class="nav-item"><Link class="nav-link text-danger" to={`${urls.LIVE_ORDER_VIEW}/cancelled`} data-toggle="tab"> İPTAL BEKLEYENLER <span className="badge badge-danger">{cancelledOrderCount}</span></Link></li>
                     </ul>
                 </div>
             )
@@ -341,13 +420,13 @@ class TableLiveOrder extends Component {
                         <table className="table">
                             <tbody>
                                 <tr>
-                                    <td style={{ width: '35%' }}>
+                                    <td style={{ width: '80%' }}>
                                         <strong>{item.product_piece} X {item.product.product_name}</strong>
                                         <br></br>
                                         {propertiesJsx}
                                     </td>
                                     <td>
-                                        <h2 style={{ fontSize: '20px' }}>
+                                        <h2 style={{ fontSize: '3.5rem' }}>
                                             {productAmount} ₺
                                         </h2>
                                     </td>
@@ -361,9 +440,9 @@ class TableLiveOrder extends Component {
 
             return (
                 <>
-                    <div className="row">
+                    <div className="row print" style={{ height: '400px' }}>
                         <div className="col-12">
-                            <img src={hasdoner} width="80" style={{ marginLeft: '17%' }} />
+                            <img src={hasdoner} width="300" style={{ marginLeft: '30%' }} />
                             <br></br>
                             <div className="table-responsive">
                                 <table className="table">
@@ -426,8 +505,8 @@ class TableLiveOrder extends Component {
                             <table className="table">
                                 <tbody>
                                     <tr>
-                                        <td style={{ borderTop: 'none' }}>
-                                            <h2 style={{ fontSize: '40px', fontWeight: 'bold', marginLeft: '9%' }}>Toplam : {this.state.print_order.order_amount} ₺</h2>
+                                        <td style={{ borderTop: 'none', textAlign: 'center' }}>
+                                            <h2 style={{ fontWeight: 'bold', fontSize: '5rem!important' }} id="total_amount">Toplam : {this.state.print_order.order_amount} ₺</h2>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -448,14 +527,18 @@ class TableLiveOrder extends Component {
                     <audio className="audio-element">
                         <source src="https://assets.coderrocketfuel.com/pomodoro-times-up.mp3"></source>
                     </audio>
-                    {/* <div className="col-lg-12">
-                        <form className="form-inline d-flex justify-content-center py-3">
+                    <div className="col-lg-12">
+                        <form className="form-inline d-flex justify-content-center py-3" onSubmit={this.handleOnSubmit}>
                             <div className="form-group">
                                 <label>Şube</label>
-                                <select className="form-control" name="office_id" onChange={this.handleOnChange}>
+                                <select className="form-control" name="order_office._id" onChange={this.handleOnChange}>
                                     <option value="" selected>Şube Seçiniz</option>
                                     {officesJsx}
                                 </select>
+                            </div>
+                            <div className="form-group ml-3">
+                                <label>Müşteri Adı</label>
+                                <input className="form-control" name="order_customer.customer_name" placeholder="Müşteri adı giriniz" onChange={this.handleOnChange} />
                             </div>
                             <div className="form-group">
                                 <button className="btn btn-primary ml-2"><i className="fas fa-search"></i></button>
@@ -464,8 +547,9 @@ class TableLiveOrder extends Component {
 
                         </form>
 
-                    </div> */}
+                    </div>
                     {filterTabsJsx}
+
                     <div className="col-lg-12">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0 table-live-order">

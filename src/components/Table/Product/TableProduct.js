@@ -164,6 +164,7 @@ class TableProduct extends Component {
                 return (
                     <tr>
                         <td>{item.product_name}</td>
+                        <td>{item.product_office.office_name}</td>
                         <td>{item.product_category.category_name}</td>
                         <td>{item.product_unit}</td>
                         <td>{item.product_unit_price}</td>
@@ -197,6 +198,7 @@ class TableProduct extends Component {
                             <thead>
                                 <tr>
                                     <th>Ad</th>
+                                    <th>Şube</th>
                                     <th>Kategori</th>
                                     <th>Birim</th>
                                     <th>Birim Fiyat</th>
