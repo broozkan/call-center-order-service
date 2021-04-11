@@ -15,9 +15,8 @@ class UpdateCustomerView extends Component {
                 <div className="page-wrapper" style={{ minHeight: '754px' }}>
                     <div className="content container-fluid">
                         <Breadcrumb routeMatch={this.props} />
-
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="card">
                                     <div class="card-header">
                                         <h5 class="card-title">
