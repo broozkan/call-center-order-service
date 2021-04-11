@@ -7,12 +7,10 @@ import api from '../../../services/api'
 import Pagination from '../../Pagination/Pagination'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import hasdoner from '../../../images/hasdoner.png'
+import mp3 from '../../../lib/alert.mp3'
 
-const client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
+const audioEl = document.getElementsByClassName("audio-element")[0]
 
-client.onopen = () => {
-    console.log('WebSocket Client Connected');
-}
 
 
 class TableLiveOrder extends Component {
@@ -36,8 +34,9 @@ class TableLiveOrder extends Component {
         this.handleOnClickPrint = this.handleOnClickPrint.bind(this)
         this.handleOnSubmit = this.handleOnSubmit.bind(this)
         this.handleOnChange = this.handleOnChange.bind(this)
+        this.websocketOnMessage = this.websocketOnMessage.bind(this)
 
-        this.audioEl = document.getElementsByClassName("audio-element")[0]
+        this.client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
 
     }
 
@@ -62,6 +61,28 @@ class TableLiveOrder extends Component {
         }
     }
 
+    websocketOnMessage(message) {
+        if (message.data == "ORDER_STATE_CHANGED") {
+            if (audioEl) {
+                audioEl.play()
+            }
+            this.loadOrders()
+        }
+
+
+        if (message.data == "ORDER_CANCELLED") {
+            Swal.fire({
+                title: "Sipariş iptal edildi",
+                text: 'İPTAL BEKLEYENLER sekmesinde görebilirsiniz',
+                icon: 'info'
+            })
+            console.log(audioEl);
+            if (audioEl) {
+                audioEl.play()
+            }
+            this.loadOrders()
+        }
+    }
 
     async componentDidMount() {
 
@@ -92,29 +113,8 @@ class TableLiveOrder extends Component {
 
 
 
-            client.onmessage = (message) => {
-
-                if (message.data == "ORDER_STATE_CHANGED") {
-                    if (this.audioEl) {
-                        this.audioEl.play()
-                    }
-                    this.loadOrders()
-                }
-
-
-                if (message.data == "ORDER_CANCELLED") {
-                    Swal.fire({
-                        title: "Sipariş iptal edildi",
-                        text: 'İPTAL BEKLEYENLER sekmesinde görebilirsiniz',
-                        icon: 'info'
-                    })
-                    if (this.audioEl) {
-                        this.audioEl.play()
-                    }
-                    this.loadOrders()
-                }
-
-
+            this.client.onmessage = (message) => {
+                this.websocketOnMessage(message)
             };
         })
 
@@ -126,11 +126,18 @@ class TableLiveOrder extends Component {
         })
 
         const interval = setInterval(() => {
-            // console.log(client)
-            if (client.readyState != 1) {
-                if (user.user_type == "office_user") {
-                    window.location.reload()
+            console.log(this.client)
+
+            if (this.client.readyState != 1) {
+                this.client = null
+                this.client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
+
+                this.client.onmessage = (message) => {
+                    this.websocketOnMessage(message)
                 }
+                // if (user.user_type == "office_user") {
+                //     window.location.reload()
+                // }
             }
         }, 5000);
 
@@ -333,7 +340,7 @@ class TableLiveOrder extends Component {
                             <p>
                                 <h6>Durumunu değiştir</h6>
                                 <div class="btn-group btn-group-md">
-                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="cancelled" class="btn btn-primary">Hazırlanıyor</button>
+                                    <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="preparing" class="btn btn-primary">Hazırlanıyor</button>
                                     <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="on_delivery" class="btn btn-primary">Yolda</button>
                                     <button type="button" onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="delivered" class="btn btn-primary">Teslim Edildi</button>
                                 </div>
@@ -363,13 +370,12 @@ class TableLiveOrder extends Component {
                 return (
                     <tr>
                         <td>{item.order_code}</td>
-                        <td>
-                            <p><strong>Ad Soyad: </strong>{item.order_customer.customer_name}</p>
+                        <td style={{ width: '30%' }}>
+                            <p><strong>Ad Soyad: </strong><Link to={`${urls.CUSTOMER_RESULT_VIEW}/${item.order_customer._id}`}>{item.order_customer.customer_name}</Link></p>
                             <p><strong>Telefon: </strong>{item.order_customer.customer_phone_number}</p>
-                            <p><strong>Adres: </strong>{item.order_address.address}</p>
+                            <p style={{ whiteSpace: 'pre-line' }}><strong>Adres: </strong>{item.order_address.address}</p>
                             <p>{item.order_address.address_description}</p>
-
-
+                            <p>{item.order_user.user_name}</p>
                         </td>
                         <td className="product">{orderProductsJsx}</td>
                         <td>
@@ -379,7 +385,6 @@ class TableLiveOrder extends Component {
                         <td>{orderStatusJsx}</td>
                         <td className="order-note-field"><h2><span>{item.order_note}</span></h2></td>
                         {operationColumnJsx}
-
                     </tr>
                 )
             })
@@ -525,7 +530,7 @@ class TableLiveOrder extends Component {
             return (
                 <div className="row">
                     <audio className="audio-element">
-                        <source src="https://assets.coderrocketfuel.com/pomodoro-times-up.mp3"></source>
+                        <source src={mp3}></source>
                     </audio>
                     <div className="col-lg-12">
                         <form className="form-inline d-flex justify-content-center py-3" onSubmit={this.handleOnSubmit}>

@@ -32,9 +32,14 @@ class FormSearchCustomer extends Component {
 
     async handleOnSubmit(e) {
         e.preventDefault()
-
+        this.state.customer_phone_number = this.state.customer_phone_number.trim()
         let phoneNumber = ''
         for (let index = 0; index < this.state.customer_phone_number.length; index++) {
+
+            if (this.state.customer_phone_number[index] == "(" || this.state.customer_phone_number[index] == ")") {
+                continue
+            }
+
             if (index == 0) {
                 if (this.state.customer_phone_number[0] == "0" || this.state.customer_phone_number[0] == "+") {
                     continue
@@ -47,7 +52,7 @@ class FormSearchCustomer extends Component {
                 } else {
                     phoneNumber += this.state.customer_phone_number[index]
                 }
-            } else if (index == 2) {
+            } else if (index == 2 && this.state.customer_phone_number[0] == "+") {
                 if (this.state.customer_phone_number[2] == "0") {
                     continue
                 } else {
@@ -56,14 +61,15 @@ class FormSearchCustomer extends Component {
             } else {
                 phoneNumber += this.state.customer_phone_number[index]
             }
-
         }
+
 
 
         getCustomers(1, { 'customer_phone_number': phoneNumber }, (results) => {
             this.setState({
                 customer: results.data.docs,
-                is_customer_loaded: true
+                is_customer_loaded: true,
+                customer_phone_number: phoneNumber
             })
         })
 

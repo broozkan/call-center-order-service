@@ -35,6 +35,15 @@ class FormCustomer extends Component {
 
 
     async componentWillReceiveProps(nextProps) {
+        if (this.props.state) {
+            if (this.props.state.customer_phone_number != nextProps.state.customer_phone_number) {
+                await this.setState({
+                    customer_phone_number: nextProps.state.customer_phone_number
+                })
+            }
+        }
+
+
         if (this.props.customer_id != nextProps.customer_id) {
             await this.setState({
                 customer_id: nextProps.customer_id
@@ -123,6 +132,8 @@ class FormCustomer extends Component {
 
     handleOnSubmit = async (e) => {
         e.preventDefault()
+
+
 
         let submitResponse = ''
         if (this.props.customer_id) {

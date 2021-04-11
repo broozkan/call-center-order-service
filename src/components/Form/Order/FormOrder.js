@@ -31,7 +31,8 @@ class FormOrder extends Component {
             clicked_category_id: '',
             payment_methods: [],
             is_payment_methods_loaded: false,
-            order_amount: 0
+            order_amount: 0,
+            is_form_submitting: false
         }
 
         this.resetState = this.resetState.bind(this)
@@ -116,7 +117,6 @@ class FormOrder extends Component {
 
             client.onopen = () => {
                 console.log('WebSocket Client Connected');
-                alert('WebSocket Client Connected');
             };
 
             client.onmessage = (message) => {
@@ -213,6 +213,10 @@ class FormOrder extends Component {
     handleOnSubmit = async (e) => {
         e.preventDefault()
 
+        this.setState({
+            is_form_submitting: true
+        })
+
         if (!this.state.order_payment_method.payment_method_name) {
             Swal.fire({
                 title: 'Lütfen ödeme yöntemi seçiniz',
@@ -247,6 +251,9 @@ class FormOrder extends Component {
             submitResponse = await api.post(`/orders`, data, { headers: { 'auth-token': localStorage.getItem('auth-token') } })
         }
 
+        this.setState({
+            is_form_submitting: false
+        })
         if (submitResponse.data.status != 400) {
             Swal.fire({
                 title: "İşlem başarılı!",
@@ -373,7 +380,19 @@ class FormOrder extends Component {
     }
 
     render() {
-        console.log(this.state);
+
+        // render loading spinner
+        let submitButtonInnerJsx = (
+            <>
+                <i className="fas fa-save"></i> Gönder
+            </>
+        )
+        if (this.state.is_form_submitting) {
+            submitButtonInnerJsx = (
+                <LoaderSpin />
+            )
+        }
+
         // render customers
         let customersJsx = <LoaderSpin />
         if (this.state.order_customer) {
@@ -645,7 +664,7 @@ class FormOrder extends Component {
                                 </div>
                             </div> */}
                             <div className="form-group">
-                                <button type="submit" className="btn btn-primary btn-lg"><i className="fas fa-save"></i> Gönder</button>
+                                <button type="submit" className="btn btn-primary btn-lg">{submitButtonInnerJsx}</button>
                                 <button type="button" className="btn btn-outline-danger ml-2 btn-lg" onClick={this.resetState}><i className="fas fa-times"></i> İptal</button>
                             </div>
                         </form>
