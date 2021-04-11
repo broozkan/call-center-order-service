@@ -34,6 +34,13 @@ router.get('/', async (req, res) => {
         if (req.query["office_analyses"]) {
             pipeline = [
                 {
+                    $match: {
+                        'order_status': {
+                            $nin: ['cancelled', 'cancellation_approved']
+                        }
+                    }
+                },
+                {
                     $group: {
                         _id: { office: "$order_office" },
                         total
@@ -44,6 +51,13 @@ router.get('/', async (req, res) => {
 
         if (req.query["employee_analyses"]) {
             pipeline = [
+                {
+                    $match: {
+                        'order_status': {
+                            $nin: ['cancelled', 'cancellation_approved']
+                        }
+                    }
+                },
                 {
                     $group: {
                         _id: { user: "$order_user" },
@@ -61,7 +75,10 @@ router.get('/', async (req, res) => {
                 {
                     $match: {
                         order_created_at: dateObject,
-                        'order_office._id': mongoose.Types.ObjectId(req.query["order_office._id"])
+                        'order_office._id': mongoose.Types.ObjectId(req.query["order_office._id"]),
+                        'order_status': {
+                            $nin: ['cancelled', 'cancellation_approved']
+                        }
                     }
                 },
                 {
