@@ -13,14 +13,16 @@ const path = require('path');
 const WebSocket = require("ws");
 
 const broadcast = (clients, message) => {
+    if (clients) {
+        clients.forEach((client) => {
 
-    clients.forEach((client) => {
+            if (client.readyState === WebSocket.OPEN) {
 
-        if (client.readyState === WebSocket.OPEN) {
+                client.send(message);
+            }
+        });
+    }
 
-            client.send(message);
-        }
-    });
 };
 
 
