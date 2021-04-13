@@ -50,6 +50,10 @@ const orderSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    order_date: {
+        type: String,
+        required: true
+    },
     order_user: UserModel.userSchema
 })
 

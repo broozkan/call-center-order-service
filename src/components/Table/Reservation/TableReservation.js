@@ -44,7 +44,7 @@ class TableReservation extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/reservations/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/reservations/${e.currentTarget.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",

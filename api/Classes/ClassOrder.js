@@ -13,7 +13,9 @@ class Order {
         this.order_payment_method = order_payment_method
         this.order_note = order_note
         this.order_user = order_user
-
+        this.order_date = new Date().toLocaleString('tr-TR', {
+            timeZone: 'Europe/Istanbul'
+        })
     }
 
     setOrderId(order_id) {

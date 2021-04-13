@@ -44,7 +44,7 @@ class TableOffice extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/offices/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/offices/${e.currentTarget.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",

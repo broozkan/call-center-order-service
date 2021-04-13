@@ -7,10 +7,8 @@ import api from '../../../services/api'
 import Pagination from '../../Pagination/Pagination'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import hasdoner from '../../../images/hasdoner.png'
-import mp3 from '../../../lib/alert.mp3'
 
-const audioEl = document.getElementsByClassName("audio-element")[0]
-
+import mp3_file from '../../../lib/alert.wav'
 
 
 class TableLiveOrder extends Component {
@@ -37,7 +35,7 @@ class TableLiveOrder extends Component {
         this.websocketOnMessage = this.websocketOnMessage.bind(this)
 
         this.client = new W3CWebSocket(process.env.REACT_APP_WS_URL);
-
+        this.rap = {}
     }
 
 
@@ -56,16 +54,13 @@ class TableLiveOrder extends Component {
                     is_orders_loaded: true
                 })
             })
-
-
         }
     }
 
     websocketOnMessage(message) {
         if (message.data == "ORDER_STATE_CHANGED") {
-            if (audioEl) {
-                audioEl.play()
-            }
+            this.rap.play()
+
             this.loadOrders()
         }
 
@@ -76,10 +71,9 @@ class TableLiveOrder extends Component {
                 text: 'İPTAL BEKLEYENLER sekmesinde görebilirsiniz',
                 icon: 'info'
             })
-            console.log(audioEl);
-            if (audioEl) {
-                audioEl.play()
-            }
+
+            this.rap.play()
+
             this.loadOrders()
         }
     }
@@ -126,7 +120,6 @@ class TableLiveOrder extends Component {
         })
 
         const interval = setInterval(() => {
-            console.log(this.client)
 
             if (this.client.readyState != 1) {
                 this.client = null
@@ -247,7 +240,6 @@ class TableLiveOrder extends Component {
     render() {
 
 
-
         // render offices 
         let officesJsx = ''
         if (this.state.is_offices_loaded) {
@@ -265,7 +257,7 @@ class TableLiveOrder extends Component {
         let cancelledOrderCount = 0
         if (this.state.is_orders_loaded) {
             ordersJsx = this.state.orders.map((item) => {
-
+                console.log(item);
                 if (item.order_status == "cancelled") {
                     cancelledOrderCount++
                 }
@@ -314,15 +306,20 @@ class TableLiveOrder extends Component {
                 })
 
                 // check user type ? if call_center user remove operation column
+                let callCenterInfoFieldJsx = ''
+                let customerNameJsx = ''
                 let operationColumnJsx = (
                     <td>
                         <h2>
-                            {item.date_time}
+                            {item.order_date}
                             <span><i className="fas fa-user"></i> B***** Ö*****</span>
                         </h2>
                     </td>
                 )
                 if (user.user_type == "office_user") {
+                    customerNameJsx = (
+                        item.order_customer.customer_name
+                    )
                     let buttonGroupJsx = ''
                     if (item.order_status == "cancelled") {
                         buttonGroupJsx = (
@@ -350,7 +347,7 @@ class TableLiveOrder extends Component {
                     operationColumnJsx = (
                         <td>
                             <h2 className="float-right">
-                                {item.date_time}
+                                {item.order_date}
                                 <span><i className="fas fa-user"></i> B***** Ö*****</span>
                             </h2>
                             <button data-id={item._id} onClick={this.handleOnClickPrint} className="btn btn-outline-primary"><i className="fas fa-print"></i> Yazdır</button>
@@ -360,6 +357,15 @@ class TableLiveOrder extends Component {
                         </td>
                     )
                 } else if (user.user_type == "call_center_user" || user.user_type == "super_user") {
+                    customerNameJsx = (
+                        <Link to={`${urls.CUSTOMER_RESULT_VIEW}/${item.order_customer._id}`}>{item.order_customer.customer_name}</Link>
+                    )
+                    callCenterInfoFieldJsx = (
+                        <>
+                            <p><i className="fas fa-user"></i> {item.order_user.user_name}</p>
+                            <p><i className="fas fa-clock"></i> {item.order_date}</p>
+                        </>
+                    )
                     operationColumnJsx = (
                         <td>
                             <button data-id={item._id} onClick={this.handleOnClickChangeOrderStatus} data-order_id={item._id} data-order_status="cancelled" className="btn btn-outline-danger"><i className="fas fa-times"></i> İptal Et</button>
@@ -371,11 +377,11 @@ class TableLiveOrder extends Component {
                     <tr>
                         <td>{item.order_code}</td>
                         <td style={{ width: '30%' }}>
-                            <p><strong>Ad Soyad: </strong><Link to={`${urls.CUSTOMER_RESULT_VIEW}/${item.order_customer._id}`}>{item.order_customer.customer_name}</Link></p>
+                            <p><strong>Ad Soyad: </strong>{customerNameJsx}</p>
                             <p><strong>Telefon: </strong>{item.order_customer.customer_phone_number}</p>
                             <p style={{ whiteSpace: 'pre-line' }}><strong>Adres: </strong>{item.order_address.address}</p>
                             <p>{item.order_address.address_description}</p>
-                            <p>{item.order_user.user_name}</p>
+                            {callCenterInfoFieldJsx}
                         </td>
                         <td className="product">{orderProductsJsx}</td>
                         <td>
@@ -460,7 +466,7 @@ class TableLiveOrder extends Component {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <strong>Tarih: </strong>  {this.state.print_order.date_time}
+                                                <strong>Tarih: </strong>  {this.state.print_order.order_date}
                                             </td>
                                         </tr>
                                         <tr>
@@ -529,9 +535,7 @@ class TableLiveOrder extends Component {
         } else {
             return (
                 <div className="row">
-                    <audio className="audio-element">
-                        <source src={mp3}></source>
-                    </audio>
+
                     <div className="col-lg-12">
                         <form className="form-inline d-flex justify-content-center py-3" onSubmit={this.handleOnSubmit}>
                             <div className="form-group">
@@ -554,7 +558,7 @@ class TableLiveOrder extends Component {
 
                     </div>
                     {filterTabsJsx}
-
+                    <audio className="d-none" src={mp3_file} controls ref={(element) => { this.rap = element }} />
                     <div className="col-lg-12">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0 table-live-order">

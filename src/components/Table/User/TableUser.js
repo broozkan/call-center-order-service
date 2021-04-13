@@ -44,7 +44,7 @@ class TableUser extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/users/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/users/${e.currentTarget.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",

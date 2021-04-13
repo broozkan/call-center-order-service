@@ -44,7 +44,7 @@ class TableCategory extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/categories/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/categories/${e.currentTarget.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",

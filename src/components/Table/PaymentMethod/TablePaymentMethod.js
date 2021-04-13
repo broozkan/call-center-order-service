@@ -44,7 +44,7 @@ class TablePaymentMethod extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/payment-methods/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/payment-methods/${e.currentTarget.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",

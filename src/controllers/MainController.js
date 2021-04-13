@@ -32,9 +32,12 @@ export const getOrders = async (page = 1, params = {}, cb) => {
     const orders = await api.get(`/orders/${page}`, { headers: { 'site-token': localStorage.getItem('site-token') }, params })
 
     for (let index = 0; index < orders.data.docs.length; index++) {
-        fixDateTime(orders.data.docs[index]["order_created_at"], (result) => {
-            orders.data.docs[index]["date_time"] = result
-        })
+        // if (orders.data.docs[index]["order_date"]) {
+        //     fixDateTime(orders.data.docs[index]["order_date"], (result) => {
+        //         orders.data.docs[index]["order_date"] = result
+        //     })
+        // }
+
 
     }
 
@@ -85,7 +88,7 @@ export const deleteObject = async (url, cb) => {
 }
 
 export const fixDateTime = async (dateToBeFixed, cb) => {
-    let splittedDate = dateToBeFixed.split('T')
+    let splittedDate = dateToBeFixed.split(' ')
     let date = splittedDate[0]
     let time = splittedDate[1]
 

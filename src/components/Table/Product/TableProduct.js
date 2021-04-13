@@ -81,7 +81,7 @@ class TableProduct extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/products/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/products/${e.currentTarget.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",

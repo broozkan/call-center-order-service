@@ -44,7 +44,7 @@ class TableEmployee extends Component {
 
 
     handleOnClickDelete = (e) => {
-        deleteObject(`/employees/${e.target.dataset.id}`, (response) => {
+        deleteObject(`/employees/${e.currentTarget.dataset.id}`, (response) => {
             if (response.status == 200) {
                 Swal.fire({
                     title: "Silindi",
